@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { setFont, setColor } from "./styles";
 
 export const Globals = createGlobalStyle`
 
@@ -19,6 +20,7 @@ code {
 
 body {
   ${setFont.main};
+  color: ${setColor.mainBlack};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 2em;
