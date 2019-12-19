@@ -73,8 +73,8 @@ export const CustomLink = styled(Link)`
   /* animations */
   transition: ${props => props.transition && props.transition};
   &:hover {
-    background-color: ${props => (props.color ? props.color : "#d1d1d1")};
-    color: ${props => (props.background ? props.background : "#4d4d4d")};
+    background-color: ${props => (props.color ? props.color : fntColor)};
+    color: ${props => (props.background ? props.background : bkgrndColor)};
   }
 `;
 export const CustomLinkContainer = styled.div`
