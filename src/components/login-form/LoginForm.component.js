@@ -19,18 +19,18 @@ function LoginForm() {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
     console.log(`LoginForm.js: handleSubmit: credentials: `, credentials);
-    setCredentials({
-      credentials: {
-        username: "",
-        password: ""
-      }
-    });
+    // setCredentials({
+    //   credentials: {
+    //     username: "",
+    //     password: ""
+    //   }
+    // });
     localStorage.setItem("token", "temp_token");
   };
 
-  console.log(`LoginForm.js: credentials: `, credentials.credentials);
   return (
     <div>
       <form onSubmit={handleSubmit}>
