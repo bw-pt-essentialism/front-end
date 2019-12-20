@@ -4,6 +4,8 @@ import * as Yup from "yup";
 
 import { CustomButton } from "../custom-button/CustomButton";
 
+import "../../globals/form.styles.css";
+
 const SignUpForm = ({
   errors,
   touched,
@@ -13,68 +15,76 @@ const SignUpForm = ({
 }) => {
   //   console.log(props);
   return (
-    <Form className="form">
-      <Field
-        component="input"
-        type="text"
-        name="name"
-        placeholder="Full Name"
-      />
-      {touched.name && errors.name && <p className="errors">{errors.name}</p>}
-      <Field
-        component="input"
-        type="email"
-        name="email"
-        placeholder="email@example.com"
-      />
-      {touched.email && errors.email && (
-        <p className="errors">{errors.email}</p>
-      )}
-      <Field
-        component="input"
-        type="text"
-        name="username"
-        placeholder="username"
-      />
-      {touched.username && errors.username && (
-        <p className="errors">{errors.username}</p>
-      )}
-      <Field
-        component="input"
-        type="password"
-        name="password"
-        placeholder="Password"
-      />
-      {touched.password && errors.password && (
-        <p className="errors">{errors.password}</p>
-      )}
-      <Field
-        component="input"
-        type="password"
-        name="verifyPassword"
-        placeholder="Verify Password"
-      />
-      {touched.verifyPassword && errors.verifyPassword && (
-        <p className="errors">{errors.verifyPassword}</p>
-      )}
-
-      <label className="button">
-        Terms and Conditions
+    <div className="form-container">
+      <Form className="form-container">
         <Field
+          className="input"
           component="input"
-          type="checkbox"
-          checked={values.terms}
-          name="terms"
+          type="text"
+          name="name"
           placeholder="Full Name"
         />
-        {touched.terms && errors.terms && (
-          <p className="errors">{errors.terms}</p>
+        {touched.name && errors.name && <p className="errors">{errors.name}</p>}
+        <Field
+          className="input"
+          component="input"
+          type="email"
+          name="email"
+          placeholder="email@example.com"
+        />
+        {touched.email && errors.email && (
+          <p className="errors">{errors.email}</p>
         )}
-      </label>
-      <CustomButton type="submit" disabled={isSubmitting}>
-        Submit
-      </CustomButton>
-    </Form>
+        <Field
+          className="input"
+          component="input"
+          type="text"
+          name="username"
+          placeholder="username"
+        />
+        {touched.username && errors.username && (
+          <p className="errors">{errors.username}</p>
+        )}
+        <Field
+          className="input"
+          component="input"
+          type="password"
+          name="password"
+          placeholder="Password"
+        />
+        {touched.password && errors.password && (
+          <p className="errors">{errors.password}</p>
+        )}
+        <Field
+          className="input"
+          component="input"
+          type="password"
+          name="verifyPassword"
+          placeholder="Verify Password"
+        />
+        {touched.verifyPassword && errors.verifyPassword && (
+          <p className="errors">{errors.verifyPassword}</p>
+        )}
+
+        <label className="button">
+          Terms and Conditions
+          <Field
+            className="input"
+            component="input"
+            type="checkbox"
+            checked={values.terms}
+            name="terms"
+            placeholder="Full Name"
+          />
+          {touched.terms && errors.terms && (
+            <p className="errors">{errors.terms}</p>
+          )}
+        </label>
+        <CustomButton type="submit" disabled={isSubmitting}>
+          Submit
+        </CustomButton>
+      </Form>
+    </div>
   );
 };
 

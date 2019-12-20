@@ -7,18 +7,20 @@ import "./App.css";
 
 import LoginForm from "./components/login-form/LoginForm.component";
 import SignUpForm from "./components/sign-up-form/SignUpForm.component";
+import SignInAndUpPage from "./pages/sign-in-and-up/SignInAndUpPage";
 
 function App() {
   return (
     <Router>
       <Globals />
       {/* need to change this route to /login */}
-      <Route path="/">
+      {/* <Route path="/">
         <LoginForm />
       </Route>
       <Route path="/">
         <SignUpForm />
-      </Route>
+      </Route> */}
+      <SignInAndUpPage />
     </Router>
   );
 }
