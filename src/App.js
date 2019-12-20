@@ -6,6 +6,7 @@ import { Globals } from "./globals/GlobalStyles";
 import "./App.css";
 
 import LoginForm from "./components/login-form/LoginForm.component";
+import SignUpForm from "./components/sign-up-form/SignUpForm.component";
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
       {/* need to change this route to /login */}
       <Route path="/">
         <LoginForm />
+      </Route>
+      <Route path="/">
+        <SignUpForm />
       </Route>
     </Router>
   );
