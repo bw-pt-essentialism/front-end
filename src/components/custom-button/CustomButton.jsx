@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 import { setColor } from "../../globals/styles";
 
@@ -10,8 +9,8 @@ const fntColor = `${setColor.offWhite}`;
 //   return `border:${size} ${style} ${color}`;
 // };
 
-//can extend CustomLink like this export const NewCustomLink = styled(CustomLink)`//some updates here`;
-export const CustomLink = styled(Link)`
+//can extend CustomButton like this export const NewCustomButton = styled(CustomButton)`//some updates here`;
+export const CustomButton = styled.button`
   cursor: ${props => (props.cursor ? props.cursor : "pointer")};
   /* font */
   text-decoration: ${props =>
@@ -77,7 +76,7 @@ export const CustomLink = styled(Link)`
     color: ${props => (props.background ? props.background : bkgrndColor)};
   }
 `;
-export const CustomLinkContainer = styled.div`
+export const CustomButtonContainer = styled.div`
   cursor: ${props => (props.cursor ? props.cursor : "pointer")};
   margin: ${props => (props.margin ? props.margin : "0")};
   margin-top: ${props => props.margintop && props.margintop};
