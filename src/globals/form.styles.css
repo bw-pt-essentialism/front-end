@@ -1,17 +1,23 @@
+/* mainColor: "#3d4566",
+offWhite: "#eaeaea",
+mainLight: "#6b79b3",
+mainBlack: "#222" */
+
 .form-container {
   margin: 0 auto;
-  padding: 5%;
-  width: 33%;
-  height: 425px;
+  padding: 20vh auto 0;
+  width: 50%;
+  min-height: 700px;
+  height: 60vh;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  color: #d1d1d1;
+  justify-content: center;
+  align-items: center;
+  color: #eaeaea;
   position: absolute;
-  top: 2rem;
-  right: 33%;
-  background-color: rgb(51, 51, 51, 0.95);
+  top: 20vh;
+  right: 25%;
+  background-color: rgb(61, 69, 102, 0.975);
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
@@ -22,8 +28,13 @@
   }
 }
 
+.form {
+  padding: 8%;
+  width: 85%;
+}
+
 .input {
-  background-color: rgb(51, 51, 51, 0.4);
+  background-color: rgb(107, 121, 179, 0.4);
   padding: 0.8rem 0.8rem 0.8rem 0.4rem;
   display: block;
   width: 100%;
@@ -35,7 +46,7 @@
 }
 
 .input:active {
-  background-color: rgb(51, 51, 51, 0.4);
+  background-color: rgb(107, 121, 179, 0.4);
   padding: 0.8rem 0.8rem 0.8rem 0.4rem;
   display: block;
   width: 100%;
@@ -44,7 +55,14 @@
   margin: 25px 0;
 }
 
-button {
+/* label {
+  margin: 5%;
+} */
+
+.terms {
+  font-size: 13px;
+}
+.terms-text button {
   cursor: pointer;
   /* font */
   text-decoration: none;
@@ -58,8 +76,8 @@ button {
   /* height */
   height: 30px;
   /* color */
-  color: #d1d1d1;
-  background-color: rgb(51, 51, 51, 0.95);
+  color: #eaeaea;
+  background-color: rgb(61, 69, 102, 0.95);
   /* margin */
   margin: 1rem;
   display: flex;
@@ -70,6 +88,6 @@ button {
 }
 
 button:hover {
-  background-color: #d1d1d1;
-  color: rgb(51, 51, 51, 0.95);
+  background-color: #eaeaea;
+  color: rgb(61, 69, 102, 0.95);
 }

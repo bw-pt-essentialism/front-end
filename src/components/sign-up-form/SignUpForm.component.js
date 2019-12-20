@@ -1,8 +1,13 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-import { CustomButton } from "../custom-button/CustomButton";
+import {
+  SignUpButton,
+  SignUpButtonContainer,
+  SignUpLinkLogin
+} from "./SignUpForm.styles";
 
 import "../../globals/form.styles.css";
 
@@ -14,9 +19,10 @@ const SignUpForm = ({
   values
 }) => {
   //   console.log(props);
+
   return (
     <div className="form-container">
-      <Form className="form-container">
+      <Form className="form">
         <Field
           className="input"
           component="input"
@@ -66,23 +72,34 @@ const SignUpForm = ({
           <p className="errors">{errors.verifyPassword}</p>
         )}
 
-        <label className="button">
-          Terms and Conditions
-          <Field
-            className="input"
-            component="input"
-            type="checkbox"
-            checked={values.terms}
-            name="terms"
-            placeholder="Full Name"
-          />
-          {touched.terms && errors.terms && (
-            <p className="errors">{errors.terms}</p>
-          )}
-        </label>
-        <CustomButton type="submit" disabled={isSubmitting}>
-          Submit
-        </CustomButton>
+        <span className="terms">
+          <label>
+            <Field
+              className="checkbox"
+              component="input"
+              type="checkbox"
+              checked={values.terms}
+              name="terms"
+              placeholder="Full Name"
+            />
+            {touched.terms && errors.terms && (
+              <p className="errors">{errors.terms}</p>
+            )}
+            <span className="terms-text">Terms and Conditions</span>
+          </label>
+        </span>
+        <SignUpButtonContainer>
+          <SignUpButton
+            type="submit"
+            // onClick={(e) => {e.stopPropagation()  (<Redirect to="/something" />)}}
+            disabled={isSubmitting}
+          >
+            SignUp
+          </SignUpButton>
+          <SignUpLinkLogin to="/login" disabled={isSubmitting}>
+            Log In
+          </SignUpLinkLogin>
+        </SignUpButtonContainer>
       </Form>
     </div>
   );
@@ -100,15 +117,12 @@ export default withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email("Please Enter A Valid Email")
-      .required("Required"),
-    password: Yup.string()
-      .min(8, "Password must be 8 characters or longer")
-      .required("Required"),
-    verifyPassword: Yup.string()
-      .min(8, "Password must be 8 characters or longer and should match")
-      .required("Required"),
+    email: Yup.string().email("Please Enter A Valid Email"),
+    password: Yup.string().min(8, "Password must be 8 characters or longer"),
+    verifyPassword: Yup.string().min(
+      8,
+      "Password must be 8 characters or longer and should match"
+    ),
     name: Yup.string().required("Required"),
     terms: Yup.boolean()
       .required("Required")

@@ -32,7 +32,7 @@ export const CustomButton = styled.button`
   /* color */
   color: ${props => (props.color ? props.color : fntColor)};
   background-color: ${props =>
-    props.background ? props.background : bkgrndColor};
+    props.bkgrndColor ? props.bkgrndColor : bkgrndColor};
   /* margin */
   margin: ${props => (props.margin ? props.margin : "1rem")};
   margin-top: ${props => props.margintop && props.margintop};
