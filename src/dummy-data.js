@@ -5,29 +5,30 @@ export const userData = {
   email: "email@email.com"
 };
 
+let valID = Date.now();
 export const values = [
-  { value: "Athletic ability", id: Date.now() },
-  { value: "Art and literature", id: Date.now() },
-  { value: "Creativity", id: Date.now() },
+  { value: "Athletic ability", id: valID + Math.random() },
+  { value: "Art and literature", id: valID + Math.random() },
+  { value: "Creativity", id: valID + Math.random() },
   {
     value: "discovering, or inventing things to make a difference in the world",
-    id: Date.now()
+    id: valID + Math.random()
   },
-  { value: "Independence", id: Date.now() },
-  { value: "Kindness and generosity", id: Date.now() },
-  { value: "Living in the moment", id: Date.now() },
+  { value: "Independence", id: valID + Math.random() },
+  { value: "Kindness and generosity", id: valID + Math.random() },
+  { value: "Living in the moment", id: valID + Math.random() },
   {
     value:
       "Membership in a social group (such as your community, racial group, or school club)",
-    id: Date.now()
+    id: valID + Math.random()
   },
-  { value: "Music", id: Date.now() },
-  { value: "My community", id: Date.now() },
-  { value: "My moral principles", id: Date.now() },
-  { value: "Nature and the environment", id: Date.now() },
-  { value: "Relationships with friends and family", id: Date.now() },
-  { value: "Sense of humor", id: Date.now() },
-  { value: "Success in my career", id: Date.now() }
+  { value: "Music", id: valID + Math.random() },
+  { value: "My community", id: valID + Math.random() },
+  { value: "My moral principles", id: valID + Math.random() },
+  { value: "Nature and the environment", id: valID + Math.random() },
+  { value: "Relationships with friends and family", id: valID + Math.random() },
+  { value: "Sense of humor", id: valID + Math.random() },
+  { value: "Success in my career", id: valID + Math.random() }
 ];
 
 export const valueChoice = {
@@ -49,7 +50,7 @@ export const valueChoice = {
 };
 
 export const projects = [
-  { project: "project1", id: Date.now() },
-  { project: "project2", id: Date.now() },
-  { project: "project3", id: Date.now() }
+  { project: "project1", id: valID + Math.random() },
+  { project: "project2", id: valID + Math.random() },
+  { project: "project3", id: valID + Math.random() }
 ];
