@@ -136,6 +136,7 @@ export default withFormik({
     } else {
       console.log(`SignUpForm.js: handleSubmit: values: `, values);
       resetForm();
+      window.location.href = "/values-selection";
     }
   }
 })(SignUpForm);
