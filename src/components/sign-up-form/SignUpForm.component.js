@@ -134,7 +134,7 @@ export default withFormik({
       setErrors({ verifyPassword: "Passwords do not match" });
       setSubmitting(false);
     } else {
-      console.log(`SignUpForm.js: handleSubmit: values: `, values);
+      // console.log(`SignUpForm.js: handleSubmit: values: `, values);
       localStorage.setItem("token", "temp_token");
       resetForm();
       window.location.href = "/values-selection";

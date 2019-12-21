@@ -59,7 +59,7 @@ export default withFormik({
       .required("Required")
   }),
   handleSubmit(values, { resetForm, setSubmitting }) {
-    console.log(`LoginForm.js: handleSubmit: values: `, values);
+    // console.log(`LoginForm.js: handleSubmit: values: `, values);
     localStorage.setItem("token", "temp_token");
     resetForm();
     window.location.href = "/home";
