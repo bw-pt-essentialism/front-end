@@ -43,8 +43,8 @@ const Banner = ({ className, quote, getZen }) => {
   return (
     <div className={className}>
       <SignUpButtonContainer>
-        <SignUpLinkLogin to="/sign/in">Log In</SignUpLinkLogin>
-        <LoginLinkSignUp to="/sign/up">Sign Up</LoginLinkSignUp>
+        <SignUpLinkLogin to="/in">Log In</SignUpLinkLogin>
+        <LoginLinkSignUp to="/up">Sign Up</LoginLinkSignUp>
       </SignUpButtonContainer>
       <h3>
         Remember <span>{quote}</span>{" "}

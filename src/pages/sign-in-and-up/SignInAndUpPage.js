@@ -13,10 +13,10 @@ function SignInAndUpPage() {
     <section>
       <Hero img={hero}>
         <Switch>
-          <Route path={`/sign/in`}>
+          <Route path={`/in`}>
             <LoginForm />
           </Route>
-          <Route path="/sign/up">
+          <Route path="/up">
             <SignUpForm />
           </Route>
           <Route path="/">

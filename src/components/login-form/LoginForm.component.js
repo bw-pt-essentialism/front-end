@@ -36,7 +36,7 @@ const LoginForm = ({ errors, touched, isSubmitting, isValidating, values }) => {
           <LoginButton type="submit" disabled={isSubmitting}>
             Log In
           </LoginButton>
-          <LoginLinkSignUp to="/sign/up" disabled={isSubmitting}>
+          <LoginLinkSignUp to="/up" disabled={isSubmitting}>
             Sign Up
           </LoginLinkSignUp>
         </SignUpButtonContainer>
