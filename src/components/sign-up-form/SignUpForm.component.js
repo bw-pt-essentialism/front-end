@@ -135,6 +135,7 @@ export default withFormik({
       setSubmitting(false);
     } else {
       console.log(`SignUpForm.js: handleSubmit: values: `, values);
+      localStorage.setItem("token", "temp_token");
       resetForm();
       window.location.href = "/values-selection";
     }

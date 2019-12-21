@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 
 import HomePage from "./pages/homepage/HomePage.page";
+import ValuesSelectionPage from "./pages/values-selection/ValuesSelectionPage";
 
 import { Globals } from "./globals/GlobalStyles";
 
@@ -21,6 +22,10 @@ function App() {
           <SignInAndUpPage />
         </Route>
         <PrivateRoute path="/home" component={HomePage} />
+        <PrivateRoute
+          path="/values-selection"
+          component={ValuesSelectionPage}
+        />
       </Switch>
     </Router>
   );

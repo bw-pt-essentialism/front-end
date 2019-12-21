@@ -64,10 +64,11 @@ const BannerWrapper = styled(Banner)`
   ${setLetterSpacing(3)}
   /* color: ${setColor.mainWhite}; */
   h3 {
-    text-transform: capitalize;
+    text-transform: uppercase;
     font-size: ${setRem(48)};
     /* color: hotpink; */
     span {
+      text-transform: capitalize;
       color: ${setColor.offWhite};
     }
   }
