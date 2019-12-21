@@ -6,6 +6,7 @@ import SignUpForm from "../../components/sign-up-form/SignUpForm.component";
 
 import Hero from "../../components/hero/Hero.component";
 import hero from "../../images/hero.JPG";
+import Banner from "../../components/banner/Banner.component";
 
 import {
   SignUpButtonContainer,
@@ -15,22 +16,25 @@ import { LoginLinkSignUp } from "../../components/login-form/LoginForm.styles";
 
 function SignInAndUpPage() {
   return (
-    <Hero img={hero}>
-      <Switch>
-        <Route path="/login">
-          <LoginForm />
-        </Route>
-        <Route path="/signup">
-          <SignUpForm />
-        </Route>
-        <Route path="/">
-          <SignUpButtonContainer>
-            <SignUpLinkLogin to="/login">Log In</SignUpLinkLogin>
-            <LoginLinkSignUp to="/signup">Sign Up</LoginLinkSignUp>
-          </SignUpButtonContainer>
-        </Route>
-      </Switch>
-    </Hero>
+    <section>
+      <Hero img={hero}>
+        <Switch>
+          <Route path="/login">
+            <LoginForm />
+          </Route>
+          <Route path="/signup">
+            <SignUpForm />
+          </Route>
+          <Route path="/">
+            <SignUpButtonContainer>
+              <SignUpLinkLogin to="/login">Log In</SignUpLinkLogin>
+              <LoginLinkSignUp to="/signup">Sign Up</LoginLinkSignUp>
+            </SignUpButtonContainer>
+          </Route>
+        </Switch>
+      </Hero>
+      <Banner />
+    </section>
   );
 }
 
