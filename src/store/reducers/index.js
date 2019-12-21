@@ -6,18 +6,26 @@ import loginReducer from "./loginReducer";
 import userReducer from "./userReducer";
 import projectsReducer from "./projectsReducer";
 import valuesReducer from "./valuesReducer";
+import zenReducer from "./zenReducer";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["loginReducer", "userReducer", "projectsReducer", "valuesReducer"]
+  whitelist: [
+    "loginReducer",
+    "userReducer",
+    "projectsReducer",
+    "valuesReducer",
+    "zenReducer"
+  ]
 };
 
 const rootReducer = combineReducers({
   login: loginReducer,
   user: userReducer,
   projects: projectsReducer,
-  values: valuesReducer
+  values: valuesReducer,
+  zen: zenReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);
