@@ -1,22 +1,23 @@
 import React from "react";
-import { Route, Switch, useParams } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import LoginForm from "../../components/login-form/LoginForm.component";
 import SignUpForm from "../../components/sign-up-form/SignUpForm.component";
 
-import Hero from "../../components/hero/Hero.component";
+import Hero, { BottomImg } from "../../components/hero/Hero.component";
 import hero from "../../images/hero.JPG";
+import stones from "../../images/stones.jpeg";
 import Banner from "../../components/banner/Banner.component";
 
 function SignInAndUpPage() {
   return (
-    <section>
+    <div>
       <Hero img={hero}>
         <Switch>
-          <Route path={`/sign/in`}>
+          <Route path={`/in`}>
             <LoginForm />
           </Route>
-          <Route path="/sign/up">
+          <Route path="/up">
             <SignUpForm />
           </Route>
           <Route path="/">
@@ -24,7 +25,8 @@ function SignInAndUpPage() {
           </Route>
         </Switch>
       </Hero>
-    </section>
+      <BottomImg img={stones} />
+    </div>
   );
 }
 

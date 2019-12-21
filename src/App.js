@@ -18,14 +18,14 @@ function App() {
     <Router>
       <Globals />
       <Switch>
-        <Route path="/sign">
-          <SignInAndUpPage />
-        </Route>
         <PrivateRoute path="/home" component={HomePage} />
         <PrivateRoute
           path="/values-selection"
           component={ValuesSelectionPage}
         />
+        <Route path="/">
+          <SignInAndUpPage />
+        </Route>
       </Switch>
     </Router>
   );

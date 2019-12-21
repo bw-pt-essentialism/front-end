@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css, keyframes } from "styled-components";
 
 export const setFlex = ({ x = "center", y = "center" } = {}) => {
   return `display:flex;align-items:${y};justify-content:${x}`;
@@ -66,4 +66,24 @@ export const setTransition = ({
   timing = "ease-in-out"
 } = {}) => {
   return `transition:${property} ${time} ${timing}`;
+};
+
+export const fadeIn = (start, point, end) => {
+  const animation = keyframes`
+0%{
+ opacity:0;
+ transform:translateY(${start})
+}
+50%{
+ opacity:0.5;
+ transform:translateY(${point})
+}
+100%{
+ opacity:1;
+ transform:translateY(${end})
+}
+`;
+  return css`
+    animation: ${animation} 3s ease-in-out;
+  `;
 };

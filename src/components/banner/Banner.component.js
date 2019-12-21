@@ -13,28 +13,10 @@ import {
   setLetterSpacing,
   setBorder,
   media,
-  setFlex
+  setFlex,
+  fadeIn
 } from "../../globals/styles";
 
-const fadeIn = (start, point, end) => {
-  const animation = keyframes`
-0%{
- opacity:0;
- transform:translateY(${start})
-}
-50%{
- opacity:0.5;
- transform:translateY(${point})
-}
-100%{
- opacity:1;
- transform:translateY(${end})
-}
-`;
-  return css`
-    animation: ${animation} 3s ease-in-out;
-  `;
-};
 const Banner = ({ className, quote, getZen }) => {
   useEffect(() => {
     getZen();
@@ -43,8 +25,8 @@ const Banner = ({ className, quote, getZen }) => {
   return (
     <div className={className}>
       <SignUpButtonContainer>
-        <SignUpLinkLogin to="/sign/in">Log In</SignUpLinkLogin>
-        <LoginLinkSignUp to="/sign/up">Sign Up</LoginLinkSignUp>
+        <SignUpLinkLogin to="/in">Log In</SignUpLinkLogin>
+        <LoginLinkSignUp to="/up">Sign Up</LoginLinkSignUp>
       </SignUpButtonContainer>
       <h3>
         Remember <span>{quote}</span>{" "}
@@ -55,18 +37,15 @@ const Banner = ({ className, quote, getZen }) => {
 };
 const BannerWrapper = styled(Banner)`
   background: ${setColor.mainLight};
-  margin:  0 auto;
+  margin: 0 auto;
   text-align: center;
   justify-content: center;
-  /* ${setFlex()} */
   margin-top: 500px;
   padding: ${setRem(10)} ${setRem(10)};
   ${setLetterSpacing(3)}
-  /* color: ${setColor.mainWhite}; */
   h3 {
     text-transform: uppercase;
     font-size: ${setRem(48)};
-    /* color: hotpink; */
     span {
       text-transform: capitalize;
       color: ${setColor.offWhite};
@@ -81,20 +60,15 @@ const BannerWrapper = styled(Banner)`
     p {
       width: 75%;
     }`}
-   
-  
+
   h3 {
-   ${fadeIn("100%", "-10%", "0")}
-    /* animation */
+    ${fadeIn("100%", "-10%", "0")}
   }
   .info {
-      ${fadeIn("-100%", "10%", "0")}
-
-    /* animation */
+    ${fadeIn("-100%", "10%", "0")}
   }
-
-
 `;
+
 const mapStateToProps = state => {
   console.log(
     `BannerWrapper.component.js: mapStateToProps: state.zen: `,
