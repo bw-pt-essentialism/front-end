@@ -1,5 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
+
+import HomePage from "./pages/homepage/HomePage.page";
 
 import { Globals } from "./globals/GlobalStyles";
 
@@ -13,14 +16,12 @@ function App() {
   return (
     <Router>
       <Globals />
-      {/* need to change this route to /login */}
-      {/* <Route path="/">
-        <LoginForm />
-      </Route>
-      <Route path="/">
-        <SignUpForm />
-      </Route> */}
-      <SignInAndUpPage />
+      <Switch>
+        <Route path="/sign">
+          <SignInAndUpPage />
+        </Route>
+        <PrivateRoute path="/home" component={HomePage} />
+      </Switch>
     </Router>
   );
 }

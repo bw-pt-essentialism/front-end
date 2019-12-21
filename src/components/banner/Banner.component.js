@@ -1,13 +1,19 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getZen } from "../../store/actions/zen.quotes.actions";
+import {
+  SignUpButtonContainer,
+  SignUpLinkLogin
+} from "../../components/sign-up-form/SignUpForm.styles";
+import { LoginLinkSignUp } from "../../components/login-form/LoginForm.styles";
 import styled, { css, keyframes } from "styled-components";
 import {
   setColor,
   setRem,
   setLetterSpacing,
   setBorder,
-  media
+  media,
+  setFlex
 } from "../../globals/styles";
 
 const fadeIn = (start, point, end) => {
@@ -36,22 +42,28 @@ const Banner = ({ className, quote, getZen }) => {
 
   return (
     <div className={className}>
-      <h1>
+      <SignUpButtonContainer>
+        <SignUpLinkLogin to="/sign/in">Log In</SignUpLinkLogin>
+        <LoginLinkSignUp to="/sign/up">Sign Up</LoginLinkSignUp>
+      </SignUpButtonContainer>
+      <h3>
         Remember <span>{quote}</span>{" "}
-      </h1>
+      </h3>
       <div className="info"></div>
     </div>
   );
 };
 const BannerWrapper = styled(Banner)`
   background: ${setColor.mainLight};
+  margin:  0 auto;
   text-align: center;
-  /* align-self: flex-end;
-  margin-bottom: 10%; */
+  justify-content: center;
+  /* ${setFlex()} */
+  margin-top: 500px;
   padding: ${setRem(10)} ${setRem(10)};
   ${setLetterSpacing(3)}
   /* color: ${setColor.mainWhite}; */
-  h1 {
+  h3 {
     text-transform: capitalize;
     font-size: ${setRem(48)};
     /* color: hotpink; */
@@ -79,6 +91,8 @@ const BannerWrapper = styled(Banner)`
 
     /* animation */
   }
+
+
 `;
 const mapStateToProps = state => {
   console.log(

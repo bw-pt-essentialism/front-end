@@ -19,4 +19,5 @@ export const SignUpLinkLogin = styled(CustomLink)`
 
 export const SignUpButtonContainer = styled(CustomButtonContainer)`
   flex-flow: row nowrap;
+  margin-bottom: 10%;
 `;

@@ -1,5 +1,6 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
+import { Redirect } from "react-router-dom";
 import * as Yup from "yup";
 
 import { LoginButton, LoginLinkSignUp } from "./LoginForm.styles";
@@ -35,7 +36,7 @@ const LoginForm = ({ errors, touched, isSubmitting, isValidating, values }) => {
           <LoginButton type="submit" disabled={isSubmitting}>
             Log In
           </LoginButton>
-          <LoginLinkSignUp to="/signup" disabled={isSubmitting}>
+          <LoginLinkSignUp to="/sign/up" disabled={isSubmitting}>
             Sign Up
           </LoginLinkSignUp>
         </SignUpButtonContainer>
@@ -61,5 +62,6 @@ export default withFormik({
     console.log(`LoginForm.js: handleSubmit: values: `, values);
     localStorage.setItem("token", "temp_token");
     resetForm();
+    window.location.href = "/home";
   }
 })(LoginForm);

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useParams } from "react-router-dom";
 
 import LoginForm from "../../components/login-form/LoginForm.component";
 import SignUpForm from "../../components/sign-up-form/SignUpForm.component";
@@ -8,32 +8,22 @@ import Hero from "../../components/hero/Hero.component";
 import hero from "../../images/hero.JPG";
 import Banner from "../../components/banner/Banner.component";
 
-import {
-  SignUpButtonContainer,
-  SignUpLinkLogin
-} from "../../components/sign-up-form/SignUpForm.styles";
-import { LoginLinkSignUp } from "../../components/login-form/LoginForm.styles";
-
 function SignInAndUpPage() {
   return (
     <section>
       <Hero img={hero}>
         <Switch>
-          <Route path="/login">
+          <Route path={`/sign/in`}>
             <LoginForm />
           </Route>
-          <Route path="/signup">
+          <Route path="/sign/up">
             <SignUpForm />
           </Route>
           <Route path="/">
-            <SignUpButtonContainer>
-              <SignUpLinkLogin to="/login">Log In</SignUpLinkLogin>
-              <LoginLinkSignUp to="/signup">Sign Up</LoginLinkSignUp>
-            </SignUpButtonContainer>
+            <Banner />
           </Route>
         </Switch>
       </Hero>
-      <Banner />
     </section>
   );
 }

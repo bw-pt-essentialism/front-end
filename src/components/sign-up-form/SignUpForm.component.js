@@ -96,7 +96,7 @@ const SignUpForm = ({
           >
             SignUp
           </SignUpButton>
-          <SignUpLinkLogin to="/login" disabled={isSubmitting}>
+          <SignUpLinkLogin to="/sign/in" disabled={isSubmitting}>
             Log In
           </SignUpLinkLogin>
         </SignUpButtonContainer>
