@@ -11,7 +11,7 @@ import {
   fadeIn
 } from "../../globals/styles";
 
-function UsersTopValues({ usersList, className }) {
+function UsersTopValues({ usersList, className, endOfList }) {
   return (
     <>
       {usersList.length > 0 && (

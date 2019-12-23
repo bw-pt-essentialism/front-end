@@ -5,9 +5,10 @@ import Value from "../value/Value.component";
 import UsersTopValues from "../user-selected-values/UsersTopValues.component";
 import ValuesBannerWrapper from "../user-selected-values/UsersTopValues.styles";
 
-function ValuesList({ values }) {
+function ValuesList({ values, usersList }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [endOfList, setEndOfList] = useState(null);
+  // const [rerenderList, setRerenderList] = useState(null);
 
   // const goToPrevSlide = e => {
   //   e.preventDefault();
@@ -31,6 +32,15 @@ function ValuesList({ values }) {
     ++index;
     setActiveIndex(index);
   };
+
+  //filters the values array to remove options user has already selected - not currently being used
+  const valuesArr = values;
+  const usersListArr = usersList;
+  const filteredValuesArr = valuesArr.filter(
+    val => !usersListArr.includes(val)
+  );
+  // console.log(`ValuesList.js: filterdValuesArr: `, filteredValuesArr);
+  // console.log(`ValuesList.js: rerenderList: `, rerenderList);
   return (
     <>
       <ValuesBannerWrapper endOfList={endOfList} />
@@ -56,10 +66,14 @@ function ValuesList({ values }) {
 }
 
 const mapPropsToState = state => {
-  console.log(`ValuesList.js: mapPropsToState: state.values: `, state.values);
+  console.log(
+    `ValuesList.js: mapPropsToState: state.values: `,
+    state.values.usersList
+  );
   return {
     values: state.values.values,
-    isLoading: state.isLoading
+    isLoading: state.isLoading,
+    usersList: state.values.usersList
   };
 };
 

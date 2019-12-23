@@ -7,7 +7,7 @@ import ValuesList from "../../components/values-list/ValuesList.component";
 function ValuesSelectionPage() {
   return (
     <>
-      <h2>Hello from Values Selection Page</h2>
+      {/* <h2>Hello from Values Selection Page</h2> */}
       <Hero img={hero} />
       <ValuesList />
     </>

@@ -14,7 +14,7 @@ function SignInAndUpPage() {
     <div>
       <Hero img={hero}>
         <Switch>
-          <Route path={`/in`}>
+          <Route path="/in">
             <LoginForm />
           </Route>
           <Route path="/up">

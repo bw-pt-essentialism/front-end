@@ -1,11 +1,5 @@
-import React, { useEffect } from "react";
-// import { connect } from "react-redux";
+import React from "react";
 
-import {
-  SignUpButtonContainer,
-  SignUpLinkLogin
-} from "../../components/sign-up-form/SignUpForm.styles";
-import { LoginLinkSignUp } from "../../components/login-form/LoginForm.styles";
 import styled from "styled-components";
 import {
   setColor,
@@ -13,14 +7,15 @@ import {
   setLetterSpacing,
   setBorder,
   media,
-  fadeIn
+  fadeIn,
+  setTransition
 } from "../../globals/styles";
 
 const ValuesBanner = ({ className }) => {
   return (
     <div className={className}>
       <h2>
-        Now{" "}
+        Now:
         <span>
           take some time to reflect on the values you've selected. Which ones
           really mean the most to you? Narrow your selection down to your
@@ -36,20 +31,21 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
   margin: 0 auto;
   text-align: center;
   justify-content: center;
-  margin-top: -13%;
-  margin-bottom: 20%;
+  margin-top: -33%;
+  margin-bottom: 35%;
   color: ${setColor.mainColor};
   padding: ${setRem(10)} ${setRem(10)};
   ${setLetterSpacing(3)}
-  ${props =>
-    props.endOfList === true ? "display: flex" : "display: none"}
+  ${props => (props.endOfList === true ? "display: flex" : "display: none")}
   
   h2 {
     text-transform: uppercase;
-    font-size: ${setRem(38)};
+    font-size: ${setRem(28)};
     span {
       text-transform: capitalize;
       color: ${setColor.offWhite};
+      ${fadeIn("100%", "-10%", "0")}
+      ${setTransition("all", "1s", "ease-in-out")}
     }
   }
   p {
@@ -62,23 +58,12 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
       width: 75%;
     }`}
 
-  h2 {
+  /* h2 {
     ${fadeIn("100%", "-10%", "0")}
   }
   .info {
     ${fadeIn("-100%", "10%", "0")}
-  }
+  } */
 `;
-
-// const mapStateToProps = state => {
-//   console.log(
-//     `ValuesBannerWrapper.component.js: mapStateToProps: state.zen: `,
-//     state.zen
-//   );
-//   return {
-//     quote: state.zen.quote,
-//     isLoading: state.zen.isLoading
-//   };
-// };
 
 export default ValuesBannerWrapper;
