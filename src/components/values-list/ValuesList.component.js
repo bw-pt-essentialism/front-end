@@ -8,6 +8,7 @@ import ValuesBannerWrapper from "../user-selected-values/UsersTopValues.styles";
 function ValuesList({ values, usersList }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [endOfList, setEndOfList] = useState(null);
+  const [narrowDown, setNarrowDown] = useState(true);
   // const [rerenderList, setRerenderList] = useState(null);
 
   // const goToPrevSlide = e => {
@@ -27,6 +28,7 @@ function ValuesList({ values, usersList }) {
     let slidesLength = values.length - 1;
     if (index === slidesLength) {
       // index = -1;
+      usersList.length > 2 && setNarrowDown(false);
       setEndOfList(true);
     }
     ++index;
@@ -43,7 +45,7 @@ function ValuesList({ values, usersList }) {
   // console.log(`ValuesList.js: rerenderList: `, rerenderList);
   return (
     <>
-      <ValuesBannerWrapper endOfList={endOfList} />
+      <ValuesBannerWrapper endOfList={endOfList} narrowDown={narrowDown} />
       <h4>
         {values.map((val, index) => {
           return (
@@ -59,7 +61,7 @@ function ValuesList({ values, usersList }) {
             />
           );
         })}
-        <UsersTopValues endOfList={endOfList} />
+        <UsersTopValues endOfList={endOfList} narrowDown={narrowDown} />
       </h4>
     </>
   );

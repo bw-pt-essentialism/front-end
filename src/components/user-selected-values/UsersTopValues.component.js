@@ -11,14 +11,21 @@ import {
   fadeIn
 } from "../../globals/styles";
 
-function UsersTopValues({ usersList, className, endOfList }) {
+function UsersTopValues({ usersList, className, narrowDown }) {
   return (
     <>
       {usersList.length > 0 && (
         <section>
           <article className={className} key={Date.now()}>
             <div className="card-info">
-              <h4>my values</h4>
+              <h4>
+                {narrowDown === false ? "What's essential?" : "my values"}
+              </h4>
+              {narrowDown === false && (
+                <span>
+                  <p>Cross off all but 3 of these values</p>
+                </span>
+              )}
               {usersList.map(val => {
                 return <p key={val.id}> - {val.value.toLowerCase()}</p>;
               })}
@@ -60,6 +67,10 @@ p {
   ${fadeIn("100%", "-10%", "0")}
 }
 
+span {
+    font-size: 1rem;
+    margin-bottom: 2%;
+}
 
 }
 .card-info {

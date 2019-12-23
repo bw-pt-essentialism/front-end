@@ -20,6 +20,7 @@ code {
 
 body {
   ${setFont.main};
+  background: ${setColor.offWhite};
   color: ${setColor.mainBlack};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
