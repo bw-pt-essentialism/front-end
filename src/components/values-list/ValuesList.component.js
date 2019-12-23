@@ -3,9 +3,11 @@ import { connect } from "react-redux";
 
 import Value from "../value/Value.component";
 import UsersTopValues from "../user-selected-values/UsersTopValues.component";
+import ValuesBannerWrapper from "../user-selected-values/UsersTopValues.styles";
 
 function ValuesList({ values }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [endOfList, setEndOfList] = useState(null);
 
   // const goToPrevSlide = e => {
   //   e.preventDefault();
@@ -17,33 +19,39 @@ function ValuesList({ values }) {
   //   --index;
   //   setActiveIndex(index);
   // };
+  // let endOfList = "";
+
   const goToNextCard = () => {
     let index = activeIndex;
     let slidesLength = values.length - 1;
     if (index === slidesLength) {
       // index = -1;
-      alert("End of list");
+      setEndOfList(true);
     }
     ++index;
     setActiveIndex(index);
   };
   return (
-    <h4>
-      {values.map((val, index) => {
-        return (
-          <Value
-            key={val.id}
-            info={val.value.toLowerCase()}
-            id={val.id}
-            index={index}
-            activeIndex={activeIndex}
-            // goToPrevSlide={goToPrevSlide}
-            goToNextCard={goToNextCard}
-          />
-        );
-      })}
-      <UsersTopValues />
-    </h4>
+    <>
+      <ValuesBannerWrapper endOfList={endOfList} />
+      <h4>
+        {values.map((val, index) => {
+          return (
+            <Value
+              key={val.id}
+              info={val.value.toLowerCase()}
+              id={val.id}
+              index={index}
+              activeIndex={activeIndex}
+              // goToPrevSlide={goToPrevSlide}
+              goToNextCard={goToNextCard}
+              endOfList={endOfList}
+            />
+          );
+        })}
+        <UsersTopValues endOfList={endOfList} />
+      </h4>
+    </>
   );
 }
 

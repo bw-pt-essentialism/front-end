@@ -42,8 +42,8 @@ const Value = ({ className, info, values, id, goToNextCard, topList }) => {
     <section>
       <article className={className}>
         <div className="card-info">
-          <h4>do you value?</h4>
-          <p>{info}</p>
+          <h4>do you value</h4>
+          <p>{info}?</p>
         </div>
         <ValueButtonContainer>
           <ValueButton onClick={handleNo}>no</ValueButton>
@@ -72,6 +72,7 @@ text-align: center;
 margin-top: -125px;
 ${props =>
   props.index === props.activeIndex ? "display: block" : "display: none"}
+  ${props => props.endOfList && "display: none"}
 
 p {
   ${fadeIn("100%", "-10%", "0")}
