@@ -89,16 +89,12 @@ const SignUpForm = ({
           </label>
         </span>
         <SignUpButtonContainer>
-          <SignUpButton
-            type="submit"
-            // onClick={(e) => {e.stopPropagation()  (<Redirect to="/something" />)}}
-            disabled={isSubmitting}
-          >
-            SignUp
-          </SignUpButton>
           <SignUpLinkLogin to="/in" disabled={isSubmitting}>
             Log In
           </SignUpLinkLogin>
+          <SignUpButton type="submit" disabled={isSubmitting}>
+            SignUp
+          </SignUpButton>
         </SignUpButtonContainer>
       </Form>
     </div>

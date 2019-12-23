@@ -1,22 +1,24 @@
-// import {
-//     VALUES_LOAD_START,
-//     VALUES_LOAD_SUCCESS,
-//     VALUES_LOAD_FAILURE,
-//     VALUES_POST_START,
-//     VALUES_POST_SUCCESS,
-//     VALUES_POST_FAILURE,
-//     VALUES_PUT_START,
-//     VALUES_PUT_SUCCESS,
-//     VALUES_PUT_FAILURE,
-//     VALUES_DELETE_START,
-//     VALUES_DELETE_SUCCESS,
-//     VALUES_DELETE_FAILURE
-//   } from "../actions/values.actions";
+import {
+  // VALUES_LOAD_START,
+  // VALUES_LOAD_SUCCESS,
+  // VALUES_LOAD_FAILURE,
+  // VALUES_POST_START,
+  // VALUES_POST_SUCCESS,
+  // VALUES_POST_FAILURE,
+  // VALUES_PUT_START,
+  // VALUES_PUT_SUCCESS,
+  // VALUES_PUT_FAILURE,
+  // VALUES_DELETE_START,
+  // VALUES_DELETE_SUCCESS,
+  // VALUES_DELETE_FAILURE,
+  TOGGLE_HIDDEN
+} from "../actions/values.actions";
 
 import { values } from "../../dummy-data";
 
 const initialState = {
-  values: values
+  values: values,
+  hide: true
 };
 
 const valuesReducer = (state = initialState, action) => {
@@ -90,6 +92,17 @@ const valuesReducer = (state = initialState, action) => {
     //     isLoading: false
     //   };
 
+    case TOGGLE_HIDDEN:
+      return {
+        ...state,
+        values: state.values.map(val => {
+          if (val.id === action.payload)
+            return {
+              ...val,
+              hidden: !val.hidden
+            };
+        })
+      };
     default:
       return state;
   }

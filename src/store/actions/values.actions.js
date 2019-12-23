@@ -16,6 +16,8 @@ export const VALUES_DELETE_START = "VALUES_DELETE_START";
 export const VALUES_DELETE_SUCCESS = "VALUES_DELETE_SUCCESS";
 export const VALUES_DELETE_FAILURE = "VALUES_DELETE_FAILURE";
 
+export const TOGGLE_HIDDEN = "TOGGLE_HIDDEN";
+
 export const getValues = () => dispatch => {
   dispatch({ type: VALUES_LOAD_START });
   axiosWithAuth()
@@ -89,4 +91,11 @@ export const deleteValues = id => dispatch => {
         payload: "error deleting values data"
       });
     });
+};
+
+export const hideValue = valID => dispatch => {
+  dispatch({
+    type: TOGGLE_HIDDEN,
+    payload: valID
+  });
 };
