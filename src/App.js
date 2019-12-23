@@ -9,8 +9,6 @@ import { Globals } from "./globals/GlobalStyles";
 
 import "./App.css";
 
-import LoginForm from "./components/login-form/LoginForm.component";
-import SignUpForm from "./components/sign-up-form/SignUpForm.component";
 import SignInAndUpPage from "./pages/sign-in-and-up/SignInAndUpPage";
 
 function App() {

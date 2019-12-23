@@ -5,10 +5,6 @@ import Value from "../value/Value.component";
 function ValuesList({ values }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const gotToSlide = index => {
-    setActiveIndex(index);
-  };
-
   // const goToPrevSlide = e => {
   //   e.preventDefault();
   //   let index = activeIndex;

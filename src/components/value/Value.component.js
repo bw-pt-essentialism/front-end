@@ -16,9 +16,22 @@ import { ValueButton, ValueButtonContainer } from "./Value.styles";
 const Value = ({ className, info, values, id, goToNextCard }) => {
   //   console.log(`Value.js: values: `, values, info, id);
 
-  const handleClick = () => {
+  const handleYes = e => {
+    console.log(`Value.js: handleClick: e.target.value: `, e.target);
     values.map(val => {
-      val.id === id && console.log("Values.component: handleClick: id: ", val);
+      return (
+        val.id === id && console.log("Values.component: handleClick: id: ", val)
+      );
+    });
+    goToNextCard();
+  };
+
+  const handleNo = e => {
+    console.log(`Value.js: handleClick: e.target.value: `, e.target);
+    values.map(val => {
+      return (
+        val.id === id && console.log("Values.component: handleClick: id: ", val)
+      );
     });
     goToNextCard();
   };
@@ -30,8 +43,8 @@ const Value = ({ className, info, values, id, goToNextCard }) => {
         <p>{info}</p>
       </div>
       <ValueButtonContainer>
-        <ValueButton onClick={handleClick}>not to me</ValueButton>
-        <ValueButton onClick={handleClick}>matters</ValueButton>
+        <ValueButton onClick={handleNo}>no</ValueButton>
+        <ValueButton onClick={handleYes}>yes</ValueButton>
       </ValueButtonContainer>
     </article>
   );

@@ -1,6 +1,5 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
-import { Redirect } from "react-router-dom";
 import * as Yup from "yup";
 
 import { LoginButton, LoginLinkSignUp } from "./LoginForm.styles";

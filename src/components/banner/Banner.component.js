@@ -6,14 +6,13 @@ import {
   SignUpLinkLogin
 } from "../../components/sign-up-form/SignUpForm.styles";
 import { LoginLinkSignUp } from "../../components/login-form/LoginForm.styles";
-import styled, { css, keyframes } from "styled-components";
+import styled from "styled-components";
 import {
   setColor,
   setRem,
   setLetterSpacing,
   setBorder,
   media,
-  setFlex,
   fadeIn
 } from "../../globals/styles";
 
