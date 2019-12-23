@@ -23,7 +23,7 @@ const Value = ({
   id,
   index,
   activeIndex,
-  goToNextSlide
+  goToNextCard
 }) => {
   //   console.log(`Value.js: values: `, values, info, id);
 
@@ -31,7 +31,7 @@ const Value = ({
     values.map((val, i) => {
       val.id === id && console.log("Values.component: handleClick: id: ", val);
     });
-    goToNextSlide();
+    goToNextCard();
   };
 
   return (

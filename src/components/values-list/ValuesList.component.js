@@ -11,21 +11,22 @@ function ValuesList({ values, hideValue, hide }) {
     setActiveIndex(index);
   };
 
-  const goToPrevSlide = e => {
-    e.preventDefault();
-    let index = activeIndex;
-    let slidesLength = values.length;
-    if (index < 1) {
-      index = slidesLength;
-    }
-    --index;
-    setActiveIndex(index);
-  };
-  const goToNextSlide = () => {
+  // const goToPrevSlide = e => {
+  //   e.preventDefault();
+  //   let index = activeIndex;
+  //   let slidesLength = values.length;
+  //   if (index < 1) {
+  //     index = slidesLength;
+  //   }
+  //   --index;
+  //   setActiveIndex(index);
+  // };
+  const goToNextCard = () => {
     let index = activeIndex;
     let slidesLength = values.length - 1;
     if (index === slidesLength) {
-      index = -1;
+      // index = -1;
+      alert("End of list");
     }
     ++index;
     setActiveIndex(index);
@@ -40,8 +41,8 @@ function ValuesList({ values, hideValue, hide }) {
             id={val.id}
             index={index}
             activeIndex={activeIndex}
-            goToPrevSlide={goToPrevSlide}
-            goToNextSlide={goToNextSlide}
+            // goToPrevSlide={goToPrevSlide}
+            goToNextCard={goToNextCard}
           />
         );
       })}
