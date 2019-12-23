@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
-// import { SmallBtn } from "../globals/Buttons";
+
 import styled from "styled-components";
 import {
   setRem,
@@ -8,27 +8,16 @@ import {
   setTransition,
   setColor,
   setShadow,
-  setBorder,
   fadeIn
 } from "../../globals/styles";
 
-import { hideValue } from "../../store/actions/values.actions";
-
 import { ValueButton, ValueButtonContainer } from "./Value.styles";
 
-const Value = ({
-  className,
-  info,
-  values,
-  id,
-  index,
-  activeIndex,
-  goToNextCard
-}) => {
+const Value = ({ className, info, values, id, goToNextCard }) => {
   //   console.log(`Value.js: values: `, values, info, id);
 
-  const handleClick = e => {
-    values.map((val, i) => {
+  const handleClick = () => {
+    values.map(val => {
       val.id === id && console.log("Values.component: handleClick: id: ", val);
     });
     goToNextCard();
@@ -39,7 +28,6 @@ const Value = ({
       <div className="card-info">
         <h4>do you value?</h4>
         <p>{info}</p>
-        {/* <p>{otherInfo}</p> */}
       </div>
       <ValueButtonContainer>
         <ValueButton onClick={handleClick}>not to me</ValueButton>
@@ -53,12 +41,11 @@ const mapStateToProps = state => {
   //   console.log(`ValuesList.js: mapStateToProps: state.values: `, state.values);
   return {
     values: state.values.values,
-    isLoading: state.isLoading,
-    hide: state.hide
+    isLoading: state.isLoading
   };
 };
 
-export default connect(mapStateToProps, { hideValue })(styled(Value)`
+export default connect(mapStateToProps)(styled(Value)`
 background: ${setColor.mainLight};
 margin: ${setRem(32)} auto;
 min-width: 500px;
@@ -91,61 +78,3 @@ ${setTransition()};
   ${setShadow.dark};
 }
 `);
-
-// export default styled(Value)`
-//   background: ${setColor.mainLight};
-//   margin: ${setRem(32)} auto;
-//   min-width: 500px;
-//   max-width: 50%;
-//   color: ${setColor.offWhite};
-//   text-align: center;
-//   margin-top: 600px;
-//   ${props => props.hidden && "display: none"};
-
-//   p {
-//     ${fadeIn("100%", "-10%", "0")}
-//   }
-//   /* .img-container {
-//     background: ${setColor.mainBlack};
-//     position: relative;
-//     img {
-//       width: 100%;
-//       display: block;
-//       ${setTransition};
-//     }
-//     &:hover img {
-//       opacity: 0.5;
-//     } */
-//     .other-info {
-//       position: absolute;
-//       top: 50%;
-//       left: 50%;
-//       transform: translate(-50%, -50%);
-//       color: ${setColor.mainLight};
-//       ${setLetterSpacing(5)};
-//       font-size: ${setRem(22)};
-//       padding: ${setRem(10)} ${setRem(33)};
-//       ${setBorder({ color: setColor.mainLight })};
-//       opacity: 0;
-//       ${setTransition()};
-//     }
-//     &:hover .other-info {
-//       opacity: 1;
-//     }
-//   }
-//   .card-info {
-//     padding: ${setRem()};
-//     h4 {
-//       text-transform: capitalize;
-//       ${setLetterSpacing()};
-//     }
-//     p {
-//       ${setLetterSpacing()};
-//     }
-//   }
-//   ${setShadow.light};
-//   ${setTransition()};
-//   &:hover {
-//     ${setShadow.dark};
-//   }
-// `;

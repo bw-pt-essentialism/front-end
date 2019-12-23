@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import Value from "../value/Value.component";
 
-import { hideValue } from "../../store/actions/values.actions";
-
-function ValuesList({ values, hideValue, hide }) {
+function ValuesList({ values }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const gotToSlide = index => {
