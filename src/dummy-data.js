@@ -15,7 +15,10 @@ export const values = [
     id: valID + Math.random()
   },
   { value: "Independence", id: valID + Math.random() },
-  { value: "Kindness and generosity", id: valID + Math.random() },
+  {
+    value: "Kindness and generosity",
+    id: valID + Math.random()
+  },
   { value: "Living in the moment", id: valID + Math.random() },
   {
     value:
@@ -25,8 +28,14 @@ export const values = [
   { value: "Music", id: valID + Math.random() },
   { value: "My community", id: valID + Math.random() },
   { value: "My moral principles", id: valID + Math.random() },
-  { value: "Nature and the environment", id: valID + Math.random() },
-  { value: "Relationships with friends and family", id: valID + Math.random() },
+  {
+    value: "Nature and the environment",
+    id: valID + Math.random()
+  },
+  {
+    value: "Relationships with friends and family",
+    id: valID + Math.random()
+  },
   { value: "Sense of humor", id: valID + Math.random() },
   { value: "Success in my career", id: valID + Math.random() }
 ];

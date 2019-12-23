@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { getZen } from "../../store/actions/zen.quotes.actions";
+// import { connect } from "react-redux";
 
 import {
   SignUpButtonContainer,
@@ -17,35 +16,37 @@ import {
   fadeIn
 } from "../../globals/styles";
 
-const Banner = ({ className, quote, getZen }) => {
-  useEffect(() => {
-    getZen();
-  }, []);
-
+const ValuesBanner = ({ className }) => {
   return (
     <div className={className}>
-      <SignUpButtonContainer>
-        <SignUpLinkLogin to="/in">Log In</SignUpLinkLogin>
-        <LoginLinkSignUp to="/up">Sign Up</LoginLinkSignUp>
-      </SignUpButtonContainer>
-      <h3>
-        Remember <span>{quote}</span>{" "}
-      </h3>
+      <h2>
+        Now{" "}
+        <span>
+          take some time to reflect on the values you've selected. Which ones
+          really mean the most to you? Narrow your selection down to your
+          essential three.
+        </span>{" "}
+      </h2>
       <div className="info"></div>
     </div>
   );
 };
-const BannerWrapper = styled(Banner)`
+const ValuesBannerWrapper = styled(ValuesBanner)`
   background: ${setColor.mainLight};
   margin: 0 auto;
   text-align: center;
   justify-content: center;
-  margin-top: 500px;
+  margin-top: -13%;
+  margin-bottom: 20%;
+  color: ${setColor.mainColor};
   padding: ${setRem(10)} ${setRem(10)};
   ${setLetterSpacing(3)}
-  h3 {
+  ${props =>
+    props.endOfList === true ? "display: flex" : "display: none"}
+  
+  h2 {
     text-transform: uppercase;
-    font-size: ${setRem(48)};
+    font-size: ${setRem(38)};
     span {
       text-transform: capitalize;
       color: ${setColor.offWhite};
@@ -61,7 +62,7 @@ const BannerWrapper = styled(Banner)`
       width: 75%;
     }`}
 
-  h3 {
+  h2 {
     ${fadeIn("100%", "-10%", "0")}
   }
   .info {
@@ -69,15 +70,15 @@ const BannerWrapper = styled(Banner)`
   }
 `;
 
-const mapStateToProps = state => {
-  console.log(
-    `BannerWrapper.component.js: mapStateToProps: state.zen: `,
-    state.zen
-  );
-  return {
-    quote: state.zen.quote,
-    isLoading: state.zen.isLoading
-  };
-};
+// const mapStateToProps = state => {
+//   console.log(
+//     `ValuesBannerWrapper.component.js: mapStateToProps: state.zen: `,
+//     state.zen
+//   );
+//   return {
+//     quote: state.zen.quote,
+//     isLoading: state.zen.isLoading
+//   };
+// };
 
-export default connect(mapStateToProps, { getZen })(BannerWrapper);
+export default ValuesBannerWrapper;

@@ -1,5 +1,4 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
@@ -89,16 +88,12 @@ const SignUpForm = ({
           </label>
         </span>
         <SignUpButtonContainer>
-          <SignUpButton
-            type="submit"
-            // onClick={(e) => {e.stopPropagation()  (<Redirect to="/something" />)}}
-            disabled={isSubmitting}
-          >
-            SignUp
-          </SignUpButton>
           <SignUpLinkLogin to="/in" disabled={isSubmitting}>
             Log In
           </SignUpLinkLogin>
+          <SignUpButton type="submit" disabled={isSubmitting}>
+            SignUp
+          </SignUpButton>
         </SignUpButtonContainer>
       </Form>
     </div>
@@ -134,7 +129,7 @@ export default withFormik({
       setErrors({ verifyPassword: "Passwords do not match" });
       setSubmitting(false);
     } else {
-      console.log(`SignUpForm.js: handleSubmit: values: `, values);
+      // console.log(`SignUpForm.js: handleSubmit: values: `, values);
       localStorage.setItem("token", "temp_token");
       resetForm();
       window.location.href = "/values-selection";

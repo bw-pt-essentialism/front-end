@@ -16,6 +16,8 @@ export const VALUES_DELETE_START = "VALUES_DELETE_START";
 export const VALUES_DELETE_SUCCESS = "VALUES_DELETE_SUCCESS";
 export const VALUES_DELETE_FAILURE = "VALUES_DELETE_FAILURE";
 
+export const ADD_TO_TOP_LIST = "ADD_TO_TOP_LIST";
+
 export const getValues = () => dispatch => {
   dispatch({ type: VALUES_LOAD_START });
   axiosWithAuth()
@@ -89,4 +91,12 @@ export const deleteValues = id => dispatch => {
         payload: "error deleting values data"
       });
     });
+};
+
+export const topList = value => dispatch => {
+  console.log(`values.actions: topLst: value: `, value);
+  dispatch({
+    type: ADD_TO_TOP_LIST,
+    payload: value
+  });
 };

@@ -1,5 +1,8 @@
 import React from "react";
-// import { SmallBtn } from "../globals/Buttons";
+import { connect } from "react-redux";
+
+import { topList } from "../../store/actions/values.actions";
+
 import styled from "styled-components";
 import {
   setRem,
@@ -7,93 +10,89 @@ import {
   setTransition,
   setColor,
   setShadow,
-  setBorder,
   fadeIn
 } from "../../globals/styles";
-// import PropTypes from "prop-types";
-const Value = ({ className, info, key }) => {
-  //   const {
-  //     title = "What is essential to you?",
-  //     info = "",
-  //     otherInfo = ""
-  //   } = card;
+
+import { ValueButton, ValueButtonContainer } from "./Value.styles";
+
+const Value = ({ className, info, values, id, goToNextCard, topList }) => {
+  //   console.log(`Value.js: topList: `, topList);
+
+  const handleYes = e => {
+    console.log(`Value.js: handleClick: e.target.value: `, e.target);
+    values.map(val => {
+      return val.id === id && topList(val);
+    });
+    goToNextCard();
+  };
+
+  const handleNo = e => {
+    console.log(`Value.js: handleClick: e.target.value: `, e.target);
+    values.map(val => {
+      return (
+        val.id === id &&
+        console.log(`Value.js: handleNo: values.map: val: `, val)
+      );
+    });
+
+    goToNextCard();
+  };
+
   return (
-    <article className={className} key={key}>
-      <div className="img-container">
-        {/* <img src={img} alt="single card" /> */}
-      </div>
-      <div className="card-info">
-        <h4>What do you value?</h4>
-        <p>{info}</p>
-        {/* <p>{otherInfo}</p> */}
-        {/* <SmallBtn>Hello</SmallBtn> */}
-      </div>
-    </article>
+    <section>
+      <article className={className}>
+        <div className="card-info">
+          <h4>do you value</h4>
+          <p>{info}?</p>
+        </div>
+        <ValueButtonContainer>
+          <ValueButton onClick={handleNo}>no</ValueButton>
+          <ValueButton onClick={handleYes}>yes</ValueButton>
+        </ValueButtonContainer>
+      </article>
+    </section>
   );
 };
 
-export default styled(Value)`
-  background: ${setColor.mainLight};
-  margin: ${setRem(32)} auto;
-  min-width: 500px;
-  max-width: 50%;
-  color: ${setColor.offWhite};
-  text-align: center;
-  margin-top: 600px;
+const mapStateToProps = state => {
+  //   console.log(`ValuesList.js: mapStateToProps: state.values: `, state.values);
+  return {
+    values: state.values.values,
+    isLoading: state.isLoading
+  };
+};
 
+export default connect(mapStateToProps, { topList })(styled(Value)`
+background: ${setColor.mainLight};
+margin: ${setRem(32)} auto;
+min-width: 500px;
+max-width: 50%;
+color: ${setColor.offWhite};
+text-align: center;
+margin-top: -125px;
+${props =>
+  props.index === props.activeIndex ? "display: block" : "display: none"}
+  ${props => props.endOfList && "display: none"}
+
+p {
+  ${fadeIn("100%", "-10%", "0")}
+}
+
+
+}
+.card-info {
+  padding: ${setRem()};
+  h4 {
+    text-transform: capitalize;
+    ${setLetterSpacing()};
+  }
   p {
-    ${fadeIn("100%", "-10%", "0")}
+    ${setLetterSpacing()};
   }
-  /* .img-container {
-    background: ${setColor.mainBlack};
-    position: relative;
-    img {
-      width: 100%;
-      display: block;
-      ${setTransition};
-    }
-    &:hover img {
-      opacity: 0.5;
-    } */
-    .other-info {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: ${setColor.mainLight};
-      ${setLetterSpacing(5)};
-      font-size: ${setRem(22)};
-      padding: ${setRem(10)} ${setRem(33)};
-      ${setBorder({ color: setColor.mainLight })};
-      opacity: 0;
-      ${setTransition()};
-    }
-    &:hover .other-info {
-      opacity: 1;
-    }
-  }
-  .card-info {
-    padding: ${setRem()};
-    h4 {
-      text-transform: capitalize;
-      ${setLetterSpacing()};
-    }
-    p {
-      ${setLetterSpacing()};
-    }
-  }
-  ${setShadow.light};
-  ${setTransition()};
-  &:hover {
-    ${setShadow.dark};
-  }
-`;
-
-// Value.propTypes = {
-//   card: PropTypes.shape({
-//     img: PropTypes.string.isRequired,
-//     title: PropTypes.string.isRequired,
-//     info: PropTypes.string.isRequired,
-//     otherInfo: PropTypes.string.isRequired
-//   })
-// };
+}
+${setShadow.light};
+${setTransition()};
+&:hover {
+  ${setShadow.dark};
+}
+`);
