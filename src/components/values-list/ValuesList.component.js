@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+
 import Value from "../value/Value.component";
+import UsersTopValues from "../user-selected-values/UsersTopValues.component";
 
 function ValuesList({ values }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -40,17 +42,18 @@ function ValuesList({ values }) {
           />
         );
       })}
+      <UsersTopValues />
     </h4>
   );
 }
 
-const mapStateToProps = state => {
-  console.log(`ValuesList.js: mapStateToProps: state.values: `, state.values);
+const mapPropsToState = state => {
+  console.log(`ValuesList.js: mapPropsToState: state.values: `, state.values);
   return {
     values: state.values.values,
     isLoading: state.isLoading
   };
 };
 
-export default connect(mapStateToProps)(ValuesList);
+export default connect(mapPropsToState)(ValuesList);
 //getValues

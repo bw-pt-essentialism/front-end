@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getZen } from "../../store/actions/zen.quotes.actions";
+
 import {
   SignUpButtonContainer,
   SignUpLinkLogin

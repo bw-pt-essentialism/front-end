@@ -1,22 +1,24 @@
-// import
-// VALUES_LOAD_START,
-// VALUES_LOAD_SUCCESS,
-// VALUES_LOAD_FAILURE,
-// VALUES_POST_START,
-// VALUES_POST_SUCCESS,
-// VALUES_POST_FAILURE,
-// VALUES_PUT_START,
-// VALUES_PUT_SUCCESS,
-// VALUES_PUT_FAILURE,
-// VALUES_DELETE_START,
-// VALUES_DELETE_SUCCESS,
-// VALUES_DELETE_FAILURE
-// "../actions/values.actions";
+import {
+  // VALUES_LOAD_START,
+  // VALUES_LOAD_SUCCESS,
+  // VALUES_LOAD_FAILURE,
+  // VALUES_POST_START,
+  // VALUES_POST_SUCCESS,
+  // VALUES_POST_FAILURE,
+  // VALUES_PUT_START,
+  // VALUES_PUT_SUCCESS,
+  // VALUES_PUT_FAILURE,
+  // VALUES_DELETE_START,
+  // VALUES_DELETE_SUCCESS,
+  // VALUES_DELETE_FAILURE
+  ADD_TO_TOP_LIST
+} from "../actions/values.actions";
 
 import { values } from "../../dummy-data";
 
 const initialState = {
-  values: values
+  values: values,
+  usersList: []
 };
 
 const valuesReducer = (state = initialState, action) => {
@@ -89,6 +91,11 @@ const valuesReducer = (state = initialState, action) => {
     //     error: action.payload,
     //     isLoading: false
     //   };
+    case ADD_TO_TOP_LIST:
+      return {
+        ...state,
+        usersList: [...state.usersList, action.payload]
+      };
 
     default:
       return state;
