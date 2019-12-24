@@ -19,7 +19,8 @@ import {
   setTransition,
   setColor,
   setShadow,
-  fadeIn
+  fadeIn,
+  media
 } from "../../globals/styles";
 
 function UsersTopValues({
@@ -181,4 +182,6 @@ ${setTransition()};
   margin-top: 5%;
   color: ${setColor.mainColor}
 }
+
+${media.phone` width: 90%;`}
 `);

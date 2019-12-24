@@ -26,6 +26,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 2em;
   text-rendering: optimizeLegibility;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 h1 {

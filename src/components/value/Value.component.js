@@ -124,4 +124,6 @@ export default connect(mapStateToProps, { confirmTopList })(styled(Value)`
       justify-content: space-between;
     }
   
+    ${media.phone` width: 90%; margin-top: -45vh;`}
+    ${media.large` width: 90%; margin-top: -10vh;`}
 `);
