@@ -19,7 +19,7 @@ import {
 
 const Banner = ({ className, quote, getZen }) => {
   useEffect(() => {
-    getZen();
+    // getZen();
   }, []);
 
   return (
@@ -55,7 +55,7 @@ const BannerWrapper = styled(Banner)`
     width: 85%;
     margin: 0 auto;
   }
-  ${media.tablet` width: 70vw;
+  ${media.tablet` width: 100vw;
     ${setBorder({ width: "6px", color: setColor.mainColor })};
     p {
       width: 75%;

@@ -10,7 +10,8 @@ import {
   setTransition,
   setColor,
   setShadow,
-  fadeIn
+  fadeIn,
+  media
 } from "../../globals/styles";
 
 import { ValueButton, ValueButtonContainer } from "./Value.styles";
@@ -122,5 +123,5 @@ export default connect(mapStateToProps, { confirmTopList })(styled(Value)`
       flex-flow: column nowrap;
       justify-content: space-between;
     }
-
+  
 `);

@@ -66,7 +66,7 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
     width: 85%;
     margin: 0 auto;
   }
-  ${media.tablet` width: 70vw;
+  ${media.tablet` width: 70vw
     ${setBorder({ width: "6px", color: setColor.mainColor })};
     p {
       width: 75%;
@@ -78,6 +78,7 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
   .info {
     ${fadeIn("-100%", "10%", "0")}
   } */
+  
 `;
 
 export default ValuesBannerWrapper;
