@@ -73,7 +73,7 @@ export default connect(mapStateToProps, { confirmTopList })(styled(Value)`
   background: ${setColor.mainLight};
   margin: ${setRem(32)} auto;
   min-width: 500px;
-  max-width: 80%;
+  max-width: 750px;
   height: 22.5vh;
   min-height: 260px;
   max-height: 30vh;
