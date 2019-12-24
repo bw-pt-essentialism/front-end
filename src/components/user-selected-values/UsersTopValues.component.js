@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 import {
   toggleValue,
   removeToggledValue
 } from "../../store/actions/values.actions";
+
+import ValuesList from "../values-list/ValuesList.component";
 
 import styled from "styled-components";
 import { NarrowDownButton } from "./UsersTopValues.styles";
@@ -22,7 +24,9 @@ function UsersTopValues({
   className,
   narrowDown,
   toggleValue,
-  removeToggledValue
+  removeToggledValue,
+  endOfList,
+  setEndOfList
   //   ,
   //   remove
 }) {
@@ -30,6 +34,11 @@ function UsersTopValues({
     console.log(`YOU CLICKED TOGGLE VALUE`);
     toggleValue(id);
   };
+
+  if (endOfList === true && usersList.length === 0) {
+    //   setEndOfList(false);
+    return <ValuesList />;
+  }
 
   return (
     <>

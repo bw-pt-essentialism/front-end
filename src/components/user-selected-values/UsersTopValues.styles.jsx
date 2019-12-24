@@ -39,8 +39,9 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
   margin-bottom: 35%;
   color: ${setColor.mainColor};
   padding: ${setRem(10)} ${setRem(10)};
-  ${setLetterSpacing(3)}
-  ${props => (props.endOfList === true ? "display: flex" : "display: none")}
+  ${setLetterSpacing(3)};
+  ${props => (props.endOfList === true ? "display: flex" : "display: none")};
+
   
   h2 {
     text-transform: uppercase;
