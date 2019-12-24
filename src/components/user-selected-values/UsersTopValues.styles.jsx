@@ -1,5 +1,7 @@
 import React from "react";
 
+import { CustomButton } from "../custom-button/CustomButton";
+
 import styled from "styled-components";
 import {
   setColor,
@@ -69,3 +71,5 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
 `;
 
 export default ValuesBannerWrapper;
+
+export const NarrowDownButton = styled(CustomButton)``;
