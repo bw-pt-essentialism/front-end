@@ -80,7 +80,7 @@ export default connect(mapStateToProps, { confirmTopList })(styled(Value)`
   font-size: 1.8rem;
   color: ${setColor.offWhite};
   text-align: center;
-  margin-top: -40%;
+  margin-top: -37.5vh;
   ${props =>
     props.index === props.activeIndex ? "display: block" : "display: none"}
     ${props => props.endOfList && "display: none"}

@@ -43,7 +43,7 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
   height: 22.5vh;
   min-height: 260px;
   max-height: 30vh;
-  margin-top: -40%;
+  margin-top: -37.5vh;
   /* margin-bottom: 35%; */
   color: ${setColor.mainColor};
   padding: ${setRem(10)} ${setRem(10)};
