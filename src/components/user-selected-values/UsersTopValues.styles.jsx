@@ -40,7 +40,7 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
   justify-content: center;
   min-width: 500px;
   /* max-width: 80%; */
-  max-width: 750px;
+  max-width: 700px;
   height: 22.5vh;
   min-height: 260px;
   max-height: 30vh;
