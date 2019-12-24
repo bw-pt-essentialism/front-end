@@ -91,3 +91,8 @@ button:hover {
   background-color: #eaeaea;
   color: rgb(61, 69, 102, 0.95);
 }
+
+.expl-form {
+  border: 1px solid red;
+  align-content: space-between;
+}

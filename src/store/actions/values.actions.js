@@ -95,7 +95,7 @@ export const deleteValues = id => dispatch => {
     });
 };
 
-export const topList = value => dispatch => {
+export const confirmTopList = value => dispatch => {
   console.log(`values.actions: topLst: value: `, value);
   dispatch({
     type: ADD_TO_TOP_LIST,

@@ -94,6 +94,10 @@ const valuesReducer = (state = initialState, action) => {
     //     isLoading: false
     //   };
     case ADD_TO_TOP_LIST:
+      console.log(
+        `valuesReducer: ADD_TO_TOP_LIST: action.payload: `,
+        action.payload
+      );
       return {
         ...state,
         usersList: [...state.usersList, action.payload]

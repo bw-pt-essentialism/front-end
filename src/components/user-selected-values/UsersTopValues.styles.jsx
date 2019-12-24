@@ -13,17 +13,17 @@ import {
   setTransition
 } from "../../globals/styles";
 
-const ValuesBanner = ({ className, narrowDown }) => {
+const ValuesBanner = ({ className, narrowDown, usersList }) => {
   return (
     <div className={className}>
       <h2>
         Now:
         <span>
-          {narrowDown === false
+          {narrowDown === false && usersList.length > 3
             ? `take some time to reflect on your values. Which ones
           really mean the most to you? Narrow your selection down to your
           essential three.`
-            : `you've already got a great start at recognizing what's essential! take some time to reflect on the values you've selected. tell us why these are the things that matter to you`}
+            : `you know what's essential. after you confirm your choices, take some time to reflect on your values and tell us why these are the things that matter to you`}
         </span>{" "}
       </h2>
       <div className="info"></div>

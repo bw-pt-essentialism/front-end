@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
 import {
   toggleValue,
-  removeToggledValue
+  removeToggledValue,
+  confirmTopList
 } from "../../store/actions/values.actions";
 
 import ValuesList from "../values-list/ValuesList.component";
+// import ChoiceExplanation from "../choice-explanation/ChoiceExplanationForm.component";
 
 import styled from "styled-components";
 import { NarrowDownButton } from "./UsersTopValues.styles";
@@ -27,9 +30,18 @@ function UsersTopValues({
   removeToggledValue,
   endOfList
 }) {
+  let history = useHistory();
   const handleClick = id => {
     console.log(`YOU CLICKED TOGGLE VALUE`);
     toggleValue(id);
+  };
+
+  const handleConfirm = usersList => {
+    //the put/post action belongs here
+    console.log(`UsersTopValues.js: handleConfirm: usersList: `, usersList);
+    // return <Redirect to="/choice-expl" />;
+    confirmTopList(usersList);
+    history.push("/choice-expl");
   };
 
   if (endOfList === true && usersList.length === 0) {
@@ -43,16 +55,28 @@ function UsersTopValues({
           <article className={className} key={Date.now()}>
             <div className="card-info">
               <h4>
-                {narrowDown === false ? "What's essential?" : "my values"}
+                {narrowDown === false && usersList.length > 3
+                  ? "What's essential?"
+                  : "my values"}
               </h4>
-              {narrowDown === false && (
+              {narrowDown === false && usersList.length > 3 ? (
                 <span>
                   <p>Cross off all but 3 of these values</p>
                   <NarrowDownButton onClick={removeToggledValue}>
                     remove
                   </NarrowDownButton>
                 </span>
+              ) : (
+                endOfList === true && (
+                  <span>
+                    <p>Confirm your selections</p>
+                    <NarrowDownButton onClick={() => handleConfirm(usersList)}>
+                      confirm
+                    </NarrowDownButton>
+                  </span>
+                )
               )}
+
               {usersList.map(val => {
                 console.log(
                   `UserTopValues.js: usersList.map: val.remove: `,
@@ -89,7 +113,8 @@ const mapPropsToState = state => {
 
 export default connect(mapPropsToState, {
   toggleValue,
-  removeToggledValue
+  removeToggledValue,
+  confirmTopList
 })(styled(UsersTopValues)`
 background: ${setColor.mainLight};
 margin: ${setRem(32)} auto;
@@ -108,6 +133,7 @@ ${props =>
 span {
     font-size: 1rem;
     margin-bottom: 2%;
+    margin-top: 0;
 }
 
 }

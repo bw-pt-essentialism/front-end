@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { topList } from "../../store/actions/values.actions";
+import { confirmTopList } from "../../store/actions/values.actions";
 
 import styled from "styled-components";
 import {
@@ -15,13 +15,20 @@ import {
 
 import { ValueButton, ValueButtonContainer } from "./Value.styles";
 
-const Value = ({ className, info, values, id, goToNextCard, topList }) => {
-  //   console.log(`Value.js: topList: `, topList);
+const Value = ({
+  className,
+  info,
+  values,
+  id,
+  goToNextCard,
+  confirmTopList
+}) => {
+  //   console.log(`Value.js: confirmTopList: `, confirmTopList);
 
   const handleYes = e => {
     console.log(`Value.js: handleClick: e.target.value: `, e.target);
     values.map(val => {
-      return val.id === id && topList(val);
+      return val.id === id && confirmTopList(val);
     });
     goToNextCard();
   };
@@ -62,7 +69,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { topList })(styled(Value)`
+export default connect(mapStateToProps, { confirmTopList })(styled(Value)`
 background: ${setColor.mainLight};
 margin: ${setRem(32)} auto;
 min-width: 500px;

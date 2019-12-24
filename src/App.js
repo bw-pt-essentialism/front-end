@@ -5,6 +5,7 @@ import PrivateRoute from "./PrivateRoute";
 import Header from "./components/header/Header.component";
 import HomePage from "./pages/homepage/HomePage.page";
 import ValuesSelectionPage from "./pages/values-selection/ValuesSelectionPage";
+import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanationForm.component";
 
 import { Globals } from "./globals/GlobalStyles";
 
@@ -30,6 +31,7 @@ function App() {
           path="/values-selection"
           component={ValuesSelectionPage}
         />
+        <PrivateRoute path="/choice-expl" component={ChoiceExplanation} />
       </Switch>
     </Router>
   );
