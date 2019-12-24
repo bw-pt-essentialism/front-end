@@ -11,6 +11,8 @@ function ValuesList({ values, usersList }) {
   const [narrowDown, setNarrowDown] = useState(true);
   // const [rerenderList, setRerenderList] = useState(null);
 
+  // console.log(`ValuesList.js: reselct: `, reselect);
+
   // const goToPrevSlide = e => {
   //   e.preventDefault();
   //   let index = activeIndex;
@@ -43,9 +45,16 @@ function ValuesList({ values, usersList }) {
   );
   // console.log(`ValuesList.js: filterdValuesArr: `, filteredValuesArr);
   // console.log(`ValuesList.js: rerenderList: `, rerenderList);
+
   return (
     <>
-      <ValuesBannerWrapper endOfList={endOfList} narrowDown={narrowDown} />
+      <ValuesBannerWrapper
+        endOfList={endOfList}
+        narrowDown={narrowDown}
+        // reselect={reselect}
+        usersList={usersList}
+        // setEndOfList={setEndOfList}
+      />
       <h4>
         {values.map((val, index) => {
           return (
@@ -61,7 +70,11 @@ function ValuesList({ values, usersList }) {
             />
           );
         })}
-        <UsersTopValues endOfList={endOfList} narrowDown={narrowDown} />
+        <UsersTopValues
+          endOfList={endOfList}
+          setEndOfList={setEndOfList}
+          narrowDown={narrowDown}
+        />
       </h4>
     </>
   );

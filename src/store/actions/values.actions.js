@@ -17,6 +17,8 @@ export const VALUES_DELETE_SUCCESS = "VALUES_DELETE_SUCCESS";
 export const VALUES_DELETE_FAILURE = "VALUES_DELETE_FAILURE";
 
 export const ADD_TO_TOP_LIST = "ADD_TO_TOP_LIST";
+export const REMOVE_VALUE = "REMOVE_VALUE";
+export const TOGGLE_VALUE = "TOGGLE_VALUE";
 
 export const getValues = () => dispatch => {
   dispatch({ type: VALUES_LOAD_START });
@@ -97,6 +99,22 @@ export const topList = value => dispatch => {
   console.log(`values.actions: topLst: value: `, value);
   dispatch({
     type: ADD_TO_TOP_LIST,
+    payload: value
+  });
+};
+
+export const toggleValue = value => dispatch => {
+  console.log(`values.actions: toggleValue: value: `, value);
+  dispatch({
+    type: TOGGLE_VALUE,
+    payload: value
+  });
+};
+
+export const removeToggledValue = value => dispatch => {
+  console.log(`values.actions: removeToggledValue: value: `, value);
+  dispatch({
+    type: REMOVE_VALUE,
     payload: value
   });
 };

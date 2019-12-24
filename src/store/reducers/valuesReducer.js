@@ -10,7 +10,9 @@ import {
   // VALUES_PUT_FAILURE,
   // VALUES_DELETE_START,
   // VALUES_DELETE_SUCCESS,
-  // VALUES_DELETE_FAILURE
+  // VALUES_DELETE_FAILURE,
+  TOGGLE_VALUE,
+  REMOVE_VALUE,
   ADD_TO_TOP_LIST
 } from "../actions/values.actions";
 
@@ -96,7 +98,40 @@ const valuesReducer = (state = initialState, action) => {
         ...state,
         usersList: [...state.usersList, action.payload]
       };
+    case REMOVE_VALUE:
+      return {
+        ...state,
+        usersList: state.usersList.filter(value => {
+          return !value.remove;
+        })
+      };
+    case TOGGLE_VALUE:
+      //   console.log(`valueReducer.js: switch: case: 'TOGGLE_VALUE`, state);
+      //   console.log(
+      //     `valueReducer: switch: case "TOGGLE_COMPETED": action.payload:  `,
+      //     action.payload
+      //   );
+      return {
+        ...state,
 
+        usersList: state.usersList.map(value => {
+          //   console.log(
+          //     `valueReducer: switch: case "TOGGLE_COMPETED": state.valueReducer:  `,
+          //     value
+          //   );
+
+          if (value.id === action.payload)
+            // console.log(
+            //   `valueReducer: TOGGLE_VALUE: value.complete`,
+            //   value.VALUE
+            // );
+            return {
+              ...value,
+              remove: !value.remove
+            };
+          return value;
+        })
+      };
     default:
       return state;
   }

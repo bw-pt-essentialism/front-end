@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
+import {
+  toggleValue,
+  removeToggledValue
+} from "../../store/actions/values.actions";
+
+import ValuesList from "../values-list/ValuesList.component";
+
 import styled from "styled-components";
+import { NarrowDownButton } from "./UsersTopValues.styles";
 import {
   setRem,
   setLetterSpacing,
@@ -11,7 +19,27 @@ import {
   fadeIn
 } from "../../globals/styles";
 
-function UsersTopValues({ usersList, className, narrowDown }) {
+function UsersTopValues({
+  usersList,
+  className,
+  narrowDown,
+  toggleValue,
+  removeToggledValue,
+  endOfList,
+  setEndOfList
+  //   ,
+  //   remove
+}) {
+  const handleClick = id => {
+    console.log(`YOU CLICKED TOGGLE VALUE`);
+    toggleValue(id);
+  };
+
+  if (endOfList === true && usersList.length === 0) {
+    //   setEndOfList(false);
+    return <ValuesList />;
+  }
+
   return (
     <>
       {usersList.length > 0 && (
@@ -24,10 +52,25 @@ function UsersTopValues({ usersList, className, narrowDown }) {
               {narrowDown === false && (
                 <span>
                   <p>Cross off all but 3 of these values</p>
+                  <NarrowDownButton onClick={removeToggledValue}>
+                    remove values
+                  </NarrowDownButton>
                 </span>
               )}
               {usersList.map(val => {
-                return <p key={val.id}> - {val.value.toLowerCase()}</p>;
+                console.log(
+                  `UserTopValues.js: usersList.map: val.remove: `,
+                  val.remove
+                );
+
+                return (
+                  <div key={val.id} onClick={() => handleClick(val.id)}>
+                    <p className={`${val.remove === true && "toggle"}`}>
+                      {" "}
+                      - {val.value.toLowerCase()}
+                    </p>
+                  </div>
+                );
               })}
             </div>
             {/* <ValueButtonContainer>
@@ -47,12 +90,16 @@ const mapPropsToState = state => {
     state.values.usersList
   );
   return {
-    usersList: state.values.usersList
+    usersList: state.values.usersList,
+    remove: state.values.usersList.remove
   };
 };
 
 // export default connect(mapPropsToState)(UsersTopValues);
-export default connect(mapPropsToState)(styled(UsersTopValues)`
+export default connect(mapPropsToState, {
+  toggleValue,
+  removeToggledValue
+})(styled(UsersTopValues)`
 background: ${setColor.mainLight};
 margin: ${setRem(32)} auto;
 min-width: 500px;
@@ -64,7 +111,7 @@ ${props =>
   props.index === props.activeIndex ? "display: block" : "display: none"}
 
 p {
-  ${fadeIn("100%", "-10%", "0")}
+  /* ${fadeIn("100%", "-10%", "0")} */
 }
 
 span {
@@ -82,6 +129,10 @@ span {
   p {
     ${setLetterSpacing()};
   }
+}
+
+.toggle {
+    text-decoration: line-through;
 }
 ${setShadow.light};
 ${setTransition()};
