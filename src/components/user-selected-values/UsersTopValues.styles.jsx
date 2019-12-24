@@ -20,7 +20,7 @@ const ValuesBanner = ({ className, narrowDown }) => {
         Now:
         <span>
           {narrowDown === false
-            ? `take some time to reflect on the values you've selected. Which ones
+            ? `take some time to reflect on your values. Which ones
           really mean the most to you? Narrow your selection down to your
           essential three.`
             : `you've already got a great start at recognizing what's essential! take some time to reflect on the values you've selected. tell us why these are the things that matter to you`}
