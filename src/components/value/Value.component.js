@@ -46,13 +46,13 @@ const Value = ({
   };
 
   return (
-    <section>
-      <article className={className}>
+    <section className={className}>
+      <article>
         <div className="card-info">
           <h4>do you value</h4>
           <p>{info}?</p>
         </div>
-        <ValueButtonContainer>
+        <ValueButtonContainer className="btn-div">
           <ValueButton onClick={handleNo}>no</ValueButton>
           <ValueButton onClick={handleYes}>yes</ValueButton>
         </ValueButtonContainer>
@@ -70,36 +70,57 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, { confirmTopList })(styled(Value)`
-background: ${setColor.mainLight};
-margin: ${setRem(32)} auto;
-min-width: 500px;
-max-width: 50%;
-color: ${setColor.offWhite};
-text-align: center;
-margin-top: -125px;
-${props =>
-  props.index === props.activeIndex ? "display: block" : "display: none"}
-  ${props => props.endOfList && "display: none"}
+  background: ${setColor.mainLight};
+  margin: ${setRem(32)} auto;
+  min-width: 500px;
+  max-width: 80%;
+  height: 22.5vh;
+  min-height: 260px;
+  max-height: 30vh;
+  font-size: 1.8rem;
+  color: ${setColor.offWhite};
+  text-align: center;
+  margin-top: -40%;
+  ${props =>
+    props.index === props.activeIndex ? "display: block" : "display: none"}
+    ${props => props.endOfList && "display: none"}
 
-p {
-  ${fadeIn("100%", "-10%", "0")}
-}
+    p {
+      ${fadeIn("100%", "-10%", "0")}
+    }
 
 
-}
-.card-info {
-  padding: ${setRem()};
-  h4 {
-    text-transform: capitalize;
-    ${setLetterSpacing()};
-  }
-  p {
-    ${setLetterSpacing()};
-  }
-}
-${setShadow.light};
-${setTransition()};
-&:hover {
-  ${setShadow.dark};
-}
+    }
+    .card-info {
+      padding: ${setRem()};
+      h4 {
+        text-transform: capitalize;
+        ${setLetterSpacing()};
+      }
+      p {
+        ${setLetterSpacing()};
+      font-size: 1.2rem;
+      margin: 0 auto;
+      }
+    }
+    ${setShadow.light};
+    ${setTransition()};
+    &:hover {
+      ${setShadow.dark};
+    }
+
+    /* .btn-div {
+      border: 1px solid white;
+    } */
+
+    article {
+      min-width: 500px;
+      width: 100%;
+      height: 22.5vh;
+      max-height: 30vh;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-between;
+    }
+
 `);

@@ -1,7 +1,9 @@
 import React from "react";
 
+import { StyledHeader } from "./Header.styles";
+
 function Header() {
-  return <p>Hello from the header</p>;
+  return <StyledHeader>Hello from the header</StyledHeader>;
 }
 
 export default Header;

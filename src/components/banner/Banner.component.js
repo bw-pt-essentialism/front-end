@@ -37,10 +37,9 @@ const Banner = ({ className, quote, getZen }) => {
 };
 const BannerWrapper = styled(Banner)`
   background: ${setColor.mainLight};
-  margin: 0 auto;
+  margin: 50vh auto 0;
   text-align: center;
   justify-content: center;
-  margin-top: 500px;
   padding: ${setRem(10)} ${setRem(10)};
   ${setLetterSpacing(3)}
   h3 {

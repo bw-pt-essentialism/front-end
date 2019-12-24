@@ -9,5 +9,4 @@ export const ValueButtonContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  margin: 2% 0;
 `;
