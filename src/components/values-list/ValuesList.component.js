@@ -9,7 +9,6 @@ function ValuesList({ values, usersList }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [endOfList, setEndOfList] = useState(null);
   const [narrowDown, setNarrowDown] = useState(true);
-  // const [rerenderList, setRerenderList] = useState(null);
 
   // console.log(`ValuesList.js: reselct: `, reselect);
 

@@ -25,10 +25,7 @@ function UsersTopValues({
   narrowDown,
   toggleValue,
   removeToggledValue,
-  endOfList,
-  setEndOfList
-  //   ,
-  //   remove
+  endOfList
 }) {
   const handleClick = id => {
     console.log(`YOU CLICKED TOGGLE VALUE`);
@@ -36,7 +33,6 @@ function UsersTopValues({
   };
 
   if (endOfList === true && usersList.length === 0) {
-    //   setEndOfList(false);
     return <ValuesList />;
   }
 
@@ -73,10 +69,6 @@ function UsersTopValues({
                 );
               })}
             </div>
-            {/* <ValueButtonContainer>
-          <ValueButton onClick={handleNo}>no</ValueButton>
-          <ValueButton onClick={handleYes}>yes</ValueButton>
-        </ValueButtonContainer> */}
           </article>
         </section>
       )}
@@ -95,7 +87,6 @@ const mapPropsToState = state => {
   };
 };
 
-// export default connect(mapPropsToState)(UsersTopValues);
 export default connect(mapPropsToState, {
   toggleValue,
   removeToggledValue
@@ -110,9 +101,9 @@ margin-top: 5%;
 ${props =>
   props.index === props.activeIndex ? "display: block" : "display: none"}
 
-p {
-  /* ${fadeIn("100%", "-10%", "0")} */
-}
+/* p {
+  ${fadeIn("100%", "-10%", "0")}
+} */
 
 span {
     font-size: 1rem;
