@@ -73,4 +73,7 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
 
 export default ValuesBannerWrapper;
 
-export const NarrowDownButton = styled(CustomButton)``;
+export const NarrowDownButton = styled(CustomButton)`
+  border: none;
+  margin: 5% auto;
+`;

@@ -49,7 +49,7 @@ function UsersTopValues({
                 <span>
                   <p>Cross off all but 3 of these values</p>
                   <NarrowDownButton onClick={removeToggledValue}>
-                    remove values
+                    remove
                   </NarrowDownButton>
                 </span>
               )}
