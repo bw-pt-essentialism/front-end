@@ -17,9 +17,13 @@ export const ConfirmExplanationLink = styled(CustomLink)`
 export const FormContainer = styled(Form)`
   margin: 0 auto;
   text-align: center;
+  max-height: 45%;
+  height: 45%;
   ${props =>
     props.index === props.active ? "display: block" : "display: none"}
   input {
     min-height: 20vh;
   }
 `;
+
+export const Sizer = styled.section``;
