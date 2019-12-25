@@ -48,12 +48,12 @@ const sizes = {
   large: 1200,
   desktop: 990,
   tablet: 800,
-  phone: 300
+  phone: 500
 };
 
 export const media = Object.keys(sizes).reduce((acc, label) => {
   acc[label] = (...args) => css`
-    @media (min-width: ${sizes[label]}px) {
+    @media (max-width: ${sizes[label]}px) {
       ${css(...args)}
     }
   `;

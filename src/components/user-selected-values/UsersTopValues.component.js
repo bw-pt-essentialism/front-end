@@ -133,7 +133,7 @@ export default connect(mapPropsToState, {
 })(styled(UsersTopValues)`
 background: ${setColor.mainLight};
 margin: ${setRem(32)} auto;
-min-width: 500px;
+/* min-width: 500px; */
 max-width: 50%;
 color: ${setColor.offWhite};
 text-align: center;
@@ -183,5 +183,4 @@ ${setTransition()};
   color: ${setColor.mainColor}
 }
 
-${media.phone` width: 90%;`}
 `);

@@ -55,7 +55,7 @@ const BannerWrapper = styled(Banner)`
     width: 85%;
     margin: 0 auto;
   }
-  ${media.phone` width: 100%`}
+  ${media.phone` width: 100%;`}
   ${media.tablet` width: 70vw;
     ${setBorder({ width: "6px", color: setColor.mainColor })};
     p {
