@@ -20,13 +20,13 @@ const ValuesBanner = ({ className, narrowDown, usersList }) => {
   return (
     <div className={className}>
       <h2>
-        Now
+        {narrowDown === false && usersList.length > 3 ? "now" : "you"}
         <span>
           {narrowDown === false && usersList.length > 3
             ? ` take some time to reflect on your values. Which ones
           really mean the most to you? Narrow your selection down to your
           essential three.`
-            : ` you know what's essential. after you confirm your choices, take some time to reflect on your values and tell us why these are the things that matter to you`}
+            : ` know what's essential. after you confirm your choices, take some time to reflect on your values and tell us why these are the things that matter to you`}
         </span>{" "}
       </h2>
       <div className="info"></div>
@@ -38,13 +38,14 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
   margin: 0 auto;
   text-align: center;
   justify-content: center;
-  min-width: 500px;
+  /* min-width: 500px; */
   /* max-width: 80%; */
-  max-width: 700px;
-  height: 22.5vh;
+  width: 600px;
+  max-width: 90%;
+  height: 30vh;
   min-height: 260px;
   max-height: 30vh;
-  margin-top: -37.5vh;
+  margin-top: -45vh;
   /* margin-bottom: 35%; */
   color: ${setColor.mainColor};
   padding: ${setRem(10)} ${setRem(10)};
@@ -66,10 +67,11 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
     width: 85%;
     margin: 0 auto;
   }
-  ${media.tablet` width: 70vw
+  ${media.phone` width: 90vw
     ${setBorder({ width: "6px", color: setColor.mainColor })};
-    p {
+    h2 {
       width: 75%;
+      font-size: 1.2rem;
     }`}
 
   /* h2 {

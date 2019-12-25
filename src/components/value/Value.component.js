@@ -74,14 +74,15 @@ export default connect(mapStateToProps, { confirmTopList })(styled(Value)`
   background: ${setColor.mainLight};
   margin: ${setRem(32)} auto;
   /* min-width: 500px; */
-  max-width: 700px;
+  max-width: 90%;
+  width: 700px;
   height: 22.5vh;
-  min-height: 260px;
-  max-height: 30vh;
+  min-height: 290px;
+  max-height: 33vh;
   font-size: 1.8rem;
   color: ${setColor.offWhite};
   text-align: center;
-  margin-top: -45vh;
+  margin-top: -37.5%;
   ${props =>
     props.index === props.activeIndex ? "display: block" : "display: none"}
   ${props => props.endOfList && "display: none"}
@@ -117,7 +118,8 @@ export default connect(mapStateToProps, { confirmTopList })(styled(Value)`
     /* min-width: 500px; */
     width: 100%;
     height: 22.5vh;
-    max-height: 30vh;
+    max-height: 33vh;
+    min-height: 290px;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;

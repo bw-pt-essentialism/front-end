@@ -133,8 +133,8 @@ export default connect(mapPropsToState, {
 })(styled(UsersTopValues)`
 background: ${setColor.mainLight};
 margin: ${setRem(32)} auto;
-/* min-width: 500px; */
-max-width: 50%;
+max-width: 90%;
+width: 500px;
 color: ${setColor.offWhite};
 text-align: center;
 margin-top: 7.75vh;

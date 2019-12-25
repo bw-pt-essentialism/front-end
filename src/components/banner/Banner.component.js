@@ -19,7 +19,7 @@ import {
 
 const Banner = ({ className, quote, getZen }) => {
   useEffect(() => {
-    // getZen();
+    getZen();
   }, []);
 
   return (
@@ -64,6 +64,7 @@ const BannerWrapper = styled(Banner)`
 
   h3 {
     ${fadeIn("100%", "-10%", "0")}
+    font-size: 1.2rem;
   }
   .info {
     ${fadeIn("-100%", "10%", "0")}
