@@ -31,9 +31,14 @@ const ChoiceExplanation = ({
     let index = activeIndex;
     let slidesLength = usersList.length - 1;
     if (index === slidesLength) {
+      console.log(`ChoiceExplanation: goToNextCard: index: `, index);
+      console.log(
+        `ChoiceExplanation: goToNextCard: slidesLength: `,
+        slidesLength
+      );
       // index = -1;
       //   usersList.length > 2 && setNarrowDown(false);
-      setEndOfList(true);
+      // setEndOfList(true);
     }
     ++index;
     setActiveIndex(index);

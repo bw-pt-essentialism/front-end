@@ -22,7 +22,7 @@ export const FormContainer = styled(Form)`
   ${props =>
     props.index === props.active ? "display: block" : "display: none"}
   input {
-    min-height: 20vh;
+    min-height: 15vh;
   }
 `;
 
