@@ -35,22 +35,26 @@ export const getUser = () => dispatch => {
 };
 
 export const postUser = value => dispatch => {
-  dispatch({ type: USER_POST_START, payload: value });
-  axiosWithAuth()
-    .post(`/projects`, value)
-    .then(res => {
-      dispatch({
-        type: USER_POST_SUCCESS,
-        payload: res.data
-      });
-    })
-    .then(() => (window.location.href = "/home"))
-    .catch(err => {
-      dispatch({
-        type: USER_POST_FAILURE,
-        payload: "error posting data"
-      });
-    });
+  // dispatch({ type: USER_POST_START, payload: value });
+  // axiosWithAuth()
+  // .post(`/projects`, value)
+  // .then(res => {
+  console.log(`user.actions: postUser: value: `, value);
+  dispatch({
+    type: USER_POST_SUCCESS,
+    payload: value
+  });
+
+  localStorage.setItem("token", "temp_token");
+  // window.location.href = "/values-selection";
+  // })
+  // .then(() => (window.location.href = "/values-selection"))
+  // .catch(err => {
+  //   dispatch({
+  //     type: USER_POST_FAILURE,
+  //     payload: "error posting data"
+  //   });
+  // });
 };
 
 export const putUser = (value, id) => dispatch => {

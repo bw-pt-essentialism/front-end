@@ -10,8 +10,7 @@ import {
   setTransition,
   setColor,
   setShadow,
-  fadeIn,
-  media
+  fadeIn
 } from "../../globals/styles";
 
 import { ValueButton, ValueButtonContainer } from "./Value.styles";
@@ -27,7 +26,7 @@ const Value = ({
   //   console.log(`Value.js: confirmTopList: `, confirmTopList);
 
   const handleYes = e => {
-    console.log(`Value.js: handleClick: e.target.value: `, e.target);
+    // console.log(`Value.js: handleClick: e.target.value: `, e.target);
     values.map(val => {
       return val.id === id && confirmTopList(val);
     });
@@ -35,7 +34,7 @@ const Value = ({
   };
 
   const handleNo = e => {
-    console.log(`Value.js: handleClick: e.target.value: `, e.target);
+    // console.log(`Value.js: handleClick: e.target.value: `, e.target);
     values.map(val => {
       return (
         val.id === id &&
@@ -110,12 +109,7 @@ export default connect(mapStateToProps, { confirmTopList })(styled(Value)`
     ${setShadow.dark};
   }
 
-  /* .btn-div {
-      border: 1px solid white;
-    } */
-
   article {
-    /* min-width: 500px; */
     width: 100%;
     height: 22.5vh;
     max-height: 33vh;
@@ -123,7 +117,5 @@ export default connect(mapStateToProps, { confirmTopList })(styled(Value)`
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
-  
   }
-  /* ${media.large` width: 90%; margin-top: -10vh;`} */
 `);

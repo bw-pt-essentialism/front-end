@@ -80,10 +80,12 @@ function ValuesList({ values, usersList }) {
 }
 
 const mapPropsToState = state => {
-  console.log(
-    `ValuesList.js: mapPropsToState: state.values: `,
-    state.values.usersList
-  );
+  // console.log(
+  //   `ValuesList.js: mapPropsToState: state.values: `,
+  //   state.values.usersList
+  // );
+
+  console.log(`ValuesList.js: mapPropsToState: state: `, state);
   return {
     values: state.values.values,
     isLoading: state.isLoading,
