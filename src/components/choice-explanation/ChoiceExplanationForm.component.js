@@ -22,10 +22,9 @@ const ChoiceExplanation = ({
   values,
   usersList
 }) => {
-  //   console.log(props);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [endOfList, setEndOfList] = useState(null);
-  const [narrowDown, setNarrowDown] = useState(true);
+  // const [endOfList, setEndOfList] = useState(null);
+  // const [narrowDown, setNarrowDown] = useState(true);
 
   const goToNextCard = () => {
     let index = activeIndex;

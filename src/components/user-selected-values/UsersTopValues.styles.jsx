@@ -55,13 +55,13 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
   
   h2 {
     text-transform: uppercase;
-  font-size: 2.25rem;
-    span {
-      text-transform: capitalize;
-      color: ${setColor.offWhite};
-      ${fadeIn("100%", "-10%", "0")}
-      ${setTransition("all", "1s", "ease-in-out")}
-    }
+    font-size: 2.5rem;
+      span {
+        text-transform: capitalize;
+        color: ${setColor.offWhite};
+        ${fadeIn("100%", "-10%", "0")}
+        ${setTransition("all", "1s", "ease-in-out")}
+      }
   }
   p {
     width: 85%;

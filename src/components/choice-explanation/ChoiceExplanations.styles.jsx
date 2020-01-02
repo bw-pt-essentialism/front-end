@@ -14,6 +14,7 @@ export const ConfirmExplanationLink = styled(CustomLink)`
   margin: 10% auto 0;
   border: none;
 `;
+
 export const FormContainer = styled(Form)`
   margin: 0 auto;
   text-align: center;
@@ -23,6 +24,9 @@ export const FormContainer = styled(Form)`
     props.index === props.active ? "display: block" : "display: none"}
   input {
     min-height: 15vh;
+  }
+  input::placeholder {
+    text-align: center;
   }
 `;
 
