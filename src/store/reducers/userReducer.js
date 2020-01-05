@@ -2,9 +2,9 @@ import {
   //     USER_GET_START,
   USER_GET_SUCCESS,
   //     USER_GET_FAILURE,
-  //     USER_POST_START,
-  USER_POST_SUCCESS
-  //     USER_POST_FAILURE,
+  USER_POST_START,
+  USER_POST_SUCCESS,
+  USER_POST_FAILURE
   //     USER_PUT_START,
   //     USER_PUT_SUCCESS,
   //     USER_PUT_FAILURE,
@@ -48,11 +48,11 @@ const userReducer = (state = initialState, action) => {
     //       error: action.payload,
     //       isLoading: false
     //     };
-    //   case USER_POST_START:
-    //     return {
-    //       ...state,
-    //       isLoading: true
-    //     };
+    case USER_POST_START:
+      return {
+        ...state,
+        isLoading: true
+      };
     case USER_POST_SUCCESS:
       console.log(`USER_POST_SUCCESS: action.payload: `, action.payload);
       return {
@@ -60,12 +60,12 @@ const userReducer = (state = initialState, action) => {
         user: action.payload,
         isLoading: false
       };
-    //   case USER_POST_FAILURE:
-    //     return {
-    //       ...state,
-    //       error: action.payload,
-    //       isLoading: false
-    //     };
+    case USER_POST_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        isLoading: false
+      };
     //   case USER_PUT_START:
     //     return {
     //       ...state,

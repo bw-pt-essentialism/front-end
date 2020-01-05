@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 
 import {
@@ -8,6 +10,8 @@ import {
   SignUpLinkLogin
 } from "./SignUpForm.styles";
 
+import { postUser } from "../../store/actions/user.actions";
+
 import "../../globals/form.styles.css";
 
 const SignUpForm = ({
@@ -15,9 +19,19 @@ const SignUpForm = ({
   touched,
   isSubmitting,
   isValidating,
-  values
+  values,
+  postUser
 }) => {
   //   console.log(props);
+
+  const handleClick = () => {
+    postUser({
+      name: values.name,
+      username: values.username,
+      password: values.password,
+      email: values.email
+    });
+  };
 
   return (
     <div className="form-container">
@@ -91,7 +105,11 @@ const SignUpForm = ({
           <SignUpLinkLogin to="/in" disabled={isSubmitting}>
             Log In
           </SignUpLinkLogin>
-          <SignUpButton type="submit" disabled={isSubmitting}>
+          <SignUpButton
+            type="submit"
+            onClick={handleClick}
+            disabled={isSubmitting}
+          >
             SignUp
           </SignUpButton>
         </SignUpButtonContainer>
@@ -132,7 +150,6 @@ export default withFormik({
       // console.log(`SignUpForm.js: handleSubmit: values: `, values);
       localStorage.setItem("token", "temp_token");
       resetForm();
-      window.location.href = "/values-selection";
     }
   }
-})(SignUpForm);
+})(connect(null, { postUser })(SignUpForm));

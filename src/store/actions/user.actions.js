@@ -18,45 +18,42 @@ export const USER_DELETE_FAILURE = "USER_DELETE_FAILURE";
 
 export const getUser = value => dispatch => {
   dispatch({ type: USER_GET_START });
-  // axiosWithAuth()
-  //   .get(`/user`)
-  //   .then(res => {
-  dispatch({
-    type: USER_GET_SUCCESS,
-    payload: value
-  });
-  localStorage.setItem("token", "temp_token");
-  // })
-  // .catch(err => {
-  //   dispatch({
-  //     type: USER_GET_FAILURE,
-  //     payload: "error getting user"
-  //   });
-  // });
-};
-export const redirect = () => dispatch => {
-  window.location.href = "/home";
+  axiosWithAuth()
+    .get(`/user`)
+    .then(res => {
+      console.log(res);
+      dispatch({
+        type: USER_GET_SUCCESS,
+        payload: value
+      });
+      localStorage.setItem("token", "temp_token");
+    })
+    .catch(err => {
+      dispatch({
+        type: USER_GET_FAILURE,
+        payload: "error getting user" + err
+      });
+    });
 };
 export const postUser = value => dispatch => {
-  // dispatch({ type: USER_POST_START, payload: value });
-  // axiosWithAuth()
-  // .post(`/projects`, value)
-  // .then(res => {
+  dispatch({ type: USER_POST_START, payload: value });
   console.log(`user.actions: postUser: value: `, value);
-  dispatch({
-    type: USER_POST_SUCCESS,
-    payload: value
-  });
-
-  // window.location.href = "/values-selection";
-  // })
-  // .then(() => (window.location.href = "/values-selection"))
-  // .catch(err => {
-  //   dispatch({
-  //     type: USER_POST_FAILURE,
-  //     payload: "error posting data"
-  //   });
-  // });
+  axiosWithAuth()
+    .post(`/users`, value)
+    .then(res => {
+      console.log(`user.actions: postUser: .then: res: `, res.data);
+      dispatch({
+        type: USER_POST_SUCCESS,
+        payload: res.data
+      });
+    })
+    // .then(() => (window.location.href = "/values-selection"))
+    .catch(err => {
+      dispatch({
+        type: USER_POST_FAILURE,
+        payload: "error posting data"
+      });
+    });
 };
 
 export const putUser = (value, id) => dispatch => {

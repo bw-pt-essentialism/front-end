@@ -3,14 +3,13 @@ import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-import { getUser, redirect } from "../../store/actions/user.actions";
+import { getUser } from "../../store/actions/user.actions";
 
 import { LoginButton, LoginLinkSignUp } from "./LoginForm.styles";
 import { SignUpButtonContainer } from "../sign-up-form/SignUpForm.styles";
 
 const LoginForm = ({
   getUser,
-  redirect,
   errors,
   touched,
   isSubmitting,
@@ -46,7 +45,6 @@ const LoginForm = ({
             type="submit"
             onClick={() => {
               getUser(values);
-              redirect();
             }}
             disabled={isSubmitting}
           >
@@ -79,4 +77,4 @@ export default withFormik({
     // localStorage.setItem("token", "temp_token");
     resetForm();
   }
-})(connect(null, { getUser, redirect })(LoginForm));
+})(connect(null, { getUser })(LoginForm));
