@@ -1,8 +1,8 @@
 import { axiosWithAuth } from "../../axiosWithAuth";
 
-export const USER_LOAD_START = "USER_LOAD_START";
-export const USER_LOAD_SUCCESS = "USER_LOAD_SUCCESS";
-export const USER_LOAD_FAILURE = "USER_LOAD_FAILURE";
+export const USER_GET_START = "USER_GET_START";
+export const USER_GET_SUCCESS = "USER_GET_SUCCESS";
+export const USER_GET_FAILURE = "USER_GET_FAILURE";
 
 export const USER_POST_START = "USER_POST_START";
 export const USER_POST_SUCCESS = "USER_POST_SUCCESS";
@@ -16,62 +16,65 @@ export const USER_DELETE_START = "USER_DELETE_START";
 export const USER_DELETE_SUCCESS = "USER_DELETE_SUCCESS";
 export const USER_DELETE_FAILURE = "USER_DELETE_FAILURE";
 
-export const getUser = () => dispatch => {
-  dispatch({ type: USER_LOAD_START });
+export const getUser = id => dispatch => {
+  dispatch({ type: USER_GET_START });
   axiosWithAuth()
-    .get(`/user`)
+    .get(`/users/${id}`)
     .then(res => {
+      console.log(res);
       dispatch({
-        type: USER_LOAD_SUCCESS,
+        type: USER_GET_SUCCESS,
         payload: res.data
       });
+      // localStorage.setItem("token", "temp_token");
     })
     .catch(err => {
       dispatch({
-        type: USER_LOAD_FAILURE,
-        payload: "error loading projects"
+        type: USER_GET_FAILURE,
+        payload: "error getting user" + err
       });
     });
 };
-
 export const postUser = value => dispatch => {
-  // dispatch({ type: USER_POST_START, payload: value });
-  // axiosWithAuth()
-  // .post(`/projects`, value)
-  // .then(res => {
+  dispatch({ type: USER_POST_START, payload: value });
   console.log(`user.actions: postUser: value: `, value);
-  dispatch({
-    type: USER_POST_SUCCESS,
-    payload: value
-  });
-
-  localStorage.setItem("token", "temp_token");
-  // window.location.href = "/values-selection";
-  // })
-  // .then(() => (window.location.href = "/values-selection"))
-  // .catch(err => {
-  //   dispatch({
-  //     type: USER_POST_FAILURE,
-  //     payload: "error posting data"
-  //   });
-  // });
+  return (
+    axiosWithAuth()
+      .post(`/users`, value)
+      .then(res => {
+        // console.log(`user.actions: postUser: .then: res: `, res.data);
+        dispatch({
+          type: USER_POST_SUCCESS,
+          payload: res.data
+        });
+        localStorage.setItem("token", "TEMP_TOKEN");
+        // window.location.href = `/values-selection`;
+      })
+      // .then(() => (window.location.href = "/value-selection"))
+      .catch(err => {
+        dispatch({
+          type: USER_POST_FAILURE,
+          payload: "error posting data" + err
+        });
+      })
+  );
 };
 
 export const putUser = (value, id) => dispatch => {
   dispatch({ type: USER_PUT_START, payload: value });
   axiosWithAuth()
-    .put(`/user/${id}`, value)
+    .put(`/users/${id}`, value)
     .then(res => {
       dispatch({
         type: USER_PUT_SUCCESS,
         payload: res.data
       });
     })
-    .then(() => (window.location.href = "/home"))
+    // .then(() => (window.location.href = "/home"))
     .catch(err => {
       dispatch({
         type: USER_PUT_FAILURE,
-        payload: "error putting user data"
+        payload: "error putting user data" + err
       });
     });
 };
@@ -79,7 +82,7 @@ export const putUser = (value, id) => dispatch => {
 export const deleteUser = id => dispatch => {
   dispatch({ type: USER_DELETE_START });
   axiosWithAuth()
-    .delete(`/user/${id}`)
+    .delete(`/users/${id}`)
     .then(res => {
       dispatch({
         type: USER_DELETE_SUCCESS,
@@ -90,7 +93,7 @@ export const deleteUser = id => dispatch => {
     .catch(err => {
       dispatch({
         type: USER_DELETE_FAILURE,
-        payload: "error deleting user data"
+        payload: "error deleting user data" + err
       });
     });
 };

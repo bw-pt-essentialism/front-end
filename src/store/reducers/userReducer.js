@@ -1,10 +1,10 @@
 import {
-  //     USER_LOAD_START,
-  //     USER_LOAD_SUCCESS,
-  //     USER_LOAD_FAILURE,
-  //     USER_POST_START,
-  USER_POST_SUCCESS
-  //     USER_POST_FAILURE,
+  USER_GET_START,
+  USER_GET_SUCCESS,
+  USER_GET_FAILURE,
+  USER_POST_START,
+  USER_POST_SUCCESS,
+  USER_POST_FAILURE
   //     USER_PUT_START,
   //     USER_PUT_SUCCESS,
   //     USER_PUT_FAILURE,
@@ -16,46 +16,53 @@ import {
 import { userData } from "../../dummy-data";
 
 const initialState = {
-  user: null
+  user: []
 };
 
 const userReducer = (state = initialState, action) => {
+  console.log(`userReducer: state: `, state);
   switch (action.type) {
-    //   case USER_LOAD_START:
-    //     return {
-    //       ...state,
-    //       isLoading: true
-    //     };
-    //   case USER_LOAD_SUCCESS:
-    //     return {
-    //       ...state,
-    //       USER: action.payload,
-    //       isLoading: false
-    //     };
-    //   case USER_LOAD_FAILURE:
-    //     return {
-    //       ...state,
-    //       error: action.payload,
-    //       isLoading: false
-    //     };
-    //   case USER_POST_START:
-    //     return {
-    //       ...state,
-    //       isLoading: true
-    //     };
+    case USER_GET_START:
+      return {
+        ...state,
+        isLoading: true
+      };
+    case USER_GET_SUCCESS:
+      return {
+        ...state,
+        user: [
+          {
+            id: action.payload.id,
+            username: action.payload.username,
+            values: action.payload.values || state.user.values,
+            projects: action.payload.projects || state.user.projects
+          }
+        ],
+        isLoading: false
+      };
+    case USER_GET_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        isLoading: false
+      };
+    case USER_POST_START:
+      return {
+        ...state,
+        isLoading: true
+      };
     case USER_POST_SUCCESS:
       console.log(`USER_POST_SUCCESS: action.payload: `, action.payload);
       return {
-        ...state,
         user: action.payload,
         isLoading: false
       };
-    //   case USER_POST_FAILURE:
-    //     return {
-    //       ...state,
-    //       error: action.payload,
-    //       isLoading: false
-    //     };
+    case USER_POST_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        isLoading: false
+      };
     //   case USER_PUT_START:
     //     return {
     //       ...state,
@@ -74,22 +81,22 @@ const userReducer = (state = initialState, action) => {
     //       isLoading: false
     //     };
 
-    //   case USER_DELETE_START:
-    //     return {
-    //       ...state,
-    //       isLoading: true
-    //     };
-    //   case USER_DELETE_SUCCESS:
-    //     return {
-    //       ...state,
-    //       USER: [action.payload]
-    //     };
-    //   case USER_DELETE_FAILURE:
-    //     return {
-    //       ...state,
-    //       error: action.payload,
-    //       isLoading: false
-    //     };
+    // case USER_DELETE_START:
+    //   return {
+    //     ...state,
+    //     isLoading: true
+    //   };
+    // case USER_DELETE_SUCCESS:
+    //   return {
+    //     ...state,
+    //     user: [action.payload]
+    //   };
+    // case USER_DELETE_FAILURE:
+    //   return {
+    //     ...state,
+    //     error: action.payload,
+    //     isLoading: false
+    //   };
 
     default:
       return state;

@@ -50,7 +50,7 @@ function ValuesList({ values, usersList }) {
       <ValuesBannerWrapper
         endOfList={endOfList}
         narrowDown={narrowDown}
-        // reselect={reselect}
+        usersList={usersList}
         usersList={usersList}
         // setEndOfList={setEndOfList}
       />

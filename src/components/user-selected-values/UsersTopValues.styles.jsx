@@ -38,19 +38,19 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
   margin: 0 auto;
   text-align: center;
   justify-content: center;
-  /* min-width: 500px; */
-  /* max-width: 80%; */
   width: 600px;
   max-width: 90%;
   height: 30vh;
   min-height: 260px;
   max-height: 30vh;
   margin-top: -45vh;
-  /* margin-bottom: 35%; */
   color: ${setColor.mainColor};
   padding: ${setRem(10)} ${setRem(10)};
   ${setLetterSpacing(3)};
-  ${props => (props.endOfList === true ? "display: flex" : "display: none")};
+  ${props =>
+    props.usersList.length > 0 && props.endOfList === true
+      ? "display: flex"
+      : "display: none"}
 
   
   h2 {
