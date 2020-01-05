@@ -1,12 +1,22 @@
 import React from "react";
+import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
+
+import { getUser, redirect } from "../../store/actions/user.actions";
 
 import { LoginButton, LoginLinkSignUp } from "./LoginForm.styles";
 import { SignUpButtonContainer } from "../sign-up-form/SignUpForm.styles";
 
-const LoginForm = ({ errors, touched, isSubmitting, isValidating, values }) => {
-  //   console.log(props);
+const LoginForm = ({
+  getUser,
+  redirect,
+  errors,
+  touched,
+  isSubmitting,
+  isValidating,
+  values
+}) => {
   return (
     <div className="form-container">
       <Form className="form">
@@ -32,7 +42,14 @@ const LoginForm = ({ errors, touched, isSubmitting, isValidating, values }) => {
           <p className="errors">{errors.password}</p>
         )}
         <SignUpButtonContainer>
-          <LoginButton type="submit" disabled={isSubmitting}>
+          <LoginButton
+            type="submit"
+            onClick={() => {
+              getUser(values);
+              redirect();
+            }}
+            disabled={isSubmitting}
+          >
             Log In
           </LoginButton>
           <LoginLinkSignUp to="/up" disabled={isSubmitting}>
@@ -59,8 +76,7 @@ export default withFormik({
   }),
   handleSubmit(values, { resetForm, setSubmitting }) {
     // console.log(`LoginForm.js: handleSubmit: values: `, values);
-    localStorage.setItem("token", "temp_token");
+    // localStorage.setItem("token", "temp_token");
     resetForm();
-    window.location.href = "/home";
   }
-})(LoginForm);
+})(connect(null, { getUser, redirect })(LoginForm));

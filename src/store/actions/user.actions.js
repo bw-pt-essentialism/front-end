@@ -1,8 +1,8 @@
 import { axiosWithAuth } from "../../axiosWithAuth";
 
-export const USER_LOAD_START = "USER_LOAD_START";
-export const USER_LOAD_SUCCESS = "USER_LOAD_SUCCESS";
-export const USER_LOAD_FAILURE = "USER_LOAD_FAILURE";
+export const USER_GET_START = "USER_GET_START";
+export const USER_GET_SUCCESS = "USER_GET_SUCCESS";
+export const USER_GET_FAILURE = "USER_GET_FAILURE";
 
 export const USER_POST_START = "USER_POST_START";
 export const USER_POST_SUCCESS = "USER_POST_SUCCESS";
@@ -16,24 +16,27 @@ export const USER_DELETE_START = "USER_DELETE_START";
 export const USER_DELETE_SUCCESS = "USER_DELETE_SUCCESS";
 export const USER_DELETE_FAILURE = "USER_DELETE_FAILURE";
 
-export const getUser = () => dispatch => {
-  dispatch({ type: USER_LOAD_START });
-  axiosWithAuth()
-    .get(`/user`)
-    .then(res => {
-      dispatch({
-        type: USER_LOAD_SUCCESS,
-        payload: res.data
-      });
-    })
-    .catch(err => {
-      dispatch({
-        type: USER_LOAD_FAILURE,
-        payload: "error loading projects"
-      });
-    });
+export const getUser = value => dispatch => {
+  dispatch({ type: USER_GET_START });
+  // axiosWithAuth()
+  //   .get(`/user`)
+  //   .then(res => {
+  dispatch({
+    type: USER_GET_SUCCESS,
+    payload: value
+  });
+  localStorage.setItem("token", "temp_token");
+  // })
+  // .catch(err => {
+  //   dispatch({
+  //     type: USER_GET_FAILURE,
+  //     payload: "error getting user"
+  //   });
+  // });
 };
-
+export const redirect = () => dispatch => {
+  window.location.href = "/home";
+};
 export const postUser = value => dispatch => {
   // dispatch({ type: USER_POST_START, payload: value });
   // axiosWithAuth()
@@ -45,7 +48,6 @@ export const postUser = value => dispatch => {
     payload: value
   });
 
-  localStorage.setItem("token", "temp_token");
   // window.location.href = "/values-selection";
   // })
   // .then(() => (window.location.href = "/values-selection"))

@@ -1,7 +1,7 @@
 import {
-  //     USER_LOAD_START,
-  //     USER_LOAD_SUCCESS,
-  //     USER_LOAD_FAILURE,
+  //     USER_GET_START,
+  USER_GET_SUCCESS,
+  //     USER_GET_FAILURE,
   //     USER_POST_START,
   USER_POST_SUCCESS
   //     USER_POST_FAILURE,
@@ -16,23 +16,33 @@ import {
 import { userData } from "../../dummy-data";
 
 const initialState = {
-  user: null
+  user: {
+    id: "",
+    username: "",
+    values: [],
+    projects: []
+  }
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    //   case USER_LOAD_START:
+    //   case USER_GET_START:
     //     return {
     //       ...state,
     //       isLoading: true
     //     };
-    //   case USER_LOAD_SUCCESS:
-    //     return {
-    //       ...state,
-    //       USER: action.payload,
-    //       isLoading: false
-    //     };
-    //   case USER_LOAD_FAILURE:
+    case USER_GET_SUCCESS:
+      return {
+        ...state,
+        user: {
+          id: Date.now(),
+          username: action.payload.username,
+          values: action.payload.values || state.user.values,
+          projects: action.payload.projects || state.user.projects
+        },
+        isLoading: false
+      };
+    //   case USER_GET_FAILURE:
     //     return {
     //       ...state,
     //       error: action.payload,
