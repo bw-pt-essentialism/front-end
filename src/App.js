@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { useSelector, connect } from 'react-redux';
+import React from "react";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import PrivateRoute from './PrivateRoute';
+import PrivateRoute from "./PrivateRoute";
 
-import Header from './components/header/Header.component';
-import SignInAndUpPage from './pages/sign-in-and-up/SignInAndUpPage';
-import HomePage from './pages/homepage/HomePage.page';
-import ValuesSelectionPage from './pages/values-selection/ValuesSelectionPage';
-import ChoiceExplanation from './components/choice-explanation/ChoiceExplanationForm.component';
+import Header from "./components/header/Header.component";
+import SignInAndUpPage from "./pages/sign-in-and-up/SignInAndUpPage";
+import HomePage from "./pages/homepage/HomePage.page";
+import ValuesSelectionPage from "./pages/values-selection/ValuesSelectionPage";
+import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanationForm.component";
 
-import { Globals } from './globals/GlobalStyles';
+import { Globals } from "./globals/GlobalStyles";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   const { user } = useSelector(state => ({ user: state.user.user }));
