@@ -54,7 +54,7 @@ const userReducer = (state = initialState, action) => {
     case USER_POST_SUCCESS:
       console.log(`USER_POST_SUCCESS: action.payload: `, action.payload);
       return {
-        user: [action.payload],
+        user: action.payload,
         isLoading: false
       };
     case USER_POST_FAILURE:
