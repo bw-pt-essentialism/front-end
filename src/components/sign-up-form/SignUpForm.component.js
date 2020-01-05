@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
-import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 
 import {
@@ -10,7 +9,11 @@ import {
   SignUpLinkLogin
 } from "./SignUpForm.styles";
 
-import { postUser } from "../../store/actions/user.actions";
+import {
+  postUser,
+  getUser,
+  deleteUser
+} from "../../store/actions/user.actions";
 
 import "../../globals/form.styles.css";
 
@@ -20,9 +23,26 @@ const SignUpForm = ({
   isSubmitting,
   isValidating,
   values,
-  postUser
+  postUser,
+  getUser,
+  deleteUser
 }) => {
   //   console.log(props);
+  useEffect(() => {
+    // deleteUser(20);
+    // deleteUser(21);
+    // deleteUser(22);
+    // deleteUser(23);
+    // deleteUser(24);
+    // deleteUser(25);
+    // deleteUser(14);
+    // deleteUser(15);
+    // deleteUser(16);
+    // deleteUser(17);
+    // deleteUser(18);
+    // deleteUser(19);
+    // getUser(1);
+  }, []);
 
   const handleClick = () => {
     postUser({
@@ -31,6 +51,7 @@ const SignUpForm = ({
       password: values.password,
       email: values.email
     });
+    // postUser(values);
   };
 
   return (
@@ -147,9 +168,7 @@ export default withFormik({
       setErrors({ verifyPassword: "Passwords do not match" });
       setSubmitting(false);
     } else {
-      // console.log(`SignUpForm.js: handleSubmit: values: `, values);
-      localStorage.setItem("token", "temp_token");
       resetForm();
     }
   }
-})(connect(null, { postUser })(SignUpForm));
+})(connect(null, { postUser, getUser, deleteUser })(SignUpForm));
