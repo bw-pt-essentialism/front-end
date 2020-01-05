@@ -1,41 +1,34 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import PrivateRoute from "./PrivateRoute";
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useSelector, connect } from 'react-redux';
 
-import Header from "./components/header/Header.component";
-import SignInAndUpPage from "./pages/sign-in-and-up/SignInAndUpPage";
-import HomePage from "./pages/homepage/HomePage.page";
-import ValuesSelectionPage from "./pages/values-selection/ValuesSelectionPage";
-import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanationForm.component";
-import Dashboard from "./components/dashboard/Dashboard";
+import PrivateRoute from './PrivateRoute';
 
-import { Globals } from "./globals/GlobalStyles";
+import Header from './components/header/Header.component';
+import SignInAndUpPage from './pages/sign-in-and-up/SignInAndUpPage';
+import HomePage from './pages/homepage/HomePage.page';
+import ValuesSelectionPage from './pages/values-selection/ValuesSelectionPage';
+import ChoiceExplanation from './components/choice-explanation/ChoiceExplanationForm.component';
 
-import "./App.css";
+import { Globals } from './globals/GlobalStyles';
+
+import './App.css';
 
 function App() {
-  console.log(`locale storage.getItem`, localStorage.getItem("token"));
-  const token = localStorage.getItem("token");
+  const { user } = useSelector(state => ({ user: state.user.user }));
+
   return (
     <Router>
       <Globals />
-      {/* {token !== null ? <Header /> : <SignInAndUpPage />} */}
-      {/* <Switch> */}
-
-      <Route path="/">
-        <SignInAndUpPage />
-      </Route>
-
-      <PrivateRoute exact path="/dashboard" component={Dashboard} />
-      {/* </Switch> */}
-      {/* <Switch>
+      {user.length || localStorage.token ? <Header /> : <SignInAndUpPage />}
+      <Switch>
         <PrivateRoute path="/home" component={HomePage} />
         <PrivateRoute
           path="/values-selection"
           component={ValuesSelectionPage}
         />
         <PrivateRoute path="/choice-expl" component={ChoiceExplanation} />
-      </Switch> */}
+      </Switch>
     </Router>
   );
 }

@@ -1,22 +1,22 @@
-import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
-import { withFormik, Form, Field } from "formik";
-import * as Yup from "yup";
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withFormik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 
 import {
   SignUpButton,
   SignUpButtonContainer,
   SignUpLinkLogin
-} from "./SignUpForm.styles";
+} from './SignUpForm.styles';
 
 import {
   postUser,
   getUser,
   deleteUser
-} from "../../store/actions/user.actions";
+} from '../../store/actions/user.actions';
 
-import "../../globals/form.styles.css";
+import '../../globals/form.styles.css';
 
 const SignUpForm = ({
   errors,
@@ -56,7 +56,7 @@ const SignUpForm = ({
       email: values.email
     }).then(() => {
       console.log(localStorage.token);
-      history.push("/dashboard/values-selection");
+      history.push('/values-selection');
     });
     // postUser(values);
   };
@@ -149,30 +149,30 @@ const SignUpForm = ({
 export default withFormik({
   mapPropsToValues({ name, email, password, verifyPassword, terms, username }) {
     return {
-      name: name || "",
-      email: email || "",
-      password: password || "",
-      verifyPassword: verifyPassword || "",
+      name: name || '',
+      email: email || '',
+      password: password || '',
+      verifyPassword: verifyPassword || '',
       terms: terms || false,
-      username: username || ""
+      username: username || ''
     };
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string().email("Please Enter A Valid Email"),
-    password: Yup.string().min(8, "Password must be 8 characters or longer"),
+    email: Yup.string().email('Please Enter A Valid Email'),
+    password: Yup.string().min(8, 'Password must be 8 characters or longer'),
     verifyPassword: Yup.string().min(
       8,
-      "Password must be 8 characters or longer and should match"
+      'Password must be 8 characters or longer and should match'
     ),
-    name: Yup.string().required("Required"),
+    name: Yup.string().required('Required'),
     terms: Yup.boolean()
-      .required("Required")
-      .oneOf([true], "Must Accept Terms and Conditions"),
+      .required('Required')
+      .oneOf([true], 'Must Accept Terms and Conditions'),
     username: Yup.string().required()
   }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     if (values.password !== values.verifyPassword) {
-      setErrors({ verifyPassword: "Passwords do not match" });
+      setErrors({ verifyPassword: 'Passwords do not match' });
       setSubmitting(false);
     } else {
       resetForm();
