@@ -50,7 +50,10 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
   color: ${setColor.mainColor};
   padding: ${setRem(10)} ${setRem(10)};
   ${setLetterSpacing(3)};
-  ${props => (props.endOfList === true ? "display: flex" : "display: none")};
+  ${props =>
+    props.usersList.length > 0 && props.endOfList === true
+      ? "display: flex"
+      : "display: none"}
 
   
   h2 {
