@@ -19,7 +19,7 @@ import {
 
 const Banner = ({ className, quote, getZen }) => {
   useEffect(() => {
-    getZen();
+    // getZen();
   }, []);
 
   return (
