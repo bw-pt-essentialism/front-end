@@ -9,4 +9,5 @@ export const StyledHeader = styled.header`
   background: ${setColor.mainColor};
   color: ${setColor.offWhite};
   padding: 1rem;
+  display: flex;
 `;

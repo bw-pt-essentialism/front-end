@@ -5,10 +5,15 @@ import { StyledHeader } from "./Header.styles";
 import { LogOutButton } from "../login-logout-links/LogoutLink.component";
 
 function Header({ user }) {
+  // const user = JSON.parse(localStorage.getItem("user"));
   console.log(`Header.js: user: `, user);
+  const thisUser = user[0];
   return (
     <StyledHeader>
-      <p>username</p>
+      <p>{thisUser.username}</p>
+      <LogOutButton onClick={() => localStorage.removeItem("token")}>
+        Log Out
+      </LogOutButton>
     </StyledHeader>
   );
 }
@@ -16,7 +21,7 @@ function Header({ user }) {
 const mapPropsToState = state => {
   console.log(`Header.js: mapPropsToState: state: `, state);
   return {
-    user: state.user
+    user: state.user.user
   };
 };
 

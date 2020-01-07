@@ -26,7 +26,7 @@ export const getUser = id => dispatch => {
         type: USER_GET_SUCCESS,
         payload: res.data
       });
-      // localStorage.setItem("token", "temp_token");
+      localStorage.setItem("user", JSON.stringify(res.data));
     })
     .catch(err => {
       dispatch({
@@ -38,26 +38,23 @@ export const getUser = id => dispatch => {
 export const postUser = value => dispatch => {
   dispatch({ type: USER_POST_START, payload: value });
   console.log(`user.actions: postUser: value: `, value);
-  return (
-    axiosWithAuth()
-      .post(`/users`, value)
-      .then(res => {
-        // console.log(`user.actions: postUser: .then: res: `, res.data);
-        dispatch({
-          type: USER_POST_SUCCESS,
-          payload: res.data
-        });
-        localStorage.setItem("token", "TEMP_TOKEN");
-        // window.location.href = `/values-selection`;
-      })
-      // .then(() => (window.location.href = "/value-selection"))
-      .catch(err => {
-        dispatch({
-          type: USER_POST_FAILURE,
-          payload: "error posting data" + err
-        });
-      })
-  );
+  return axiosWithAuth()
+    .post(`/users`, value)
+    .then(res => {
+      // console.log(`user.actions: postUser: .then: res: `, res.data);
+      dispatch({
+        type: USER_POST_SUCCESS,
+        payload: res.data
+      });
+      localStorage.setItem("token", "TEMP_TOKEN");
+      // localStorage.setItem("user", JSON.stringify(res.data));
+    })
+    .catch(err => {
+      dispatch({
+        type: USER_POST_FAILURE,
+        payload: "error posting data" + err
+      });
+    });
 };
 
 export const putUser = (value, id) => dispatch => {

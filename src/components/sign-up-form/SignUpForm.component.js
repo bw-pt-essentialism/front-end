@@ -30,10 +30,10 @@ const SignUpForm = ({
 }) => {
   const history = useHistory();
 
-  // useEffect(() => {
-  //   deleteUser(78);
-  //   // getUser(1);
-  // }, []);
+  useEffect(() => {
+    deleteUser(8);
+    // getUser(1);
+  }, []);
 
   const handleClick = () => {
     postUser({
@@ -165,96 +165,3 @@ export default withFormik({
     }
   }
 })(connect(null, { postUser, getUser, deleteUser })(SignUpForm));
-
-// import React, { useState } from "react";
-// import { useForm } from "react-hook-form";
-// import { connect } from "react-redux";
-
-// import {
-//   postUser,
-//   getUser,
-//   deleteUser
-// } from "../../store/actions/user.actions";
-
-// // import "./signup.styles.css";
-
-// const SignUpForm = ({ postUser }) => {
-//   const [localUserName, setLocalUserName] = useState("");
-//   const { handleSubmit, register, errors } = useForm();
-//   const onSubmit = values => {
-//     console.log(`username: `, values);
-//     postUser(values);
-//   };
-//   return (
-//     <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
-//       <p>NOT FUNCTIONAL</p>
-//       <input
-//         className="input"
-//         aria-label="select name"
-//         name="name"
-//         placeholder="Select Name"
-//         ref={register({
-//           required: "Required",
-//           pattern: {
-//             value: "",
-//             message: "Name must be more than one character"
-//           }
-//         })}
-//       />
-//       {errors.name && errors.name.message}
-//       <input
-//         className="input"
-//         aria-label="select user name"
-//         name="username"
-//         placeholder="Select User Name"
-//         ref={register({
-//           required: "Required",
-//           pattern: {
-//             value: "",
-//             message: "Name must be more than one character"
-//           }
-//         })}
-//       />
-//       {errors.username && errors.username.message}
-//       <input
-//         className="input"
-//         aria-label="Email"
-//         name="email"
-//         type="email"
-//         placeholder="Email"
-//         ref={register({
-//           required: "Required",
-//           pattern: {
-//             value: "",
-//             message: "Name must be more than one character"
-//           }
-//         })}
-//       />
-//       {errors.username && errors.username.message}
-//       <input
-//         className="input"
-//         width="400px"
-//         aria-label="choose a password"
-//         name="password"
-//         type="password"
-//         placeholder="Choose A Password"
-//         ref={register({
-//           required: "Required",
-//           pattern: {
-//             ninLength: 2,
-//             maxLength: 15,
-//             message:
-//               "Password length must be between 7 and 20 characters, include at least one letter and one number character"
-//           }
-//         })}
-//       />
-//       {errors.password && errors.password.message}
-
-//       <button to="/protected" type="submit">
-//         Submit
-//       </button>
-//     </form>
-//   );
-// };
-
-// export default connect(null, { postUser })(SignUpForm);
