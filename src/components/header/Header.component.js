@@ -8,19 +8,11 @@ import {
   StyledNavBar,
   StyledNavbarBrand,
   StyledNavLink,
-  StyledNavbarToggler
+  StyledNavbarToggler,
+  StyledNav
 } from "./Header.styles";
-import { LogOutButton } from "../login-logout-links/LogoutLink.component";
 
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from "reactstrap";
+import { Collapse, NavItem } from "reactstrap";
 
 const Header = props => {
   const [collapsed, setCollapsed] = useState(true);
@@ -44,7 +36,7 @@ const Header = props => {
         </StyledNavbarBrand>
         <StyledNavbarToggler onClick={toggleNavbar} />
         <Collapse isOpen={!collapsed} navbar>
-          <Nav navbar>
+          <StyledNav navbar>
             <NavItem>
               <StyledNavLink
                 to="/edit-values/"
@@ -66,7 +58,7 @@ const Header = props => {
                 Log Out
               </StyledNavLink>
             </NavItem>
-          </Nav>
+          </StyledNav>
         </Collapse>
       </StyledNavBar>
     </div>

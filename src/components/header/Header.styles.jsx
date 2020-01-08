@@ -26,7 +26,14 @@ export const StyledNavbarBrand = styled(NavbarBrand)`
   color: ${setColor.offWhite};
 `;
 
-export const StyledNavLink = styled(NavbarBrand)`
+export const StyledNavLink = styled(NavLink)`
   color: ${setColor.offWhite};
   font-size: 1.2rem;
+`;
+
+export const StyledNav = styled(Nav)`
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  margin-top: 2%;
+  border-top: 0.1rem ${setColor.offWhite} solid;
 `;
