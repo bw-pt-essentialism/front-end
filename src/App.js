@@ -1,6 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { postValues } from "./store/actions/values.actions";
+import { values } from "./dummy-data";
 
 import PrivateRoute from "./PrivateRoute";
 
@@ -18,6 +21,11 @@ function App() {
   const welcome = useSelector(state => state.login.welcome);
 
   console.log(welcome);
+
+  // const dispatch = useDispatch();
+  // console.log(`App.js: values: `, values[0].value);
+  // values.map(val => dispatch(postValues(val.value)));
+
   return (
     <Router>
       <Globals />
