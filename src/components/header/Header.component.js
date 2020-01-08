@@ -38,7 +38,7 @@ const Header = props => {
 
   return (
     <div>
-      <StyledNavBar color="#3d4566" light>
+      <StyledNavBar dark>
         <StyledNavbarBrand to="/" onClick={() => history.push("/home")}>
           {localWelcome}
         </StyledNavbarBrand>
