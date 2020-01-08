@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import PrivateRoute from "./PrivateRoute";
@@ -16,11 +16,16 @@ import "./App.css";
 
 function App() {
   const welcome = useSelector(state => state.login.welcome);
+
   console.log(welcome);
   return (
     <Router>
       <Globals />
-      {welcome ? <Header /> : <SignInAndUpPage />}
+      {welcome || localStorage.getItem("token") ? (
+        <Header />
+      ) : (
+        <SignInAndUpPage />
+      )}
       <Switch>
         <PrivateRoute path="/home" component={HomePage} />
         <PrivateRoute

@@ -30,10 +30,10 @@ const SignUpForm = ({
 }) => {
   const history = useHistory();
 
-  useEffect(() => {
-    deleteUser(9);
-    // getUser(1);
-  }, []);
+  // useEffect(() => {
+  //   deleteUser(9);
+  //   getUser(1);
+  // }, []);
 
   const handleClick = () => {
     postUser({
@@ -42,7 +42,7 @@ const SignUpForm = ({
       password: values.password,
       email: values.email
     }).then(() => {
-      console.log(localStorage.token);
+      localStorage.setItem("token", "TEMP_TOKEN");
       history.push("/values-selection");
     });
   };

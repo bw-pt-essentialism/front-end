@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import Value from "../value/Value.component";
 import UsersTopValues from "../user-selected-values/UsersTopValues.component";
@@ -10,7 +11,12 @@ function ValuesList({ values, usersList }) {
   const [endOfList, setEndOfList] = useState(null);
   const [narrowDown, setNarrowDown] = useState(true);
 
-  // console.log(`ValuesList.js: reselct: `, reselect);
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   console.log(`ValuesList.js: values: `, values.value);
+  //   values.map(value => dispatch(postValues(value.value)));
+  // }, []);
 
   // const goToPrevSlide = e => {
   //   e.preventDefault();
@@ -80,11 +86,6 @@ function ValuesList({ values, usersList }) {
 }
 
 const mapPropsToState = state => {
-  // console.log(
-  //   `ValuesList.js: mapPropsToState: state.values: `,
-  //   state.values.usersList
-  // );
-
   console.log(`ValuesList.js: mapPropsToState: state: `, state);
   return {
     values: state.values.values,

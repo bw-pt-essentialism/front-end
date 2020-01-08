@@ -22,7 +22,7 @@ export const TOGGLE_VALUE = "TOGGLE_VALUE";
 
 export const getValues = () => dispatch => {
   dispatch({ type: VALUES_LOAD_START });
-  axiosWithAuth()
+  return axiosWithAuth()
     .get(`/values`)
     .then(res => {
       dispatch({
@@ -40,7 +40,7 @@ export const getValues = () => dispatch => {
 
 export const postValues = value => dispatch => {
   dispatch({ type: VALUES_POST_START, payload: value });
-  axiosWithAuth()
+  return axiosWithAuth()
     .post(`/values`, value)
     .then(res => {
       dispatch({
@@ -48,7 +48,6 @@ export const postValues = value => dispatch => {
         payload: res.data
       });
     })
-    .then(() => (window.location.href = "/home"))
     .catch(err => {
       dispatch({
         type: VALUES_POST_FAILURE,
@@ -59,7 +58,7 @@ export const postValues = value => dispatch => {
 
 export const putValues = (value, id) => dispatch => {
   dispatch({ type: VALUES_PUT_START, payload: value });
-  axiosWithAuth()
+  return axiosWithAuth()
     .put(`/values/${id}`, value)
     .then(res => {
       dispatch({
@@ -67,7 +66,6 @@ export const putValues = (value, id) => dispatch => {
         payload: res.data
       });
     })
-    .then(() => (window.location.href = "/home"))
     .catch(err => {
       dispatch({
         type: VALUES_PUT_FAILURE,
@@ -78,7 +76,7 @@ export const putValues = (value, id) => dispatch => {
 
 export const deleteValues = id => dispatch => {
   dispatch({ type: VALUES_DELETE_START });
-  axiosWithAuth()
+  return axiosWithAuth()
     .delete(`/values/${id}`)
     .then(res => {
       dispatch({
@@ -86,7 +84,6 @@ export const deleteValues = id => dispatch => {
         payload: res.data
       });
     })
-    .then(() => (window.location.href = "/home"))
     .catch(err => {
       dispatch({
         type: VALUES_DELETE_FAILURE,

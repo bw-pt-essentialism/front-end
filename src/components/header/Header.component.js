@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { StyledHeader } from "./Header.styles";
 import { LogOutButton } from "../login-logout-links/LogoutLink.component";
@@ -9,12 +10,17 @@ function Header({ welcome }) {
   localStorage.setItem("welcome", JSON.stringify(welcome));
   const localWelcome = JSON.parse(localStorage.getItem("welcome"));
 
+  const history = useHistory();
+
+  const handleClick = () => {
+    localStorage.clear("token");
+    window.location.href = "/";
+  };
+
   return (
     <StyledHeader>
       <p>{welcome || localWelcome}</p>
-      <LogOutButton onClick={() => localStorage.clear("token")}>
-        Log Out
-      </LogOutButton>
+      <LogOutButton onClick={handleClick}>Log Out</LogOutButton>
     </StyledHeader>
   );
 }
