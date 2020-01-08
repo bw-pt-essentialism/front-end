@@ -1,4 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import { setColor } from "../../globals/styles";
+
+import { StyledNavBar } from "./Header.styles";
+import { LogOutButton } from "../login-logout-links/LogoutLink.component";
+
 import {
   Collapse,
   Navbar,
@@ -9,36 +17,49 @@ import {
   NavLink
 } from "reactstrap";
 
-const Example = props => {
+const Header = props => {
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
 
+  const welcome = useSelector(state => state.login.welcome);
+  console.log(`Header: welcome: `, welcome);
+  // // console.log(`Header.js: welcome: `, welcome);
+  // localStorage.setItem("welcome", JSON.stringify(welcome));
+  const localWelcome = JSON.parse(localStorage.getItem("welcome"));
+
+  const history = useHistory();
+
+  const handleClick = () => {
+    localStorage.clear("token");
+    window.location.href = "/";
+  };
+
   return (
     <div>
-      <Navbar color="faded" light>
+      <StyledNavBar color="#3d4566" light>
         <NavbarBrand href="/" className="mr-auto">
-          reactstrap
+          {localWelcome}
         </NavbarBrand>
-        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+        <NavbarToggler onClick={toggleNavbar} />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
               <NavLink href="/components/">Components</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
-                GitHub
+              <NavLink onClick={handleClick} to="/">
+                Log Out
               </NavLink>
             </NavItem>
           </Nav>
         </Collapse>
-      </Navbar>
+      </StyledNavBar>
     </div>
   );
 };
 
-export default Example;
+export default Header;
 
 // import React from "react";
 // import { connect } from "react-redux";
