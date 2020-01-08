@@ -2,15 +2,7 @@ import styled from "styled-components";
 
 import { setColor } from "../../globals/styles";
 
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from "reactstrap";
+import { Navbar, NavbarToggler, NavbarBrand, Nav, NavLink } from "reactstrap";
 
 export const StyledNavBar = styled(Navbar)`
   background: ${setColor.mainColor};
@@ -18,7 +10,6 @@ export const StyledNavBar = styled(Navbar)`
 `;
 
 export const StyledNavbarToggler = styled(NavbarToggler)`
-  /* background: ${setColor.offWhite}; */
   color: ${setColor.offWhite};
 `;
 

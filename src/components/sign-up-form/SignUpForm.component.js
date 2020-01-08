@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
@@ -15,6 +15,8 @@ import {
   getUser,
   deleteUser
 } from "../../store/actions/user.actions";
+
+import { postLogin } from "../../store/actions/login.actions";
 
 import "../../globals/form.styles.css";
 
@@ -35,16 +37,26 @@ const SignUpForm = ({
   //   getUser(1);
   // }, []);
 
+  const dispatch = useDispatch();
+
   const handleClick = () => {
     postUser({
       name: values.name,
       username: values.username,
       password: values.password,
       email: values.email
-    }).then(() => {
-      localStorage.setItem("token", "TEMP_TOKEN");
-      history.push("/values-selection");
-    });
+    })
+      .then(() => {
+        dispatch(
+          postLogin({
+            username: values.username,
+            password: values.password
+          })
+        );
+        // localStorage.setItem("token", "TEMP_TOKEN");
+        history.push("/in");
+      })
+      .then(() => history.push("/values-selection"));
   };
 
   return (
