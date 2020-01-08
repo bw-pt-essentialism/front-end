@@ -14,14 +14,19 @@ import {
 
 export const StyledNavBar = styled(Navbar)`
   background: ${setColor.mainColor};
+  color: ${setColor.offWhite};
 `;
 
 export const StyledNavbarToggler = styled(NavbarToggler)`
   /* background: ${setColor.offWhite}; */
-  /* color: ${setColor.mainColor}; */
+  color: ${setColor.offWhite};
 `;
 
 export const StyledNavbarBrand = styled(NavbarBrand)`
-  background: ${setColor.mainColor};
-  color: ${setColor.mainColor};
+  color: ${setColor.offWhite};
+`;
+
+export const StyledNavLink = styled(NavbarBrand)`
+  color: ${setColor.offWhite};
+  font-size: 1.2rem;
 `;
