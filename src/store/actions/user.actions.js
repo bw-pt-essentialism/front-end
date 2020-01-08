@@ -1,4 +1,5 @@
 import { axiosWithAuth } from "../../axiosWithAuth";
+import axios from "axios";
 
 export const USER_GET_START = "USER_GET_START";
 export const USER_GET_SUCCESS = "USER_GET_SUCCESS";
@@ -39,15 +40,15 @@ export const postUser = value => dispatch => {
   dispatch({ type: USER_POST_START, payload: value });
   console.log(`user.actions: postUser: value: `, value);
   return axiosWithAuth()
-    .post(`/users`, value)
+    .post(`/auth/register`, value)
     .then(res => {
-      // console.log(`user.actions: postUser: .then: res: `, res.data);
+      console.log(`user.actions: postUser: .then: res: `, res);
       dispatch({
         type: USER_POST_SUCCESS,
         payload: res.data
       });
-      localStorage.setItem("token", "TEMP_TOKEN");
-      // localStorage.setItem("user", JSON.stringify(res.data));
+      localStorage.setItem("token", res.data);
+      localStorage.setItem("user", JSON.stringify(res.data));
     })
     .catch(err => {
       dispatch({

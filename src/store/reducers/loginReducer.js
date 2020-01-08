@@ -5,8 +5,7 @@ import {
 } from "../actions/login.actions";
 
 const initialState = {
-  username: "",
-  password: ""
+  welcome: ""
 };
 
 const loginReducer = (state = initialState, action) => {
@@ -18,8 +17,7 @@ const loginReducer = (state = initialState, action) => {
       };
     case LOGIN_POST_SUCCESS:
       return {
-        ...state,
-        username: action.payload,
+        welcome: action.payload,
         isLoading: false
       };
     case LOGIN_POST_FAILURE:

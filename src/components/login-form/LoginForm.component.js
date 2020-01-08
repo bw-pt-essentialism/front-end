@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -16,6 +17,16 @@ const LoginForm = ({
   isValidating,
   values
 }) => {
+  const history = useHistory();
+
+  const handleClick = () => {
+    postLogin(values).then(() => history.push("/home"));
+  };
+
+  // const handleClick = () => {
+  //   postLogin(values).then(() => history.push("/home"));
+  // };
+
   return (
     <div className="form-container">
       <Form className="form">
@@ -43,9 +54,7 @@ const LoginForm = ({
         <SignUpButtonContainer>
           <LoginButton
             type="submit"
-            onClick={() => {
-              postLogin(values);
-            }}
+            onClick={handleClick}
             disabled={isSubmitting}
           >
             Log In
@@ -69,7 +78,7 @@ export default withFormik({
   validationSchema: Yup.object().shape({
     username: Yup.string().required(),
     password: Yup.string()
-      .min(8, "Password must be 8 characters or longer")
+      .min(5, "Password must be 8 characters or longer")
       .required("Required")
   }),
   handleSubmit(values, { resetForm, setSubmitting }) {

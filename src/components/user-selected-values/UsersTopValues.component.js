@@ -33,7 +33,6 @@ function UsersTopValues({
 }) {
   let history = useHistory();
   const handleClick = id => {
-    console.log(`YOU CLICKED TOGGLE VALUE`);
     toggleValue(id);
   };
 
@@ -57,7 +56,7 @@ function UsersTopValues({
     <>
       {usersList.length > 0 && (
         <section>
-          <article className={className} key={Date.now()}>
+          <div className={className} key={Date.now()}>
             <div className="card-info">
               <h4>
                 {narrowDown === false && usersList.length > 3
@@ -108,7 +107,7 @@ function UsersTopValues({
                 )
               )}
             </div>
-          </article>
+          </div>
         </section>
       )}
     </>

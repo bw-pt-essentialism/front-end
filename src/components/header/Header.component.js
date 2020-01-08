@@ -4,14 +4,15 @@ import { connect } from "react-redux";
 import { StyledHeader } from "./Header.styles";
 import { LogOutButton } from "../login-logout-links/LogoutLink.component";
 
-function Header({ user }) {
-  // const user = JSON.parse(localStorage.getItem("user"));
-  console.log(`Header.js: user: `, user);
-  const thisUser = user[0];
+function Header({ welcome }) {
+  console.log(`Header.js: welcome: `, welcome);
+  localStorage.setItem("welcome", JSON.stringify(welcome));
+  const localWelcome = JSON.parse(localStorage.getItem("welcome"));
+
   return (
     <StyledHeader>
-      <p>{thisUser.username}</p>
-      <LogOutButton onClick={() => localStorage.removeItem("token")}>
+      <p>{welcome || localWelcome}</p>
+      <LogOutButton onClick={() => localStorage.clear("token")}>
         Log Out
       </LogOutButton>
     </StyledHeader>
@@ -21,7 +22,7 @@ function Header({ user }) {
 const mapPropsToState = state => {
   console.log(`Header.js: mapPropsToState: state: `, state);
   return {
-    user: state.user.user
+    welcome: state.login.welcome
   };
 };
 

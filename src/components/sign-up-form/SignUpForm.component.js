@@ -31,7 +31,7 @@ const SignUpForm = ({
   const history = useHistory();
 
   useEffect(() => {
-    deleteUser(8);
+    deleteUser(9);
     // getUser(1);
   }, []);
 

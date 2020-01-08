@@ -15,12 +15,12 @@ import { Globals } from "./globals/GlobalStyles";
 import "./App.css";
 
 function App() {
-  const { user } = useSelector(state => ({ user: state.user.user }));
-
+  const welcome = useSelector(state => state.login.welcome);
+  console.log(welcome);
   return (
     <Router>
       <Globals />
-      {user.length || localStorage.token ? <Header /> : <SignInAndUpPage />}
+      {welcome ? <Header /> : <SignInAndUpPage />}
       <Switch>
         <PrivateRoute path="/home" component={HomePage} />
         <PrivateRoute
