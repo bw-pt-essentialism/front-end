@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -9,7 +9,6 @@ import {
 } from "../../store/actions/values.actions";
 
 import ValuesList from "../values-list/ValuesList.component";
-// import ChoiceExplanation from "../choice-explanation/ChoiceExplanationForm.component";
 
 import styled from "styled-components";
 import { NarrowDownButton, NarDwnBtnContainer } from "./UsersTopValues.styles";
@@ -19,8 +18,7 @@ import {
   setTransition,
   setColor,
   setShadow,
-  fadeIn,
-  media
+  fadeIn
 } from "../../globals/styles";
 
 function UsersTopValues({
@@ -29,17 +27,15 @@ function UsersTopValues({
   narrowDown,
   toggleValue,
   removeToggledValue,
-  endOfList
+  endOfList,
+  confirmTopList
 }) {
   let history = useHistory();
   const handleClick = id => {
     toggleValue(id);
   };
-
   const handleConfirm = usersList => {
     //the put/post action belongs here
-    console.log(`UsersTopValues.js: handleConfirm: usersList: `, usersList);
-    // return <Redirect to="/choice-expl" />;
     confirmTopList(usersList);
     history.push("/choice-expl");
   };
@@ -65,16 +61,11 @@ function UsersTopValues({
               </h4>
 
               {usersList.map(val => {
-                console.log(
-                  `UserTopValues.js: usersList.map: val.remove: `,
-                  val.remove
-                );
-
                 return (
                   <div key={val.id} onClick={() => handleClick(val.id)}>
                     <p className={`${val.remove === true && "toggle"}`}>
                       {" "}
-                      - {val.value.toLowerCase()}
+                      - {val.name.toLowerCase()}
                     </p>
                   </div>
                 );
@@ -90,7 +81,6 @@ function UsersTopValues({
                 endOfList === true && (
                   <NarDwnBtnContainer>
                     <span className="btns">
-                      {/* <p>Confirm your selections</p> */}
                       <NarrowDownButton
                         onClick={() => handleConfirm(usersList)}
                       >
@@ -98,7 +88,6 @@ function UsersTopValues({
                       </NarrowDownButton>
                     </span>
                     <span className="btns">
-                      {/* <p>Edit your selections</p> */}
                       <NarrowDownButton onClick={handleEdit}>
                         edit
                       </NarrowDownButton>
@@ -115,10 +104,6 @@ function UsersTopValues({
 }
 
 const mapPropsToState = state => {
-  console.log(
-    `UsersTopValues.component: mapPropsToState: state: `,
-    state.values.usersList
-  );
   return {
     usersList: state.values.usersList,
     remove: state.values.usersList.remove
@@ -130,56 +115,50 @@ export default connect(mapPropsToState, {
   removeToggledValue,
   confirmTopList
 })(styled(UsersTopValues)`
-background: ${setColor.mainLight};
-margin: ${setRem(32)} auto;
-max-width: 90%;
-width: 500px;
-color: ${setColor.offWhite};
-text-align: center;
-margin-top: 7.75vh;
-font-size: 1.8rem;
-${props =>
-  props.index === props.activeIndex ? "display: block" : "display: none"}
+  background: ${setColor.mainLight};
+  margin: ${setRem(32)} auto;
+  max-width: 90%;
+  width: 500px;
+  color: ${setColor.offWhite};
+  text-align: center;
+  margin-top: 7.75vh;
+  font-size: 1.8rem;
+  ${props =>
+    props.index === props.activeIndex ? "display: block" : "display: none"}
 
-  h4 {
-
+  p {
+    font-size: 1.2rem;
   }
 
-p {
-  font-size: 1.2rem;
-  /* ${fadeIn("100%", "-10%", "0")} */
-}
-
-span {
+  span {
     font-size: 1rem;
     margin-bottom: 2%;
     margin-top: 2%;
-}
-
-}
-.card-info {
-  padding: ${setRem()};
-  h4 {
-    text-transform: capitalize;
-    ${setLetterSpacing()};
   }
-  p {
-    ${setLetterSpacing()};
-  }
-}
 
-.toggle {
+  .card-info {
+    padding: ${setRem()};
+    h4 {
+      text-transform: capitalize;
+      ${setLetterSpacing()};
+    }
+    p {
+      ${setLetterSpacing()};
+    }
+  }
+
+  .toggle {
     text-decoration: line-through;
-}
-${setShadow.light};
-${setTransition()};
-&:hover {
-  ${setShadow.dark};
-}
+  }
 
-.btns p {
-  margin-top: 5%;
-  color: ${setColor.mainColor}
-}
+  ${setShadow.light};
+  ${setTransition()};
+  &:hover {
+    ${setShadow.dark};
+  }
 
+  .btns p {
+    margin-top: 5%;
+    color: ${setColor.mainColor};
+  }
 `);

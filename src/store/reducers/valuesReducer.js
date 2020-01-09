@@ -1,5 +1,3 @@
-import { values } from "../../dummy-data";
-
 import {
   VALUES_LOAD_START,
   VALUES_LOAD_SUCCESS,
@@ -15,12 +13,14 @@ import {
   VALUES_DELETE_FAILURE,
   TOGGLE_VALUE,
   REMOVE_VALUE,
-  ADD_TO_TOP_LIST
+  ADD_TO_TOP_LIST,
+  ADD_TO_TOP_TEMP_LIST
 } from "../actions/values.actions";
 
 const initialState = {
-  values: values,
-  usersList: []
+  values: [],
+  usersList: [],
+  userValues: []
 };
 
 const valuesReducer = (state = initialState, action) => {
@@ -93,14 +93,16 @@ const valuesReducer = (state = initialState, action) => {
         error: action.payload,
         isLoading: false
       };
-    case ADD_TO_TOP_LIST:
-      console.log(
-        `valuesReducer: ADD_TO_TOP_LIST: action.payload: `,
-        action.payload
-      );
+    case ADD_TO_TOP_TEMP_LIST:
       return {
         ...state,
         usersList: [...state.usersList, action.payload]
+      };
+    case ADD_TO_TOP_LIST:
+      localStorage.setItem("userValues", JSON.stringify(action.payload));
+      return {
+        ...state,
+        userValues: [action.payload]
       };
     case REMOVE_VALUE:
       return {
@@ -110,25 +112,11 @@ const valuesReducer = (state = initialState, action) => {
         })
       };
     case TOGGLE_VALUE:
-      //   console.log(`valueReducer.js: switch: case: 'TOGGLE_VALUE`, state);
-      //   console.log(
-      //     `valueReducer: switch: case "TOGGLE_COMPETED": action.payload:  `,
-      //     action.payload
-      //   );
       return {
         ...state,
 
         usersList: state.usersList.map(value => {
-          //   console.log(
-          //     `valueReducer: switch: case "TOGGLE_COMPETED": state.valueReducer:  `,
-          //     value
-          //   );
-
           if (value.id === action.payload)
-            // console.log(
-            //   `valueReducer: TOGGLE_VALUE: value.complete`,
-            //   value.VALUE
-            // );
             return {
               ...value,
               remove: !value.remove

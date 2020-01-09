@@ -19,16 +19,17 @@ const ChoiceExplanation = ({
   touched,
   isSubmitting,
   isValidating,
-  values,
-  usersList
+  values
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  // const [endOfList, setEndOfList] = useState(null);
-  // const [narrowDown, setNarrowDown] = useState(true);
+
+  const userValues = JSON.parse(localStorage.getItem("userValues"));
+
+  console.log(`ChoiceExplanation: userValues: `, userValues);
 
   const goToNextCard = () => {
     let index = activeIndex;
-    let slidesLength = usersList.length - 1;
+    let slidesLength = userValues.length - 1;
     if (index === slidesLength) {
       console.log(`ChoiceExplanation: goToNextCard: index: `, index);
       console.log(
@@ -36,7 +37,7 @@ const ChoiceExplanation = ({
         slidesLength
       );
       // index = -1;
-      //   usersList.length > 2 && setNarrowDown(false);
+      //   userValues.length > 2 && setNarrowDown(false);
       // setEndOfList(true);
     }
     ++index;
@@ -49,46 +50,51 @@ const ChoiceExplanation = ({
   return (
     <Sizer>
       <Hero img={hero} />
-      {usersList.map((val, index) => {
-        // console.log(`ChoiceExplForm.js: usersList.map: val: `, val);
-        return (
-          <div key={val.id}>
-            <FormContainer className="form" index={index} active={activeIndex}>
-              <h4>You selected: {val.value}</h4>
-              <Field
-                // className="input"
-                component="input"
-                type="text"
-                name="val"
-                placeholder="Why?"
-                value="{val.id}"
-                hidden={true}
-              />
-              <Field
-                className="input"
-                component="input"
-                type="textarea"
-                name="expl"
-                placeholder="Why?"
-              />
-              {touched.expl && errors.expl && (
-                <p className="errors">{errors.expl}</p>
-              )}
-              <SignUpButtonContainer>
-                <ConfirmExplanationButton
-                  onClick={handleClick}
-                  disabled={isSubmitting}
-                >
-                  confirm
-                </ConfirmExplanationButton>
-                {/* <LoginLinkSignUp to="/up" disabled={isSubmitting}>
+      {userValues &&
+        userValues.map((val, index) => {
+          // console.log(`ChoiceExplForm.js: userValues.map: val: `, val);
+          return (
+            <div key={val.id}>
+              <FormContainer
+                className="form"
+                index={index}
+                active={activeIndex}
+              >
+                <h4>You selected: {val.name}</h4>
+                <Field
+                  // className="input"
+                  component="input"
+                  type="text"
+                  name="val"
+                  placeholder="Why?"
+                  value="{val.id}"
+                  hidden={true}
+                />
+                <Field
+                  className="input"
+                  component="input"
+                  type="textarea"
+                  name="expl"
+                  placeholder="Why?"
+                />
+                {touched.expl && errors.expl && (
+                  <p className="errors">{errors.expl}</p>
+                )}
+                <SignUpButtonContainer>
+                  <ConfirmExplanationButton
+                    onClick={handleClick}
+                    disabled={isSubmitting}
+                  >
+                    confirm
+                  </ConfirmExplanationButton>
+                  {/* <LoginLinkSignUp to="/up" disabled={isSubmitting}>
             Sign Up
           </LoginLinkSignUp> */}
-              </SignUpButtonContainer>
-            </FormContainer>
-          </div>
-        );
-      })}
+                </SignUpButtonContainer>
+              </FormContainer>
+            </div>
+          );
+        })}
     </Sizer>
   );
 };
@@ -96,8 +102,8 @@ const ChoiceExplanation = ({
 const mapPropsToState = state => {
   console.log(`ChoiceExplanation.component: mapPropsToState: state: `, state);
   return {
-    usersList: state.values.usersList,
-    remove: state.values.usersList.remove
+    userValues: state.values.userValues,
+    remove: state.values.userValues.remove
   };
 };
 

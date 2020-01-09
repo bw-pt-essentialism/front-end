@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { postValues } from "./store/actions/values.actions";
-import { values } from "./dummy-data";
+import { postValues, getValues } from "./store/actions/values.actions";
 
 import PrivateRoute from "./PrivateRoute";
 
@@ -20,12 +19,12 @@ import "./App.css";
 function App() {
   const welcome = useSelector(state => state.login.welcome);
 
-  console.log(welcome);
+  const dispatch = useDispatch();
 
-  // const dispatch = useDispatch();
-  // console.log(`App.js: values: `, values[0].value);
-  // values.map(val => dispatch(postValues(val.value)));
-  // dispatch(postValues(values[0].value));
+  useEffect(() => {
+    dispatch(getValues());
+  });
+
   return (
     <Router>
       <Globals />

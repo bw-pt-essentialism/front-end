@@ -17,6 +17,7 @@ export const VALUES_DELETE_SUCCESS = "VALUES_DELETE_SUCCESS";
 export const VALUES_DELETE_FAILURE = "VALUES_DELETE_FAILURE";
 
 export const ADD_TO_TOP_LIST = "ADD_TO_TOP_LIST";
+export const ADD_TO_TOP_TEMP_LIST = "ADD_TO_TOP_TEMP_LIST";
 export const REMOVE_VALUE = "REMOVE_VALUE";
 export const TOGGLE_VALUE = "TOGGLE_VALUE";
 
@@ -29,6 +30,7 @@ export const getValues = () => dispatch => {
         type: VALUES_LOAD_SUCCESS,
         payload: res.data
       });
+      localStorage.setItem("values", JSON.stringify(res.data));
     })
     .catch(err => {
       dispatch({
@@ -90,6 +92,14 @@ export const deleteValues = id => dispatch => {
         payload: "error deleting values data"
       });
     });
+};
+
+export const confirmTopTempList = value => dispatch => {
+  console.log(`values.actions: topLst: value: `, value);
+  dispatch({
+    type: ADD_TO_TOP_TEMP_LIST,
+    payload: value
+  });
 };
 
 export const confirmTopList = value => dispatch => {
