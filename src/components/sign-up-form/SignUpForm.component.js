@@ -45,7 +45,7 @@ const SignUpForm = ({
       username: values.username,
       password: values.password,
       email: values.email
-    }).then(() => history.push("/values-selection"));
+    }).then(() => history.push("/in"));
     // .then(() => {
     //   dispatch(
     //     postLogin({

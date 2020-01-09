@@ -5,7 +5,8 @@ import {
 } from "../actions/login.actions";
 
 const initialState = {
-  welcome: ""
+  welcome: "",
+  id: ""
 };
 
 const loginReducer = (state = initialState, action) => {

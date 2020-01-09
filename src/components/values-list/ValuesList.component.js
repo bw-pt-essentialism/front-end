@@ -43,11 +43,11 @@ function ValuesList({ values, usersList }) {
   };
 
   //filters the values array to remove options user has already selected - not currently being used
-  const valuesArr = values;
-  const usersListArr = usersList;
-  const filteredValuesArr = valuesArr.filter(
-    val => !usersListArr.includes(val)
-  );
+  // const valuesArr = values;
+  // const usersListArr = usersList;
+  // const filteredValuesArr = valuesArr.filter(
+  //   val => !usersListArr.includes(val)
+  // );
   // console.log(`ValuesList.js: filterdValuesArr: `, filteredValuesArr);
   // console.log(`ValuesList.js: rerenderList: `, rerenderList);
 

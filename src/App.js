@@ -25,7 +25,7 @@ function App() {
   // const dispatch = useDispatch();
   // console.log(`App.js: values: `, values[0].value);
   // values.map(val => dispatch(postValues(val.value)));
-
+  // dispatch(postValues(values[0].value));
   return (
     <Router>
       <Globals />
