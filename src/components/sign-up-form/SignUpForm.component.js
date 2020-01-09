@@ -45,18 +45,16 @@ const SignUpForm = ({
       username: values.username,
       password: values.password,
       email: values.email
-    })
-      .then(() => {
-        dispatch(
-          postLogin({
-            username: values.username,
-            password: values.password
-          })
-        );
-        // localStorage.setItem("token", "TEMP_TOKEN");
-        history.push("/in");
-      })
-      .then(() => history.push("/values-selection"));
+    }).then(() => history.push("/values-selection"));
+    // .then(() => {
+    //   dispatch(
+    //     postLogin({
+    //       username: values.username,
+    //       password: values.password
+    //     })
+    //   );
+    // });
+    // .then(() => history.push("/values-selection"));
   };
 
   return (
