@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { getUser } from "../../store/actions/user.actions";
 
 import {
   StyledNavBar,
@@ -13,6 +15,16 @@ import {
 import { Collapse, NavItem } from "reactstrap";
 
 const Header = props => {
+  const dispatch = useDispatch();
+  // const id = JSON.parse(Number(localStorage.getItem("id")));
+  const id = useSelector(state => state.login.id);
+
+  const token = JSON.parse(localStorage.getItem("token"));
+
+  useEffect(() => {
+    id && localStorage.token && dispatch(getUser(id, token));
+  }, [id]);
+
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
@@ -38,6 +50,14 @@ const Header = props => {
           <StyledNavbarToggler onClick={toggleNavbar} />
           <Collapse isOpen={!collapsed} navbar>
             <StyledNav navbar>
+              <NavItem>
+                <StyledNavLink
+                  to="/edit-profile/"
+                  onClick={() => history.push("/edit-profile/")}
+                >
+                  Edit Profile
+                </StyledNavLink>
+              </NavItem>
               <NavItem>
                 <StyledNavLink
                   to="/edit-values/"

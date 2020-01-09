@@ -15,7 +15,7 @@ import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanation
 import { Globals } from "./globals/GlobalStyles";
 
 import "./App.css";
-
+import EditProfile from "./components/edit-profile/EditProfile.component";
 function App() {
   const welcome = useSelector(state => state.login.welcome);
 
@@ -40,6 +40,7 @@ function App() {
           component={ValuesSelectionPage}
         />
         <PrivateRoute path="/choice-expl" component={ChoiceExplanation} />
+        <PrivateRoute path="/edit-profile" component={EditProfile} />
       </Switch>
     </Router>
   );

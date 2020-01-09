@@ -9,13 +9,13 @@ export const postLogin = value => dispatch => {
   return axiosWithAuth()
     .post(`/auth/login`, value)
     .then(res => {
-      console.log(`login.actions: postLogin: .then: res: `, res);
       dispatch({
         type: LOGIN_POST_SUCCESS,
-        payload: res.data.message
+        payload: res.data
       });
       localStorage.setItem("token", JSON.stringify(res.data.token));
-      localStorage.setItem("userName", JSON.parse(value.username));
+      localStorage.setItem("id", JSON.stringify(res.data.id));
+      localStorage.setItem("username", JSON.stringify(value.username));
       localStorage.setItem("welcome", JSON.stringify(res.data.message));
     })
     .catch(err => {

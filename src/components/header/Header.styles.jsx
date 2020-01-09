@@ -15,11 +15,13 @@ export const StyledNavbarToggler = styled(NavbarToggler)`
 
 export const StyledNavbarBrand = styled(NavbarBrand)`
   color: ${setColor.offWhite};
+  cursor: pointer;
 `;
 
 export const StyledNavLink = styled(NavLink)`
   color: ${setColor.offWhite};
   font-size: 1.2rem;
+  cursor: pointer;
 `;
 
 export const StyledNav = styled(Nav)`

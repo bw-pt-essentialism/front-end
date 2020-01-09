@@ -15,6 +15,7 @@ export const SignUpLinkLogin = styled(CustomLink)`
   background: transparent;
   margin: 10% auto 0;
   border: none;
+  text-decoration: none;
 `;
 
 export const SignUpButtonContainer = styled(CustomButtonContainer)`

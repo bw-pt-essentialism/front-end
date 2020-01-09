@@ -18,7 +18,8 @@ const loginReducer = (state = initialState, action) => {
       };
     case LOGIN_POST_SUCCESS:
       return {
-        welcome: action.payload,
+        welcome: action.payload.message,
+        id: action.payload.id,
         isLoading: false
       };
     case LOGIN_POST_FAILURE:
