@@ -17,30 +17,32 @@ export const VALUES_DELETE_SUCCESS = "VALUES_DELETE_SUCCESS";
 export const VALUES_DELETE_FAILURE = "VALUES_DELETE_FAILURE";
 
 export const ADD_TO_TOP_LIST = "ADD_TO_TOP_LIST";
+export const ADD_TO_TOP_TEMP_LIST = "ADD_TO_TOP_TEMP_LIST";
 export const REMOVE_VALUE = "REMOVE_VALUE";
 export const TOGGLE_VALUE = "TOGGLE_VALUE";
 
 export const getValues = () => dispatch => {
   dispatch({ type: VALUES_LOAD_START });
-  axiosWithAuth()
+  return axiosWithAuth()
     .get(`/values`)
     .then(res => {
       dispatch({
         type: VALUES_LOAD_SUCCESS,
         payload: res.data
       });
+      localStorage.setItem("values", JSON.stringify(res.data));
     })
     .catch(err => {
       dispatch({
         type: VALUES_LOAD_FAILURE,
-        payload: "error loading values"
+        payload: "error loading values" + err
       });
     });
 };
 
 export const postValues = value => dispatch => {
   dispatch({ type: VALUES_POST_START, payload: value });
-  axiosWithAuth()
+  return axiosWithAuth()
     .post(`/values`, value)
     .then(res => {
       dispatch({
@@ -48,18 +50,17 @@ export const postValues = value => dispatch => {
         payload: res.data
       });
     })
-    .then(() => (window.location.href = "/home"))
     .catch(err => {
       dispatch({
         type: VALUES_POST_FAILURE,
-        payload: "error posting data"
+        payload: "error posting data" + err
       });
     });
 };
 
 export const putValues = (value, id) => dispatch => {
   dispatch({ type: VALUES_PUT_START, payload: value });
-  axiosWithAuth()
+  return axiosWithAuth()
     .put(`/values/${id}`, value)
     .then(res => {
       dispatch({
@@ -67,18 +68,17 @@ export const putValues = (value, id) => dispatch => {
         payload: res.data
       });
     })
-    .then(() => (window.location.href = "/home"))
     .catch(err => {
       dispatch({
         type: VALUES_PUT_FAILURE,
-        payload: "error putting values data"
+        payload: "error putting values data" + err
       });
     });
 };
 
 export const deleteValues = id => dispatch => {
   dispatch({ type: VALUES_DELETE_START });
-  axiosWithAuth()
+  return axiosWithAuth()
     .delete(`/values/${id}`)
     .then(res => {
       dispatch({
@@ -86,17 +86,22 @@ export const deleteValues = id => dispatch => {
         payload: res.data
       });
     })
-    .then(() => (window.location.href = "/home"))
     .catch(err => {
       dispatch({
         type: VALUES_DELETE_FAILURE,
-        payload: "error deleting values data"
+        payload: "error deleting values data" + err
       });
     });
 };
 
+export const confirmTopTempList = value => dispatch => {
+  dispatch({
+    type: ADD_TO_TOP_TEMP_LIST,
+    payload: value
+  });
+};
+
 export const confirmTopList = value => dispatch => {
-  console.log(`values.actions: topLst: value: `, value);
   dispatch({
     type: ADD_TO_TOP_LIST,
     payload: value
@@ -104,7 +109,6 @@ export const confirmTopList = value => dispatch => {
 };
 
 export const toggleValue = value => dispatch => {
-  console.log(`values.actions: toggleValue: value: `, value);
   dispatch({
     type: TOGGLE_VALUE,
     payload: value
@@ -112,7 +116,6 @@ export const toggleValue = value => dispatch => {
 };
 
 export const removeToggledValue = value => dispatch => {
-  console.log(`values.actions: removeToggledValue: value: `, value);
   dispatch({
     type: REMOVE_VALUE,
     payload: value

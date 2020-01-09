@@ -6,16 +6,17 @@ export const LOGIN_POST_FAILURE = "LOGIN_POST_FAILURE";
 
 export const postLogin = value => dispatch => {
   dispatch({ type: LOGIN_POST_START, payload: value });
-  axiosWithAuth()
-    .post(`/login`, value)
+  return axiosWithAuth()
+    .post(`/auth/login`, value)
     .then(res => {
-      console.log(`login.actions: postLogin: .then: res: `, res);
-      // dispatch({
-      //   type: LOGIN_POST_SUCCESS,
-      //   payload: res.data.payload
-      // });
-      localStorage.setItem("token", "TEMP_TOKEN");
-      window.location.href = "/home";
+      dispatch({
+        type: LOGIN_POST_SUCCESS,
+        payload: res.data
+      });
+      localStorage.setItem("token", JSON.stringify(res.data.token));
+      localStorage.setItem("id", JSON.stringify(res.data.id));
+      localStorage.setItem("username", JSON.stringify(value.username));
+      localStorage.setItem("welcome", JSON.stringify(res.data.message));
     })
     .catch(err => {
       dispatch({

@@ -13,17 +13,17 @@ function SignInAndUpPage() {
   return (
     <div>
       <Hero img={hero}>
-        {/* <Switch> */}
-        <Route path="/in">
-          <LoginForm />
-        </Route>
-        <Route path="/up">
-          <SignUpForm />
-        </Route>
-        <Route path="/">
-          <Banner />
-        </Route>
-        {/* </Switch> */}
+        <Switch>
+          <Route path="/in">
+            <LoginForm />
+          </Route>
+          <Route path="/up">
+            <SignUpForm />
+          </Route>
+          <Route path="/">
+            <Banner />
+          </Route>
+        </Switch>
       </Hero>
       <BottomImg img={stones} />
     </div>

@@ -1,36 +1,51 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { connect, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 import {
   SignUpButton,
-  SignUpButtonContainer,
-  SignUpLinkLogin
-} from "./SignUpForm.styles";
+  SignUpButtonContainer
+} from "../sign-up-form/SignUpForm.styles";
 
-import { postUser } from "../../store/actions/user.actions";
+import { putUser, deleteUser } from "../../store/actions/user.actions";
 
 import "../../globals/form.styles.css";
 
-const SignUpForm = ({
+const EditProfile = ({
   errors,
   touched,
   isSubmitting,
   isValidating,
-  values,
-  postUser
+  values
 }) => {
   const history = useHistory();
 
-  const handleClick = () => {
-    postUser({
-      name: values.name,
-      username: values.username,
-      password: values.password,
-      email: values.email
-    }).then(() => history.push("/in"));
+  const dispatch = useDispatch();
+
+  const user = useSelector(state => state.user.user);
+
+  const id = JSON.parse(Number(localStorage.getItem("id")));
+  useEffect(() => {}, []);
+
+  const handleUpdate = () => {
+    dispatch(
+      putUser(
+        {
+          name: values.name || user.name,
+          username: values.username || user.username,
+          email: values.email || user.email
+        },
+        id
+      )
+    );
+  };
+
+  const handleDelete = () => {
+    dispatch(deleteUser(id));
+    localStorage.clear();
+    // window.location.href = "/";
   };
 
   return (
@@ -41,7 +56,7 @@ const SignUpForm = ({
           component="input"
           type="text"
           name="name"
-          placeholder="Full Name"
+          placeholder={user.name}
         />
         {touched.name && errors.name && <p className="errors">{errors.name}</p>}
         <Field
@@ -49,7 +64,7 @@ const SignUpForm = ({
           component="input"
           type="email"
           name="email"
-          placeholder="email@example.com"
+          placeholder={user.email}
         />
         {touched.email && errors.email && (
           <p className="errors">{errors.email}</p>
@@ -59,7 +74,7 @@ const SignUpForm = ({
           component="input"
           type="text"
           name="username"
-          placeholder="username"
+          placeholder={user.username}
         />
         {touched.username && errors.username && (
           <p className="errors">{errors.username}</p>
@@ -74,43 +89,32 @@ const SignUpForm = ({
         {touched.password && errors.password && (
           <p className="errors">{errors.password}</p>
         )}
-        <Field
-          className="input"
-          component="input"
-          type="password"
-          name="verifyPassword"
-          placeholder="Verify Password"
-        />
+        {touched.password && (
+          <Field
+            className="input"
+            component="input"
+            type="password"
+            name="verifyPassword"
+            placeholder="Verify Password"
+          />
+        )}
         {touched.verifyPassword && errors.verifyPassword && (
           <p className="errors">{errors.verifyPassword}</p>
         )}
-
-        <span className="terms">
-          <label>
-            <Field
-              className="checkbox"
-              component="input"
-              type="checkbox"
-              checked={values.terms}
-              name="terms"
-              placeholder="Full Name"
-            />
-            {touched.terms && errors.terms && (
-              <p className="errors">{errors.terms}</p>
-            )}
-            <span className="terms-text">Terms and Conditions</span>
-          </label>
-        </span>
         <SignUpButtonContainer>
-          <SignUpLinkLogin to="/in" disabled={isSubmitting}>
-            Log In
-          </SignUpLinkLogin>
           <SignUpButton
             type="submit"
-            onClick={handleClick}
+            onClick={handleDelete}
             disabled={isSubmitting}
           >
-            SignUp
+            delete me
+          </SignUpButton>
+          <SignUpButton
+            type="submit"
+            onClick={handleUpdate}
+            disabled={isSubmitting}
+          >
+            Update
           </SignUpButton>
         </SignUpButtonContainer>
       </Form>
@@ -131,16 +135,13 @@ export default withFormik({
   },
   validationSchema: Yup.object().shape({
     email: Yup.string().email("Please Enter A Valid Email"),
-    password: Yup.string().min(8, "Password must be 8 characters or longer"),
+    password: Yup.string().min(5, "Password must be 8 characters or longer"),
     verifyPassword: Yup.string().min(
-      8,
+      5,
       "Password must be 8 characters or longer and should match"
     ),
-    name: Yup.string().required("Required"),
-    terms: Yup.boolean()
-      .required("Required")
-      .oneOf([true], "Must Accept Terms and Conditions"),
-    username: Yup.string().required()
+    name: Yup.string(),
+    username: Yup.string()
   }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     if (values.password !== values.verifyPassword) {
@@ -150,4 +151,4 @@ export default withFormik({
       resetForm();
     }
   }
-})(connect(null, { postUser })(SignUpForm));
+})(EditProfile);

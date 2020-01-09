@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -8,14 +9,13 @@ import { postLogin } from "../../store/actions/login.actions";
 import { LoginButton, LoginLinkSignUp } from "./LoginForm.styles";
 import { SignUpButtonContainer } from "../sign-up-form/SignUpForm.styles";
 
-const LoginForm = ({
-  postLogin,
-  errors,
-  touched,
-  isSubmitting,
-  isValidating,
-  values
-}) => {
+const LoginForm = ({ postLogin, errors, touched, isSubmitting, values }) => {
+  const history = useHistory();
+
+  const handleClick = () => {
+    postLogin(values).then(() => history.push("/home"));
+  };
+
   return (
     <div className="form-container">
       <Form className="form">
@@ -43,9 +43,7 @@ const LoginForm = ({
         <SignUpButtonContainer>
           <LoginButton
             type="submit"
-            onClick={() => {
-              postLogin(values);
-            }}
+            onClick={handleClick}
             disabled={isSubmitting}
           >
             Log In
@@ -69,12 +67,10 @@ export default withFormik({
   validationSchema: Yup.object().shape({
     username: Yup.string().required(),
     password: Yup.string()
-      .min(8, "Password must be 8 characters or longer")
+      .min(5, "Password must be 5 characters or longer")
       .required("Required")
   }),
   handleSubmit(values, { resetForm, setSubmitting }) {
-    // console.log(`LoginForm.js: handleSubmit: values: `, values);
-    // localStorage.setItem("token", "temp_token");
     resetForm();
   }
 })(connect(null, { postLogin })(LoginForm));

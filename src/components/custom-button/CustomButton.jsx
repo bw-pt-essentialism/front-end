@@ -4,12 +4,7 @@ import { setColor } from "../../globals/styles";
 
 const bkgrndColor = `${setColor.mainColor}`;
 const fntColor = `${setColor.offWhite}`;
-//below works if you simply add <-- ${border()} --> with no key name, but it won't work for passing props
-// const border = (size = "1px", style = "solid", color = "hotpink") => {
-//   return `border:${size} ${style} ${color}`;
-// };
 
-//can extend CustomButton like this export const NewCustomButton = styled(CustomButton)`//some updates here`;
 export const CustomButton = styled.button`
   cursor: ${props => (props.cursor ? props.cursor : "pointer")};
   /* font */

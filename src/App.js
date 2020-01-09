@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { getValues, postValues } from "./store/actions/values.actions";
 
 import PrivateRoute from "./PrivateRoute";
 
@@ -11,16 +13,28 @@ import ValuesSelectionPage from "./pages/values-selection/ValuesSelectionPage";
 import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanationForm.component";
 
 import { Globals } from "./globals/GlobalStyles";
+import { values } from "./dummy-data";
 
 import "./App.css";
-
+import EditProfile from "./components/edit-profile/EditProfile.component";
 function App() {
-  const { user } = useSelector(state => ({ user: state.user.user }));
+  const welcome = useSelector(state => state.login.welcome);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // values.map(val => dispatch(postValues({ name: val.value })));
+    dispatch(getValues());
+  });
 
   return (
     <Router>
       <Globals />
-      {user.length || localStorage.token ? <Header /> : <SignInAndUpPage />}
+      {welcome || localStorage.getItem("token") ? (
+        <Header />
+      ) : (
+        <SignInAndUpPage />
+      )}
       <Switch>
         <PrivateRoute path="/home" component={HomePage} />
         <PrivateRoute
@@ -28,6 +42,7 @@ function App() {
           component={ValuesSelectionPage}
         />
         <PrivateRoute path="/choice-expl" component={ChoiceExplanation} />
+        <PrivateRoute path="/edit-profile" component={EditProfile} />
       </Switch>
     </Router>
   );

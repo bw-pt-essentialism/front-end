@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { confirmTopList } from "../../store/actions/values.actions";
+import { confirmTopTempList } from "../../store/actions/values.actions";
 
 import styled from "styled-components";
 import {
@@ -21,25 +21,18 @@ const Value = ({
   values,
   id,
   goToNextCard,
-  confirmTopList
+  confirmTopTempList
 }) => {
-  //   console.log(`Value.js: confirmTopList: `, confirmTopList);
-
-  const handleYes = e => {
-    // console.log(`Value.js: handleClick: e.target.value: `, e.target);
+  const handleYes = () => {
     values.map(val => {
-      return val.id === id && confirmTopList(val);
+      return val.id === id && confirmTopTempList(val);
     });
     goToNextCard();
   };
 
-  const handleNo = e => {
-    // console.log(`Value.js: handleClick: e.target.value: `, e.target);
+  const handleNo = () => {
     values.map(val => {
-      return (
-        val.id === id &&
-        console.log(`Value.js: handleNo: values.map: val: `, val)
-      );
+      return val.id === id;
     });
 
     goToNextCard();
@@ -62,17 +55,15 @@ const Value = ({
 };
 
 const mapStateToProps = state => {
-  //   console.log(`ValuesList.js: mapStateToProps: state.values: `, state.values);
   return {
     values: state.values.values,
     isLoading: state.isLoading
   };
 };
 
-export default connect(mapStateToProps, { confirmTopList })(styled(Value)`
+export default connect(mapStateToProps, { confirmTopTempList })(styled(Value)`
   background: ${setColor.mainLight};
   margin: ${setRem(32)} auto;
-  /* min-width: 500px; */
   max-width: 90%;
   width: 700px;
   height: 22.5vh;

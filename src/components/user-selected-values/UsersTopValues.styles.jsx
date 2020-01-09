@@ -52,16 +52,15 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
       ? "display: flex"
       : "display: none"}
 
-  
   h2 {
     text-transform: uppercase;
     font-size: 2.5rem;
-      span {
-        text-transform: capitalize;
-        color: ${setColor.offWhite};
-        ${fadeIn("100%", "-10%", "0")}
-        ${setTransition("all", "1s", "ease-in-out")}
-      }
+    span {
+      text-transform: capitalize;
+      color: ${setColor.offWhite};
+      ${fadeIn("100%", "-10%", "0")}
+      ${setTransition("all", "1s", "ease-in-out")}
+    }
   }
   p {
     width: 85%;
@@ -73,14 +72,6 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
       width: 75%;
       font-size: 1.2rem;
     }`}
-
-  /* h2 {
-    ${fadeIn("100%", "-10%", "0")}
-  }
-  .info {
-    ${fadeIn("-100%", "10%", "0")}
-  } */
-  
 `;
 
 export default ValuesBannerWrapper;

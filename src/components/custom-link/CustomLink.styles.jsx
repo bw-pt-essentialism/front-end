@@ -5,12 +5,7 @@ import { setColor } from "../../globals/styles";
 
 const bkgrndColor = `${setColor.mainColor}`;
 const fntColor = `${setColor.offWhite}`;
-//below works if you simply add <-- ${border()} --> with no key name, but it won't work for passing props
-// const border = (size = "1px", style = "solid", color = "hotpink") => {
-//   return `border:${size} ${style} ${color}`;
-// };
 
-//can extend CustomLink like this export const NewCustomLink = styled(CustomLink)`//some updates here`;
 export const CustomLink = styled(Link)`
   cursor: ${props => (props.cursor ? props.cursor : "pointer")};
   /* font */

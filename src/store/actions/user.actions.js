@@ -16,17 +16,16 @@ export const USER_DELETE_START = "USER_DELETE_START";
 export const USER_DELETE_SUCCESS = "USER_DELETE_SUCCESS";
 export const USER_DELETE_FAILURE = "USER_DELETE_FAILURE";
 
-export const getUser = id => dispatch => {
+export const getUser = (id, token) => dispatch => {
   dispatch({ type: USER_GET_START });
   axiosWithAuth()
-    .get(`/users/${id}`)
+    .get(`/users/${id}`, token)
     .then(res => {
-      console.log(res);
       dispatch({
         type: USER_GET_SUCCESS,
         payload: res.data
       });
-      // localStorage.setItem("token", "temp_token");
+      localStorage.setItem("user", JSON.stringify(res.data));
     })
     .catch(err => {
       dispatch({
@@ -37,27 +36,23 @@ export const getUser = id => dispatch => {
 };
 export const postUser = value => dispatch => {
   dispatch({ type: USER_POST_START, payload: value });
-  console.log(`user.actions: postUser: value: `, value);
-  return (
-    axiosWithAuth()
-      .post(`/users`, value)
-      .then(res => {
-        // console.log(`user.actions: postUser: .then: res: `, res.data);
-        dispatch({
-          type: USER_POST_SUCCESS,
-          payload: res.data
-        });
-        localStorage.setItem("token", "TEMP_TOKEN");
-        // window.location.href = `/values-selection`;
-      })
-      // .then(() => (window.location.href = "/value-selection"))
-      .catch(err => {
-        dispatch({
-          type: USER_POST_FAILURE,
-          payload: "error posting data" + err
-        });
-      })
-  );
+  return axiosWithAuth()
+    .post(`/auth/register`, value)
+    .then(res => {
+      console.log(`postUser: value: res: `, value, res);
+      localStorage.setItem("userName", JSON.stringify(value.username));
+      localStorage.setItem("userEmail", JSON.stringify(value.userEmail));
+      dispatch({
+        type: USER_POST_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: USER_POST_FAILURE,
+        payload: "error posting data" + err
+      });
+    });
 };
 
 export const putUser = (value, id) => dispatch => {
@@ -69,8 +64,9 @@ export const putUser = (value, id) => dispatch => {
         type: USER_PUT_SUCCESS,
         payload: res.data
       });
+
+      localStorage.setItem("user", JSON.stringify(res.data));
     })
-    // .then(() => (window.location.href = "/home"))
     .catch(err => {
       dispatch({
         type: USER_PUT_FAILURE,

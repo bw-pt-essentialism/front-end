@@ -3,7 +3,6 @@ import { CustomButton } from "../custom-button/CustomButton";
 import { CustomLink } from "../custom-link/CustomLink.styles";
 
 export const LogOutButton = styled(CustomButton)`
-  /* background: transparent; */
   margin: 10% auto 0;
   border: none;
 `;

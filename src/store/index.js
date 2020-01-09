@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { persistStore } from "redux-persist";
 import rootReducer from "./reducers";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const middlewares = [thunk];
 
