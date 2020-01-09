@@ -14,11 +14,10 @@ import {
 } from "../actions/user.actions";
 
 const initialState = {
-  user: {}
+  user: JSON.parse(localStorage.user) || {}
 };
 
 const userReducer = (state = initialState, action) => {
-  console.log(`userReducer: state: `, state);
   switch (action.type) {
     case USER_GET_START:
       return {
@@ -43,7 +42,6 @@ const userReducer = (state = initialState, action) => {
         isLoading: true
       };
     case USER_POST_SUCCESS:
-      console.log(`USER_POST_SUCCESS: action.payload: `, action.payload);
       return {
         user: action.payload,
         isLoading: false

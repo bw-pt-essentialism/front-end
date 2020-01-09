@@ -25,11 +25,12 @@ export const getprojects = () => dispatch => {
         type: PROJECTS_LOAD_SUCCESS,
         payload: res.data
       });
+      localStorage.setItem("projects", JSON.stringify(res.data));
     })
     .catch(err => {
       dispatch({
         type: PROJECTS_LOAD_FAILURE,
-        payload: "error loading projects"
+        payload: "error loading projects" + err
       });
     });
 };
@@ -44,11 +45,11 @@ export const postProjects = value => dispatch => {
         payload: res.data
       });
     })
-    .then(() => (window.location.href = "/home"))
+
     .catch(err => {
       dispatch({
         type: PROJECTS_POST_FAILURE,
-        payload: "error posting data"
+        payload: "error posting data" + err
       });
     });
 };
@@ -63,11 +64,11 @@ export const putProjects = (value, id) => dispatch => {
         payload: res.data
       });
     })
-    .then(() => (window.location.href = "/home"))
+
     .catch(err => {
       dispatch({
         type: PROJECTS_PUT_FAILURE,
-        payload: "error putting projects data"
+        payload: "error putting projects data" + err
       });
     });
 };
@@ -82,11 +83,11 @@ export const deleteProjects = id => dispatch => {
         payload: res.data
       });
     })
-    .then(() => (window.location.href = "/home"))
+
     .catch(err => {
       dispatch({
         type: PROJECTS_DELETE_FAILURE,
-        payload: "error deleting projects data"
+        payload: "error deleting projects data" + err
       });
     });
 };

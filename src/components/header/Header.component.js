@@ -14,24 +14,24 @@ import {
 
 import { Collapse, NavItem } from "reactstrap";
 
-const Header = props => {
+const Header = () => {
+  const [collapsed, setCollapsed] = useState(true);
+
   const dispatch = useDispatch();
-  // const id = JSON.parse(Number(localStorage.getItem("id")));
+
   const id = useSelector(state => state.login.id);
+
+  const welcome = useSelector(state => state.login.welcome);
+
+  const localWelcome = JSON.parse(localStorage.getItem("welcome"));
 
   const token = JSON.parse(localStorage.getItem("token"));
 
   useEffect(() => {
     id && localStorage.token && dispatch(getUser(id, token));
-  }, [id]);
-
-  const [collapsed, setCollapsed] = useState(true);
+  }, [id, token]);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
-
-  const welcome = useSelector(state => state.login.welcome);
-
-  const localWelcome = JSON.parse(localStorage.getItem("welcome"));
 
   const history = useHistory();
 

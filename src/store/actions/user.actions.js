@@ -64,7 +64,6 @@ export const putUser = (value, id) => dispatch => {
         type: USER_PUT_SUCCESS,
         payload: res.data
       });
-
       localStorage.setItem("user", JSON.stringify(res.data));
     })
     .catch(err => {
@@ -85,7 +84,6 @@ export const deleteUser = id => dispatch => {
         payload: res.data
       });
     })
-    .then(() => (window.location.href = "/home"))
     .catch(err => {
       dispatch({
         type: USER_DELETE_FAILURE,

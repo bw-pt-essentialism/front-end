@@ -70,7 +70,7 @@ export default withFormik({
       .min(5, "Password must be 5 characters or longer")
       .required("Required")
   }),
-  handleSubmit(values, { resetForm, setSubmitting }) {
+  handleSubmit({ resetForm }) {
     resetForm();
   }
 })(connect(null, { postLogin })(LoginForm));

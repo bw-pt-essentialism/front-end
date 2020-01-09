@@ -18,9 +18,9 @@ import {
 } from "../actions/values.actions";
 
 const initialState = {
-  values: [],
-  usersList: [],
-  userValues: []
+  values: JSON.parse(localStorage.getItem("values")) || [],
+  usersList: JSON.parse(localStorage.getItem("usersList")) || [],
+  userValues: JSON.parse(localStorage.getItem("userValues")) || []
 };
 
 const valuesReducer = (state = initialState, action) => {

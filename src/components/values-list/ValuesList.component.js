@@ -29,7 +29,6 @@ function ValuesList({ usersList }) {
         endOfList={endOfList}
         narrowDown={narrowDown}
         usersList={usersList}
-        usersList={usersList}
       />
       <h4>
         {localValues &&

@@ -13,7 +13,7 @@ import ValuesSelectionPage from "./pages/values-selection/ValuesSelectionPage";
 import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanationForm.component";
 
 import { Globals } from "./globals/GlobalStyles";
-import { values } from "./dummy-data";
+// import { values } from "./dummy-data";
 
 import "./App.css";
 import EditProfile from "./components/edit-profile/EditProfile.component";

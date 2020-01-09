@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -20,8 +19,6 @@ const EditProfile = ({
   isValidating,
   values
 }) => {
-  const history = useHistory();
-
   const dispatch = useDispatch();
 
   const user = useSelector(state => state.user.user);
@@ -45,7 +42,6 @@ const EditProfile = ({
   const handleDelete = () => {
     dispatch(deleteUser(id));
     localStorage.clear();
-    // window.location.href = "/";
   };
 
   return (
