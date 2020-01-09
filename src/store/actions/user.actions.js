@@ -40,8 +40,8 @@ export const postUser = value => dispatch => {
     .post(`/auth/register`, value)
     .then(res => {
       console.log(`postUser: value: res: `, value, res);
-      localStorage.setItem("userName", JSON.parse(value.username));
-      localStorage.setItem("userEmail", JSON.parse(value.userEmail));
+      localStorage.setItem("userName", JSON.stringify(value.username));
+      localStorage.setItem("userEmail", JSON.stringify(value.userEmail));
       dispatch({
         type: USER_POST_SUCCESS,
         payload: res.data
@@ -64,6 +64,8 @@ export const putUser = (value, id) => dispatch => {
         type: USER_PUT_SUCCESS,
         payload: res.data
       });
+
+      localStorage.setItem("user", JSON.stringify(res.data));
     })
     .catch(err => {
       dispatch({

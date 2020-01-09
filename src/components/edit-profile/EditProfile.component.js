@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { withFormik, Form, Field } from "formik";
@@ -24,25 +24,29 @@ const EditProfile = ({
 
   const dispatch = useDispatch();
 
-  const id = JSON.parse(Number(localStorage.getItem("id")));
+  const user = useSelector(state => state.user.user);
 
-  console.log(id);
+  const id = JSON.parse(Number(localStorage.getItem("id")));
+  useEffect(() => {}, []);
 
   const handleUpdate = () => {
     dispatch(
       putUser(
         {
-          name: values.name,
-          username: values.username,
-          password: values.password,
-          email: values.email
+          name: values.name || user.name,
+          username: values.username || user.username,
+          email: values.email || user.email
         },
         id
       )
-    ).then(() => history.push("/in"));
+    );
   };
 
-  const handleDelete = () => dispatch(deleteUser(id));
+  const handleDelete = () => {
+    dispatch(deleteUser(id));
+    localStorage.clear();
+    // window.location.href = "/";
+  };
 
   return (
     <div className="form-container">
@@ -52,7 +56,7 @@ const EditProfile = ({
           component="input"
           type="text"
           name="name"
-          placeholder="Full Name"
+          placeholder={user.name}
         />
         {touched.name && errors.name && <p className="errors">{errors.name}</p>}
         <Field
@@ -60,7 +64,7 @@ const EditProfile = ({
           component="input"
           type="email"
           name="email"
-          placeholder="email@example.com"
+          placeholder={user.email}
         />
         {touched.email && errors.email && (
           <p className="errors">{errors.email}</p>
@@ -70,7 +74,7 @@ const EditProfile = ({
           component="input"
           type="text"
           name="username"
-          placeholder="username"
+          placeholder={user.username}
         />
         {touched.username && errors.username && (
           <p className="errors">{errors.username}</p>
@@ -85,17 +89,18 @@ const EditProfile = ({
         {touched.password && errors.password && (
           <p className="errors">{errors.password}</p>
         )}
-        <Field
-          className="input"
-          component="input"
-          type="password"
-          name="verifyPassword"
-          placeholder="Verify Password"
-        />
+        {touched.password && (
+          <Field
+            className="input"
+            component="input"
+            type="password"
+            name="verifyPassword"
+            placeholder="Verify Password"
+          />
+        )}
         {touched.verifyPassword && errors.verifyPassword && (
           <p className="errors">{errors.verifyPassword}</p>
         )}
-
         <SignUpButtonContainer>
           <SignUpButton
             type="submit"
@@ -130,16 +135,13 @@ export default withFormik({
   },
   validationSchema: Yup.object().shape({
     email: Yup.string().email("Please Enter A Valid Email"),
-    password: Yup.string().min(8, "Password must be 8 characters or longer"),
+    password: Yup.string().min(5, "Password must be 8 characters or longer"),
     verifyPassword: Yup.string().min(
-      8,
+      5,
       "Password must be 8 characters or longer and should match"
     ),
-    name: Yup.string().required("Required"),
-    terms: Yup.boolean()
-      .required("Required")
-      .oneOf([true], "Must Accept Terms and Conditions"),
-    username: Yup.string().required()
+    name: Yup.string(),
+    username: Yup.string()
   }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     if (values.password !== values.verifyPassword) {

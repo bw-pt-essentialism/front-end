@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getValues } from "./store/actions/values.actions";
+import { getValues, postValues } from "./store/actions/values.actions";
 
 import PrivateRoute from "./PrivateRoute";
 
@@ -13,6 +13,7 @@ import ValuesSelectionPage from "./pages/values-selection/ValuesSelectionPage";
 import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanationForm.component";
 
 import { Globals } from "./globals/GlobalStyles";
+import { values } from "./dummy-data";
 
 import "./App.css";
 import EditProfile from "./components/edit-profile/EditProfile.component";
@@ -22,6 +23,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // values.map(val => dispatch(postValues({ name: val.value })));
     dispatch(getValues());
   });
 

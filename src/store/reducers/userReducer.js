@@ -14,7 +14,7 @@ import {
 } from "../actions/user.actions";
 
 const initialState = {
-  user: []
+  user: {}
 };
 
 const userReducer = (state = initialState, action) => {
@@ -28,16 +28,7 @@ const userReducer = (state = initialState, action) => {
     case USER_GET_SUCCESS:
       return {
         ...state,
-        user: [
-          {
-            id: action.payload.id,
-            username: action.payload.username,
-            email: action.payload.email,
-            age: action.payload.age,
-            values: action.payload.values || state.user.values,
-            projects: action.payload.projects || state.user.projects
-          }
-        ],
+        user: action.payload,
         isLoading: false
       };
     case USER_GET_FAILURE:
@@ -71,8 +62,7 @@ const userReducer = (state = initialState, action) => {
     case USER_PUT_SUCCESS:
       return {
         ...state,
-        USER: [...state.USER, action.payload.USER],
-        notes: [action.payload.notes]
+        user: action.payload[0]
       };
     case USER_PUT_FAILURE:
       return {
@@ -89,7 +79,8 @@ const userReducer = (state = initialState, action) => {
     case USER_DELETE_SUCCESS:
       return {
         ...state,
-        user: [action.payload]
+        user: {},
+        isLoading: false
       };
     case USER_DELETE_FAILURE:
       return {
