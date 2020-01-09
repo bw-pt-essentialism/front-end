@@ -15,7 +15,7 @@ export const postLogin = value => dispatch => {
         payload: res.data.message
       });
       localStorage.setItem("token", JSON.stringify(res.data.token));
-
+      localStorage.setItem("userName", JSON.parse(value.username));
       localStorage.setItem("welcome", JSON.stringify(res.data.message));
     })
     .catch(err => {

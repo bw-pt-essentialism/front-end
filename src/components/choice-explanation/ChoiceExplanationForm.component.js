@@ -9,8 +9,7 @@ import hero from "../../images/hero.JPG";
 import {
   FormContainer,
   ConfirmExplanationButton,
-  Sizer,
-  ConfirmExplanationLink
+  Sizer
 } from "./ChoiceExplanations.styles";
 import { SignUpButtonContainer } from "../sign-up-form/SignUpForm.styles";
 
@@ -25,8 +24,6 @@ const ChoiceExplanation = ({
 
   const userValues = JSON.parse(localStorage.getItem("userValues"));
 
-  console.log(`ChoiceExplanation: userValues: `, userValues);
-
   const goToNextCard = () => {
     let index = activeIndex;
     let slidesLength = userValues.length - 1;
@@ -36,9 +33,6 @@ const ChoiceExplanation = ({
         `ChoiceExplanation: goToNextCard: slidesLength: `,
         slidesLength
       );
-      // index = -1;
-      //   userValues.length > 2 && setNarrowDown(false);
-      // setEndOfList(true);
     }
     ++index;
     setActiveIndex(index);
@@ -52,7 +46,6 @@ const ChoiceExplanation = ({
       <Hero img={hero} />
       {userValues &&
         userValues.map((val, index) => {
-          // console.log(`ChoiceExplForm.js: userValues.map: val: `, val);
           return (
             <div key={val.id}>
               <FormContainer
@@ -62,7 +55,6 @@ const ChoiceExplanation = ({
               >
                 <h4>You selected: {val.name}</h4>
                 <Field
-                  // className="input"
                   component="input"
                   type="text"
                   name="val"
@@ -87,9 +79,6 @@ const ChoiceExplanation = ({
                   >
                     confirm
                   </ConfirmExplanationButton>
-                  {/* <LoginLinkSignUp to="/up" disabled={isSubmitting}>
-            Sign Up
-          </LoginLinkSignUp> */}
                 </SignUpButtonContainer>
               </FormContainer>
             </div>
@@ -100,7 +89,6 @@ const ChoiceExplanation = ({
 };
 
 const mapPropsToState = state => {
-  console.log(`ChoiceExplanation.component: mapPropsToState: state: `, state);
   return {
     userValues: state.values.userValues,
     remove: state.values.userValues.remove
@@ -109,7 +97,6 @@ const mapPropsToState = state => {
 
 export default withFormik({
   mapPropsToValues({ expl, val, value }) {
-    console.log(`ChoiceExplForm: withFormik: mapPropsToValues: value: `, val);
     return {
       val: value,
       expl: expl || ""
@@ -118,8 +105,7 @@ export default withFormik({
   validationSchema: Yup.object().shape({
     expl: Yup.string().required("Required")
   }),
-  handleSubmit(values, { resetForm, setSubmitting }) {
-    console.log(`ChoiceExplanation.js: handleSubmit: values: `, values);
+  handleSubmit(values, { resetForm }) {
     resetForm();
   }
 })(connect(mapPropsToState)(ChoiceExplanation));

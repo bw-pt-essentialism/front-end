@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { setFlex, setBackground, setColor, media } from "../../globals/styles";
+import { setFlex, setBackground, setColor } from "../../globals/styles";
 
 const Hero = styled.header`
   height: 50vh;
@@ -16,4 +16,3 @@ export const BottomImg = styled.header`
     setBackground({ img: props.img, color: "rgba(255, 255, 255, 0.15)" })};
   ${setFlex()};
 `;
-//change setColor to this to reveal stones "rgba(255, 255, 255,.175)"

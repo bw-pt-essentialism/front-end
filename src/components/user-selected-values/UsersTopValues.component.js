@@ -17,8 +17,7 @@ import {
   setLetterSpacing,
   setTransition,
   setColor,
-  setShadow,
-  fadeIn
+  setShadow
 } from "../../globals/styles";
 
 function UsersTopValues({

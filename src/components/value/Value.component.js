@@ -23,24 +23,16 @@ const Value = ({
   goToNextCard,
   confirmTopTempList
 }) => {
-  console.log(`Value.js: confirmTopTempList: `, confirmTopTempList);
-
-  console.log(`Value.js: values: `, values);
-  const handleYes = e => {
-    // console.log(`Value.js: handleClick: e.target.value: `, e.target);
+  const handleYes = () => {
     values.map(val => {
       return val.id === id && confirmTopTempList(val);
     });
     goToNextCard();
   };
 
-  const handleNo = e => {
-    // console.log(`Value.js: handleClick: e.target.value: `, e.target);
+  const handleNo = () => {
     values.map(val => {
-      return (
-        val.id === id &&
-        console.log(`Value.js: handleNo: values.map: val: `, val)
-      );
+      return val.id === id;
     });
 
     goToNextCard();
@@ -63,7 +55,6 @@ const Value = ({
 };
 
 const mapStateToProps = state => {
-  //   console.log(`ValuesList.js: mapStateToProps: state.values: `, state.values);
   return {
     values: state.values.values,
     isLoading: state.isLoading
@@ -73,7 +64,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, { confirmTopTempList })(styled(Value)`
   background: ${setColor.mainLight};
   margin: ${setRem(32)} auto;
-  /* min-width: 500px; */
   max-width: 90%;
   width: 700px;
   height: 22.5vh;

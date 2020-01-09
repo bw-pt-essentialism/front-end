@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-// import { useSelector, useDispatch } from "react-redux";
 
 import Value from "../value/Value.component";
 import UsersTopValues from "../user-selected-values/UsersTopValues.component";
@@ -65,4 +64,3 @@ const mapPropsToState = state => {
 };
 
 export default connect(mapPropsToState)(ValuesList);
-//getValues

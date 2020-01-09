@@ -19,7 +19,7 @@ import {
 
 const Banner = ({ className, quote, getZen }) => {
   useEffect(() => {
-    // getZen();
+    getZen();
   }, []);
 
   return (
@@ -72,10 +72,6 @@ const BannerWrapper = styled(Banner)`
 `;
 
 const mapStateToProps = state => {
-  // console.log(
-  //   `BannerWrapper.component.js: mapStateToProps: state.zen: `,
-  //   state.zen
-  // );
   return {
     quote: state.zen.quote,
     isLoading: state.zen.isLoading

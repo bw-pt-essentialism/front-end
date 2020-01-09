@@ -10,13 +10,7 @@ import {
   SignUpLinkLogin
 } from "./SignUpForm.styles";
 
-import {
-  postUser,
-  getUser,
-  deleteUser
-} from "../../store/actions/user.actions";
-
-import { postLogin } from "../../store/actions/login.actions";
+import { postUser } from "../../store/actions/user.actions";
 
 import "../../globals/form.styles.css";
 
@@ -26,18 +20,9 @@ const SignUpForm = ({
   isSubmitting,
   isValidating,
   values,
-  postUser,
-  getUser,
-  deleteUser
+  postUser
 }) => {
   const history = useHistory();
-
-  // useEffect(() => {
-  //   deleteUser(9);
-  //   getUser(1);
-  // }, []);
-
-  const dispatch = useDispatch();
 
   const handleClick = () => {
     postUser({
@@ -46,15 +31,6 @@ const SignUpForm = ({
       password: values.password,
       email: values.email
     }).then(() => history.push("/in"));
-    // .then(() => {
-    //   dispatch(
-    //     postLogin({
-    //       username: values.username,
-    //       password: values.password
-    //     })
-    //   );
-    // });
-    // .then(() => history.push("/values-selection"));
   };
 
   return (
@@ -174,4 +150,4 @@ export default withFormik({
       resetForm();
     }
   }
-})(connect(null, { postUser, getUser, deleteUser })(SignUpForm));
+})(connect(null, { postUser })(SignUpForm));

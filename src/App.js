@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { postValues, getValues } from "./store/actions/values.actions";
+import { getValues } from "./store/actions/values.actions";
 
 import PrivateRoute from "./PrivateRoute";
 
