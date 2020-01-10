@@ -25,7 +25,7 @@ const Value = ({
 }) => {
   const handleYes = () => {
     values.map(val => {
-      console.log(`Val: id: `, val, id);
+      // console.log(`Val: id: `, val, id);
       return val.id === id && confirmTopTempList(val);
     });
     goToNextCard();

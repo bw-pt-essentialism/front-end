@@ -27,7 +27,8 @@ function UsersTopValues({
   toggleValue,
   removeToggledValue,
   endOfList,
-  confirmTopTempList
+  confirmTopTempList,
+  setEndOfList
 }) {
   let history = useHistory();
   const handleClick = id => {
@@ -35,6 +36,10 @@ function UsersTopValues({
   };
   const handleConfirm = usersList => {
     //the put/post action belongs here
+    if (usersList.length === 0) {
+      // setEndOfList(false);
+      return <ValuesList />;
+    }
     confirmTopTempList(usersList);
     history.push("/choice-expl");
   };
