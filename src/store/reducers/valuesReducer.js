@@ -109,6 +109,8 @@ const valuesReducer = (state = initialState, action) => {
       return {
         ...state,
         usersList: state.usersList.filter(value => {
+          !value.remove &&
+            localStorage.setItem("usersList", JSON.stringify(value));
           return !value.remove;
         })
       };
