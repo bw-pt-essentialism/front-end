@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import {
   toggleValue,
   removeToggledValue,
-  confirmTopList
+  confirmTopTempList
 } from "../../store/actions/values.actions";
 
 import ValuesList from "../values-list/ValuesList.component";
@@ -27,7 +27,7 @@ function UsersTopValues({
   toggleValue,
   removeToggledValue,
   endOfList,
-  confirmTopList
+  confirmTopTempList
 }) {
   let history = useHistory();
   const handleClick = id => {
@@ -35,7 +35,7 @@ function UsersTopValues({
   };
   const handleConfirm = usersList => {
     //the put/post action belongs here
-    confirmTopList(usersList);
+    confirmTopTempList(usersList);
     history.push("/choice-expl");
   };
 
@@ -112,7 +112,7 @@ const mapPropsToState = state => {
 export default connect(mapPropsToState, {
   toggleValue,
   removeToggledValue,
-  confirmTopList
+  confirmTopTempList
 })(styled(UsersTopValues)`
   background: ${setColor.mainLight};
   margin: ${setRem(32)} auto;

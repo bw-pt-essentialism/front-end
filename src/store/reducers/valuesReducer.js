@@ -93,10 +93,8 @@ const valuesReducer = (state = initialState, action) => {
         isLoading: false
       };
     case ADD_TO_TOP_TEMP_LIST:
-      localStorage.setItem(
-        "userValues",
-        JSON.stringify([...state.usersList, action.payload])
-      );
+      const temp = [...state.usersList, action.payload];
+      localStorage.setItem("usersList", JSON.stringify(temp));
       return {
         ...state,
         usersList: [...state.usersList, action.payload]
