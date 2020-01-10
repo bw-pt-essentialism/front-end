@@ -12,9 +12,9 @@ import {
   USER_DELETE_SUCCESS,
   USER_DELETE_FAILURE
 } from "../actions/user.actions";
-
+const localUser = JSON.parse(localStorage.getItem("user"));
 const initialState = {
-  user: JSON.parse(localStorage.user) || {}
+  user: localUser || {}
 };
 
 const userReducer = (state = initialState, action) => {

@@ -67,8 +67,7 @@ const valuesReducer = (state = initialState, action) => {
     case VALUES_PUT_SUCCESS:
       return {
         ...state,
-        values: [...state.values, action.payload.values],
-        notes: [action.payload.notes]
+        values: [...state.values, action.payload.values]
       };
     case VALUES_PUT_FAILURE:
       return {
@@ -94,6 +93,10 @@ const valuesReducer = (state = initialState, action) => {
         isLoading: false
       };
     case ADD_TO_TOP_TEMP_LIST:
+      localStorage.setItem(
+        "userValues",
+        JSON.stringify([...state.usersList, action.payload])
+      );
       return {
         ...state,
         usersList: [...state.usersList, action.payload]
