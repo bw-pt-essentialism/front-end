@@ -27,9 +27,6 @@ const ProjectForm = ({
 
   const history = useHistory();
 
-  const projectsState = useSelector(state => state.projects.projects);
-
-  //   const projects = JSON.parse(localStorage.getItem("projects"));
   const userValues = JSON.parse(localStorage.getItem("userValues"));
 
   const goToNextCard = () => {
@@ -38,7 +35,6 @@ const ProjectForm = ({
   const handleClick = () => {
     dispatch(postProjects(values));
     localStorage.setItem("projects-confirmed", JSON.stringify(true));
-    // localStorage.setItem("userProjects", JSON.stringify(projectsState));
     history.push("/home");
   };
   return (
@@ -47,13 +43,6 @@ const ProjectForm = ({
       <div>
         <FormContainer className="form">
           <h4>What are you working on?</h4>
-          {/* <Field
-            component="input"
-            type="text"
-            name="val"
-            // value={val.id}
-            hidden={true}
-          /> */}
           <Field
             className="input"
             component="input"
@@ -74,14 +63,7 @@ const ProjectForm = ({
           {touched.notes && errors.notes && (
             <p className="errors">{errors.notes}</p>
           )}
-          {/* <label htmlFor="value" hidden /> */}
-          <Field
-            name="value"
-            as="select"
-            // value={values.value}
-            // onChange={handleChange}
-            // onBlur={handleBlur}
-          >
+          <Field name="value" as="select">
             <option value="" label="Value" />
             {userValues &&
               userValues.map(val => {

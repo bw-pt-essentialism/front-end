@@ -31,7 +31,7 @@ function ProjectList({ className }) {
                   <div key={project.id}>
                     <p>
                       {" "}
-                      <strong>{project.project}</strong> aligns with{" "}
+                      <strong>{project.project}</strong> which aligns with{" "}
                       <strong>{project.value}</strong>
                     </p>
                   </div>
