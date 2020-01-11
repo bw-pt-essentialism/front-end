@@ -1,18 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
-
-import {
-  toggleValue
-  //   ,
-  //   removeToggledValue,
-  //   confirmTopList
-} from "../../store/actions/values.actions";
-
-// import ValuesList from "../values-list/ValuesList.component";
 
 import styled from "styled-components";
-// import { NarrowDownButton, NarDwnBtnContainer } from "./UsersTopValues.styles";
+
 import {
   setRem,
   setLetterSpacing,
@@ -25,8 +15,6 @@ function ValuesToEdit({ className }) {
   let history = useHistory();
 
   const userValues = JSON.parse(localStorage.getItem("userValues"));
-
-  const confirmed = JSON.parse(localStorage.getItem("explanations-confirmed"));
 
   const handleClick = id => {
     history.push(`/edit-values/${id}`);
@@ -55,35 +43,14 @@ function ValuesToEdit({ className }) {
   );
 }
 
-const mapPropsToState = state => {
-  return {
-    usersList: state.values.usersList,
-    remove: state.values.usersList.remove
-  };
-};
-
-export default connect(
-  mapPropsToState,
-  {}
-)(styled(ValuesToEdit)`
+export default styled(ValuesToEdit)`
   background: ${setColor.mainLight};
   margin: ${setRem(32)} auto;
-  /* max-width: 90%; */
   width: 100%;
   color: ${setColor.offWhite};
   text-align: center;
   margin-top: -10%;
   font-size: 1.8rem;
-  /* ${props =>
-    props.index === props.activeIndex ? "display: block" : "display: none"} */
-
-  /* p {
-    font-size: 1.2rem;
-    border-right: 1px solid ${setColor.offWhite};
-    border-left: 1px solid ${setColor.offWhite};
-    max-width: 90%;
-    margin: 0 auto;
-  } */
 
   strong {
     text-transform: capitalize;
@@ -111,19 +78,18 @@ export default connect(
   }
 
   .values {
-    border: 1px solid green;
     display: flex;
     justify-content: space-evenly;
     div {
-        width: 30%;
+      width: 30%;
     }
     p {
-    font-size: 1.2rem;
-    border-right: 1px solid ${setColor.offWhite};
-    border-left: 1px solid ${setColor.offWhite};
-    margin: 0 auto;
-    padding: 1%;
-  }
+      font-size: 1.2rem;
+      border-right: 1px solid ${setColor.offWhite};
+      border-left: 1px solid ${setColor.offWhite};
+      margin: 0 auto;
+      padding: 1%;
+    }
   }
 
   ${setShadow.light};
@@ -136,4 +102,4 @@ export default connect(
     margin-top: 5%;
     color: ${setColor.mainColor};
   }
-`);
+`;

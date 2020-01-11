@@ -35,14 +35,12 @@ export const ConfirmExplanationLink = styled(CustomLink)`
 `;
 
 export const Sizer = styled.section`
-  border: 1px solid red;
   width: 100%;
   display: flex;
   align-content: center;
 `;
 
 export const FormContainer = styled(Form)`
-  border: 1px solid pink;
   min-width: 60vw;
   margin: 0 auto;
   text-align: center;
