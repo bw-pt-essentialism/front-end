@@ -14,11 +14,18 @@ import {
   TOGGLE_VALUE,
   REMOVE_VALUE,
   ADD_TO_TOP_LIST,
-  ADD_TO_TOP_TEMP_LIST
+  ADD_TO_TOP_TEMP_LIST,
+  ADD_VALUE_DESCRIPTION
 } from "../actions/values.actions";
 
 const initialState = {
-  values: JSON.parse(localStorage.getItem("values")) || [],
+  values: JSON.parse(localStorage.getItem("values")) || [
+    {
+      id: "",
+      name: "",
+      description: ""
+    }
+  ],
   usersList: JSON.parse(localStorage.getItem("usersList")) || [],
   userValues: JSON.parse(localStorage.getItem("userValues")) || []
 };
@@ -84,7 +91,7 @@ const valuesReducer = (state = initialState, action) => {
     case VALUES_DELETE_SUCCESS:
       return {
         ...state,
-        values: [action.payload]
+        values: action.payload
       };
     case VALUES_DELETE_FAILURE:
       return {
@@ -105,6 +112,21 @@ const valuesReducer = (state = initialState, action) => {
       return {
         ...state,
         userValues: [action.payload]
+      };
+
+    case ADD_VALUE_DESCRIPTION:
+      // const values = action.payload;
+      // localStorage.setItem("userValues", JSON.stringify(values));
+      console.log(`ADD_VALUE_DESCRIPTION: action.payload: `, action.payload);
+      return {
+        ...state,
+        userValues: state.userValues.map(val => {
+          if (val.id === action.payload.id) {
+            return { ...val, description: action.payload.description };
+          } else {
+            return val;
+          }
+        })
       };
     case REMOVE_VALUE:
       return {

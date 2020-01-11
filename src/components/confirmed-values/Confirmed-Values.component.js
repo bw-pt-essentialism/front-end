@@ -25,20 +25,46 @@ function ConfirmedTopValues({ className }) {
   //   let history = useHistory();
 
   const userValues = JSON.parse(localStorage.getItem("userValues"));
+
+  const confirmed = JSON.parse(localStorage.getItem("explanations-confirmed"));
   return (
     <>
-      {userValues && (
+      {!confirmed ? (
+        userValues && (
+          <section>
+            <div className={className} key={Date.now()}>
+              <div className="card-info">
+                <h4>your values</h4>
+
+                {userValues.map(val => {
+                  return (
+                    <div key={val.id}>
+                      <p className={`${val.remove === true && "toggle"}`}>
+                        {" "}
+                        - {val.name.toLowerCase()}
+                      </p>
+                      {val.description && (
+                        <p>{val.description.toLowerCase()}</p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )
+      ) : (
         <section>
           <div className={className} key={Date.now()}>
             <div className="card-info">
-              <h4>your values</h4>
-
+              <h4>values</h4>
               {userValues.map(val => {
                 return (
                   <div key={val.id}>
                     <p className={`${val.remove === true && "toggle"}`}>
                       {" "}
-                      - {val.name.toLowerCase()}
+                      <strong>{val.name}</strong> because{" "}
+                      <strong>{val.description}</strong>
                     </p>
                   </div>
                 );
@@ -68,13 +94,18 @@ export default connect(
   width: 500px;
   color: ${setColor.offWhite};
   text-align: center;
-  margin-top: 2vh;
+  margin-top: 5vh;
   font-size: 1.8rem;
   ${props =>
     props.index === props.activeIndex ? "display: block" : "display: none"}
 
   p {
     font-size: 1.2rem;
+    border-bottom: 1px solid ${setColor.offWhite};
+  }
+
+  strong {
+    text-transform: capitalize;
   }
 
   span {

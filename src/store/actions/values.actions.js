@@ -20,6 +20,7 @@ export const ADD_TO_TOP_LIST = "ADD_TO_TOP_LIST";
 export const ADD_TO_TOP_TEMP_LIST = "ADD_TO_TOP_TEMP_LIST";
 export const REMOVE_VALUE = "REMOVE_VALUE";
 export const TOGGLE_VALUE = "TOGGLE_VALUE";
+export const ADD_VALUE_DESCRIPTION = "ADD_VALUE_DESCRIPTION";
 
 export const getValues = () => dispatch => {
   dispatch({ type: VALUES_LOAD_START });
@@ -93,7 +94,6 @@ export const deleteValues = id => dispatch => {
       });
     });
 };
-
 export const confirmTopTempList = value => dispatch => {
   dispatch({
     type: ADD_TO_TOP_TEMP_LIST,
@@ -119,5 +119,12 @@ export const removeToggledValue = value => dispatch => {
   dispatch({
     type: REMOVE_VALUE,
     payload: value
+  });
+};
+
+export const addValueDescription = (id, value) => dispatch => {
+  return dispatch({
+    type: ADD_VALUE_DESCRIPTION,
+    payload: { id: id, description: value }
   });
 };

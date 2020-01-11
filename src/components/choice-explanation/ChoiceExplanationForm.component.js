@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { connect, useDispatch } from "react-redux";
 import { withFormik, Field } from "formik";
 import * as Yup from "yup";
+
+import { addValueDescription } from "../../store/actions/values.actions";
 
 import Hero from "../hero/Hero.component";
 import hero from "../../images/hero.JPG";
@@ -23,27 +26,44 @@ const ChoiceExplanation = ({
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const dispatch = useDispatch();
+
+  const history = useHistory();
+
   const userValues = JSON.parse(localStorage.getItem("userValues"));
+  // console.log(userValues.description)
 
   const goToNextCard = () => {
     let index = activeIndex;
     let slidesLength = userValues.length - 1;
     if (index === slidesLength) {
-      console.log(`ChoiceExplanation: goToNextCard: index: `, index);
-      console.log(
-        `ChoiceExplanation: goToNextCard: slidesLength: `,
-        slidesLength
-      );
+      // console.log(`ChoiceExplanation: goToNextCard: index: `, index);
+      // console.log(
+      //   `ChoiceExplanation: goToNextCard: slidesLength: `,
+      //   slidesLength
+      // );
+      localStorage.setItem("explanations-confirmed", JSON.stringify(true));
+      history.push("/home");
     }
     ++index;
     setActiveIndex(index);
   };
-  const handleClick = () => {
+  const handleClick = id => {
     console.log(`HANDLE CLICK ON VALUES EXPL FORM HAS BEEN REACHED`);
+    dispatch(addValueDescription(id, values.description));
+    const updatedValues = userValues.map(val => {
+      if (val.id === id) {
+        return { ...val, description: values.description };
+      } else {
+        return val;
+      }
+    });
+    localStorage.setItem("userValues", JSON.stringify(updatedValues));
     return goToNextCard();
   };
   return (
     <Sizer>
+      {userValues && userValues.map}
       <Hero img={hero}>
         <ConfirmedTopValues />
       </Hero>
@@ -62,15 +82,14 @@ const ChoiceExplanation = ({
                   component="input"
                   type="text"
                   name="val"
-                  placeholder="Why?"
-                  value="{val.id}"
+                  // value={val.id}
                   hidden={true}
                 />
                 <Field
                   className="input"
                   component="input"
                   type="textarea"
-                  name="expl"
+                  name="description"
                   placeholder="Why?"
                 />
                 {touched.expl && errors.expl && (
@@ -78,7 +97,7 @@ const ChoiceExplanation = ({
                 )}
                 <SignUpButtonContainer>
                   <ConfirmExplanationButton
-                    onClick={handleClick}
+                    onClick={() => handleClick(val.id)}
                     disabled={isSubmitting}
                   >
                     confirm
@@ -100,14 +119,14 @@ const mapPropsToState = state => {
 };
 
 export default withFormik({
-  mapPropsToValues({ expl, val, value }) {
+  mapPropsToValues({ description, val, value }) {
     return {
       val: value,
-      expl: expl || ""
+      description: description || ""
     };
   },
   validationSchema: Yup.object().shape({
-    expl: Yup.string().required("Required")
+    description: Yup.string().required("Required")
   }),
   handleSubmit(values, { resetForm }) {
     resetForm();
