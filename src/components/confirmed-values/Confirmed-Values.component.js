@@ -21,38 +21,9 @@ import {
   setShadow
 } from "../../globals/styles";
 
-function ConfirmedTopValues({
-  usersList,
-  className
-  //   ,
-  //   narrowDown,
-  //   toggleValue,
-  //   removeToggledValue,
-  //   endOfList,
-  //   confirmTopList,
-  //   setEndOfList
-}) {
+function ConfirmedTopValues({ className }) {
   //   let history = useHistory();
-  const handleClick = id => {
-    toggleValue(id);
-  };
-  //   const handleConfirm = usersList => {
-  //     //the put/post action belongs here
-  //     if (usersList.length === 0) {
-  //       // setEndOfList(false);
-  //       return <ValuesList />;
-  //     }
-  //     confirmTopList(usersList);
-  //     history.push("/choice-expl");
-  //   };
 
-  //   const handleEdit = () => {
-  //     console.log(`ConfirmedTopValues.js: handleEdit: usersList: `, usersList);
-  //   };
-
-  //   if (endOfList === true && usersList.length === 0) {
-  //     return <ValuesList />;
-  //   }
   const userValues = JSON.parse(localStorage.getItem("userValues"));
   return (
     <>
@@ -64,7 +35,7 @@ function ConfirmedTopValues({
 
               {userValues.map(val => {
                 return (
-                  <div key={val.id} onClick={() => handleClick(val.id)}>
+                  <div key={val.id}>
                     <p className={`${val.remove === true && "toggle"}`}>
                       {" "}
                       - {val.name.toLowerCase()}
@@ -72,31 +43,6 @@ function ConfirmedTopValues({
                   </div>
                 );
               })}
-              {/* {narrowDown === false && usersList.length > 3 ? (
-                <span className="btns">
-                  <p>Cross off all but 3 of these values</p>
-                  <NarrowDownButton onClick={removeToggledValue}>
-                    remove
-                  </NarrowDownButton>
-                </span>
-              ) : (
-                endOfList === true && (
-                  <NarDwnBtnContainer>
-                    <span className="btns">
-                      <NarrowDownButton
-                        onClick={() => handleConfirm(usersList)}
-                      >
-                        confirm
-                      </NarrowDownButton>
-                    </span>
-                    <span className="btns">
-                      <NarrowDownButton onClick={handleEdit}>
-                        edit
-                      </NarrowDownButton>
-                    </span>
-                  </NarDwnBtnContainer>
-                )
-              )} */}
             </div>
           </div>
         </section>
@@ -112,12 +58,10 @@ const mapPropsToState = state => {
   };
 };
 
-export default connect(mapPropsToState, {
-  toggleValue
-  //   ,
-  //   removeToggledValue,
-  //   confirmTopList
-})(styled(ConfirmedTopValues)`
+export default connect(
+  mapPropsToState,
+  {}
+)(styled(ConfirmedTopValues)`
   background: ${setColor.mainLight};
   margin: ${setRem(32)} auto;
   max-width: 90%;
