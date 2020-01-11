@@ -6,14 +6,15 @@ import * as Yup from "yup";
 
 import { addValueDescription } from "../../store/actions/values.actions";
 
-import Hero from "../hero/Hero.component";
+// import Hero from "../hero/Hero.component";
 import hero from "../../images/hero.JPG";
 import ConfirmedTopValues from "../confirmed-values/Confirmed-Values.component";
 
 import {
   FormContainer,
   ConfirmExplanationButton,
-  Sizer
+  Sizer,
+  Hero
 } from "./ChoiceExplanations.styles";
 import { SignUpButtonContainer } from "../sign-up-form/SignUpForm.styles";
 
@@ -31,17 +32,11 @@ const ChoiceExplanation = ({
   const history = useHistory();
 
   const userValues = JSON.parse(localStorage.getItem("userValues"));
-  // console.log(userValues.description)
 
   const goToNextCard = () => {
     let index = activeIndex;
     let slidesLength = userValues.length - 1;
     if (index === slidesLength) {
-      // console.log(`ChoiceExplanation: goToNextCard: index: `, index);
-      // console.log(
-      //   `ChoiceExplanation: goToNextCard: slidesLength: `,
-      //   slidesLength
-      // );
       localStorage.setItem("explanations-confirmed", JSON.stringify(true));
       history.push("/project-form");
     }
@@ -49,7 +44,6 @@ const ChoiceExplanation = ({
     setActiveIndex(index);
   };
   const handleClick = id => {
-    console.log(`HANDLE CLICK ON VALUES EXPL FORM HAS BEEN REACHED`);
     dispatch(addValueDescription(id, values.description));
     const updatedValues = userValues.map(val => {
       if (val.id === id) {

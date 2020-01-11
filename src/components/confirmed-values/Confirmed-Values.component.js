@@ -57,7 +57,7 @@ function ConfirmedTopValues({ className }) {
         <section>
           <div className={className} key={Date.now()}>
             <div className="card-info">
-              <h4>values</h4>
+              <h4>I value</h4>
               {userValues.map(val => {
                 return (
                   <div key={val.id}>
@@ -94,7 +94,7 @@ export default connect(
   width: 500px;
   color: ${setColor.offWhite};
   text-align: center;
-  margin-top: 5vh;
+  margin-top: 5%;
   font-size: 1.8rem;
   ${props =>
     props.index === props.activeIndex ? "display: block" : "display: none"}

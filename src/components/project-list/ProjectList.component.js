@@ -25,7 +25,7 @@ function ProjectList({ className }) {
         <section>
           <div className={className} key={Date.now()}>
             <div className="card-info">
-              <h4>Working on </h4>
+              <h4>I do </h4>
               {localUserProjects.map(project => {
                 return (
                   <div key={project.id}>

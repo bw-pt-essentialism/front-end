@@ -17,7 +17,7 @@ import { Globals } from "./globals/GlobalStyles";
 // import { values } from "./dummy-data";
 
 import "./App.css";
-import EditProfile from "./components/edit-profile/EditProfile.component";
+import EditProfile from "./components/edit-forms/EditProfile.component";
 function App() {
   const welcome = useSelector(state => state.login.welcome);
 

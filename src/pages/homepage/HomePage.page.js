@@ -4,7 +4,11 @@ import ValuesSelectionPage from "../values-selection/ValuesSelectionPage";
 import ConfirmedValues from "../../components/confirmed-values/Confirmed-Values.component";
 import ProjectList from "../../components/project-list/ProjectList.component";
 
-import { StyledSection } from "./HomePage.styles";
+import {
+  StyledSection,
+  StyledConfirmedValues,
+  StyledProjectList
+} from "./HomePage.styles";
 
 function HomePage() {
   const localUserValues = JSON.parse(localStorage.getItem("userValues"));
@@ -14,12 +18,15 @@ function HomePage() {
     return (
       confirmed && (
         <StyledSection>
-          <ConfirmedValues /> <ProjectList />
+          <StyledConfirmedValues /> <StyledProjectList />
         </StyledSection>
       )
     );
   } else {
-    return <ValuesSelectionPage />;
+    return (
+      // <p>thinking</p>
+      <ValuesSelectionPage />
+    );
   }
 }
 
