@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import Value from "../value/Value.component";
-import UsersTopValues from "../user-selected-values/UsersTopValues.component";
-import ValuesBannerWrapper from "../user-selected-values/UsersTopValues.styles";
+import UsersTopValues from "../user-top-values/UsersTopValues.component";
+import ValuesBannerWrapper from "../user-top-values/UsersTopValues.styles";
 
 function ValuesList({ usersList }) {
   const [activeIndex, setActiveIndex] = useState(0);

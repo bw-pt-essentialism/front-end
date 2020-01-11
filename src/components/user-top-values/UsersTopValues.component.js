@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import {
   toggleValue,
   removeToggledValue,
-  confirmTopTempList
+  confirmTopList
 } from "../../store/actions/values.actions";
 
 import ValuesList from "../values-list/ValuesList.component";
@@ -27,7 +27,7 @@ function UsersTopValues({
   toggleValue,
   removeToggledValue,
   endOfList,
-  confirmTopTempList,
+  confirmTopList,
   setEndOfList
 }) {
   let history = useHistory();
@@ -40,7 +40,7 @@ function UsersTopValues({
       // setEndOfList(false);
       return <ValuesList />;
     }
-    confirmTopTempList(usersList);
+    confirmTopList(usersList);
     history.push("/choice-expl");
   };
 
@@ -117,7 +117,7 @@ const mapPropsToState = state => {
 export default connect(mapPropsToState, {
   toggleValue,
   removeToggledValue,
-  confirmTopTempList
+  confirmTopList
 })(styled(UsersTopValues)`
   background: ${setColor.mainLight};
   margin: ${setRem(32)} auto;

@@ -5,6 +5,7 @@ import * as Yup from "yup";
 
 import Hero from "../hero/Hero.component";
 import hero from "../../images/hero.JPG";
+import ConfirmedTopValues from "../confirmed-values/Confirmed-Values.component";
 
 import {
   FormContainer,
@@ -43,7 +44,10 @@ const ChoiceExplanation = ({
   };
   return (
     <Sizer>
-      <Hero img={hero} />
+      <Hero img={hero}>
+        <ConfirmedTopValues />
+      </Hero>
+
       {userValues &&
         userValues.map((val, index) => {
           return (
