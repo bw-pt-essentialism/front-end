@@ -9,7 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import Header from "./components/header/Header.component";
 import SignInAndUpPage from "./pages/sign-in-and-up/SignInAndUpPage";
 import HomePage from "./pages/homepage/HomePage.page";
-import ValuesSelectionPage from "./pages/values-selection/ValuesSelectionPage";
+import ValuesSelectionPage from "./pages/values-selection/ValuesSelectionPage.component";
 import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanationForm.component";
 import ProjectForm from "./components/project-form/ProjectForm.component";
 
