@@ -15,8 +15,10 @@ import {
 
 import { projects } from "../../dummy-data";
 
+const localUserProjects = JSON.parse(localStorage.getItem("userProjects"));
+
 const initialState = {
-  projects: [{}]
+  projects: localUserProjects || []
 };
 
 const projectsReducer = (state = initialState, action) => {
@@ -51,7 +53,8 @@ const projectsReducer = (state = initialState, action) => {
           {
             id: Date.now(),
             project: action.payload.project,
-            value: action.payload.value
+            value: action.payload.value,
+            notes: action.payload.notes
           }
         ],
         isLoading: false

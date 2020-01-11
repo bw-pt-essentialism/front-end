@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { withFormik, Field } from "formik";
 import * as Yup from "yup";
 
@@ -27,6 +27,8 @@ const ProjectForm = ({
 
   const history = useHistory();
 
+  const projectsState = useSelector(state => state.projects.projects);
+
   //   const projects = JSON.parse(localStorage.getItem("projects"));
   const userValues = JSON.parse(localStorage.getItem("userValues"));
 
@@ -36,6 +38,7 @@ const ProjectForm = ({
   const handleClick = () => {
     dispatch(postProjects(values));
     localStorage.setItem("projects-confirmed", JSON.stringify(true));
+    // localStorage.setItem("userProjects", JSON.stringify(projectsState));
     history.push("/home");
   };
   return (
@@ -54,12 +57,22 @@ const ProjectForm = ({
           <Field
             className="input"
             component="input"
-            type="textarea"
+            type="text"
             name="project"
             placeholder="Tell us what you're working on..."
           />
           {touched.project && errors.project && (
             <p className="errors">{errors.project}</p>
+          )}
+          <Field
+            className="input"
+            component="input"
+            type="textarea"
+            name="notes"
+            placeholder="Make some notes..."
+          />
+          {touched.notes && errors.notes && (
+            <p className="errors">{errors.notes}</p>
           )}
           {/* <label htmlFor="value" hidden /> */}
           <Field
@@ -102,10 +115,11 @@ const ProjectForm = ({
 };
 
 export default withFormik({
-  mapPropsToValues({ project, value }) {
+  mapPropsToValues({ project, value, notes }) {
     return {
       value: value,
-      project: project || ""
+      project: project || "",
+      notes: notes
     };
   },
   validationSchema: Yup.object().shape({
