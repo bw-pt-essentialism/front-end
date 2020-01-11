@@ -131,11 +131,16 @@ const valuesReducer = (state = initialState, action) => {
     case REMOVE_VALUE:
       return {
         ...state,
-        usersList: state.usersList.filter(value => {
-          !value.remove &&
-            localStorage.setItem("usersList", JSON.stringify(value));
-          return !value.remove;
-        })
+        usersList:
+          state.usersList.length > 0 &&
+          state.usersList.filter(value => {
+            // !value.remove &&
+            //   localStorage.setItem(
+            //     "usersList",
+            //     JSON.stringify([...state.usersList, value])
+            //   );
+            return !value.remove;
+          })
       };
     case TOGGLE_VALUE:
       return {

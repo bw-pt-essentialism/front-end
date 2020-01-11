@@ -64,24 +64,25 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, { confirmTopTempList })(styled(Value)`
   background: ${setColor.mainLight};
-  margin: ${setRem(32)} auto;
-  max-width: 90%;
-  width: 700px;
+  /* margin: ${setRem(32)} auto; */
+  max-width: 60%;
+  width: 500px;
   height: 22.5vh;
   min-height: 290px;
-  max-height: 33vh;
+  /* max-height: 33vh; */
   font-size: 1.8rem;
   color: ${setColor.offWhite};
+  display: flex;
   text-align: center;
-  margin-top: 5vh;
+  margin: 15% auto 0;
+  /* ${props =>
+    props.index === props.activeIndex ? "display: flex" : "display: none"} */
   ${props =>
-    props.index === props.activeIndex ? "display: block" : "display: none"}
-  ${props => props.endOfList && "display: none"}
-  
-
-    p {
+    props.index === props.activeIndex ? "display: flex" : "display: none"}
+  ${props => props.endOfList && "display: none"} p {
     ${fadeIn("100%", "-10%", "0")}
   }
+  
 
   .card-info {
     padding: ${setRem()};

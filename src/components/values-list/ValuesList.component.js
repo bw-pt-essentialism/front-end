@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Value from "../value/Value.component";
 import UsersTopValues from "../user-top-values/UsersTopValues.component";
 import ValuesBannerWrapper from "../user-top-values/UsersTopValues.styles";
+import { StyledSection } from "./ValuesList.styles";
 
 function ValuesList({ usersList }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -25,34 +26,32 @@ function ValuesList({ usersList }) {
   };
 
   return (
-    <>
+    <StyledSection>
+      <UsersTopValues
+        endOfList={endOfList}
+        setEndOfList={setEndOfList}
+        narrowDown={narrowDown}
+      />
       <ValuesBannerWrapper
         endOfList={endOfList}
         narrowDown={narrowDown}
         usersList={usersList}
       />
-      <h4>
-        {localValues &&
-          localValues.map((val, index) => {
-            return (
-              <Value
-                key={val.id}
-                info={val.name.toLowerCase()}
-                id={val.id}
-                index={index}
-                activeIndex={activeIndex}
-                goToNextCard={goToNextCard}
-                endOfList={endOfList}
-              />
-            );
-          })}
-        <UsersTopValues
-          endOfList={endOfList}
-          setEndOfList={setEndOfList}
-          narrowDown={narrowDown}
-        />
-      </h4>
-    </>
+      {localValues &&
+        localValues.map((val, index) => {
+          return (
+            <Value
+              key={val.id}
+              info={val.name.toLowerCase()}
+              id={val.id}
+              index={index}
+              activeIndex={activeIndex}
+              goToNextCard={goToNextCard}
+              endOfList={endOfList}
+            />
+          );
+        })}
+    </StyledSection>
   );
 }
 

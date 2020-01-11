@@ -6,13 +6,14 @@ import * as Yup from "yup";
 
 import { postProjects } from "../../store/actions/projects.actions";
 
-import Hero from "../hero/Hero.component";
+// import Hero from "../hero/Hero.component";
 import hero from "../../images/hero.JPG";
 
 import {
   FormContainer,
   ConfirmExplanationButton,
-  Sizer
+  Sizer,
+  Hero
 } from "../choice-explanation/ChoiceExplanations.styles";
 import { SignUpButtonContainer } from "../sign-up-form/SignUpForm.styles";
 
@@ -41,7 +42,7 @@ const ProjectForm = ({
     <Sizer>
       <Hero img={hero} />
       <div>
-        <FormContainer className="form">
+        <FormContainer className="form project-form">
           <h4>What are you working on?</h4>
           <Field
             className="input"

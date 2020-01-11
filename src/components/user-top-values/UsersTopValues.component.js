@@ -41,6 +41,7 @@ function UsersTopValues({
       return <ValuesList />;
     }
     confirmTopList(usersList);
+    localStorage.removeItem("usersList");
     history.push("/choice-expl");
   };
 
@@ -120,15 +121,14 @@ export default connect(mapPropsToState, {
   confirmTopList
 })(styled(UsersTopValues)`
   background: ${setColor.mainLight};
-  margin: ${setRem(32)} auto;
-  max-width: 90%;
+  /* margin: ${setRem(32)} auto; */
+  max-width: 40%;
   width: 500px;
   color: ${setColor.offWhite};
   text-align: center;
-  margin-top: 7.75vh;
   font-size: 1.8rem;
   ${props =>
-    props.index === props.activeIndex ? "display: block" : "display: none"}
+    props.index === props.activeIndex ? "display: flex" : "display: none"}
 
   p {
     font-size: 1.2rem;

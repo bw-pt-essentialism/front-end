@@ -96,3 +96,7 @@ button:hover {
   border: 1px solid red;
   align-content: space-between;
 }
+
+.project-form {
+  margin-top: -10%;
+}
