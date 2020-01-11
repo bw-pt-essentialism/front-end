@@ -35,23 +35,23 @@ export const getprojects = () => dispatch => {
     });
 };
 
-export const postProjects = value => dispatch => {
-  dispatch({ type: PROJECTS_POST_START, payload: value });
-  axiosWithAuth()
-    .post(`/projects`, value)
-    .then(res => {
-      dispatch({
-        type: PROJECTS_POST_SUCCESS,
-        payload: res.data
-      });
-    })
+export const postProjects = values => dispatch => {
+  dispatch({ type: PROJECTS_POST_START });
+  // axiosWithAuth()
+  //   .post(`/projects`, value)
+  //   .then(res => {
+  dispatch({
+    type: PROJECTS_POST_SUCCESS,
+    payload: values
+  });
+  // })
 
-    .catch(err => {
-      dispatch({
-        type: PROJECTS_POST_FAILURE,
-        payload: "error posting data" + err
-      });
-    });
+  // .catch(err => {
+  //   dispatch({
+  //     type: PROJECTS_POST_FAILURE,
+  //     payload: "error posting data" + err
+  //   });
+  // });
 };
 
 export const putProjects = (value, id) => dispatch => {

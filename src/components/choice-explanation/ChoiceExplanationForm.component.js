@@ -43,7 +43,7 @@ const ChoiceExplanation = ({
       //   slidesLength
       // );
       localStorage.setItem("explanations-confirmed", JSON.stringify(true));
-      history.push("/home");
+      history.push("/project-form");
     }
     ++index;
     setActiveIndex(index);
@@ -63,7 +63,6 @@ const ChoiceExplanation = ({
   };
   return (
     <Sizer>
-      {userValues && userValues.map}
       <Hero img={hero}>
         <ConfirmedTopValues />
       </Hero>
@@ -92,8 +91,8 @@ const ChoiceExplanation = ({
                   name="description"
                   placeholder="Why?"
                 />
-                {touched.expl && errors.expl && (
-                  <p className="errors">{errors.expl}</p>
+                {touched.description && errors.description && (
+                  <p className="errors">{errors.description}</p>
                 )}
                 <SignUpButtonContainer>
                   <ConfirmExplanationButton

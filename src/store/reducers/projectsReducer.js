@@ -16,7 +16,7 @@ import {
 import { projects } from "../../dummy-data";
 
 const initialState = {
-  projects: JSON.parse(localStorage.getItem("projects")) || []
+  projects: [{}]
 };
 
 const projectsReducer = (state = initialState, action) => {
@@ -46,7 +46,14 @@ const projectsReducer = (state = initialState, action) => {
     case PROJECTS_POST_SUCCESS:
       return {
         ...state,
-        projects: [...state.projects, action.payload],
+        projects: [
+          ...state.projects,
+          {
+            id: Date.now(),
+            project: action.payload.project,
+            value: action.payload.value
+          }
+        ],
         isLoading: false
       };
     case PROJECTS_POST_FAILURE:

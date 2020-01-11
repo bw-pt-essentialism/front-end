@@ -11,6 +11,7 @@ import SignInAndUpPage from "./pages/sign-in-and-up/SignInAndUpPage";
 import HomePage from "./pages/homepage/HomePage.page";
 import ValuesSelectionPage from "./pages/values-selection/ValuesSelectionPage";
 import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanationForm.component";
+import ProjectForm from "./components/project-form/ProjectForm.component";
 
 import { Globals } from "./globals/GlobalStyles";
 // import { values } from "./dummy-data";
@@ -42,6 +43,7 @@ function App() {
           component={ValuesSelectionPage}
         />
         <PrivateRoute path="/choice-expl" component={ChoiceExplanation} />
+        <PrivateRoute path="/project-form" component={ProjectForm} />
         <PrivateRoute path="/edit-profile" component={EditProfile} />
       </Switch>
     </Router>
