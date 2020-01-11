@@ -1,88 +1,63 @@
-// import React from "react";
-
-// import {
-//   CustomButton,
-//   CustomButtonContainer
-// } from "../custom-button/CustomButton";
-
 // import styled from "styled-components";
+// // import { NarrowDownButton, NarDwnBtnContainer } from "./UsersTopValues.styles";
 // import {
-//   setColor,
 //   setRem,
 //   setLetterSpacing,
-//   setBorder,
-//   media,
-//   fadeIn,
-//   setTransition
+//   setTransition,
+//   setColor,
+//   setShadow
 // } from "../../globals/styles";
 
-// const ValuesBanner = ({ className, narrowDown, usersList }) => {
-//   return (
-//     <div className={className}>
-//       <h2>
-//         {narrowDown === false && usersList.length > 3 ? "now" : "you"}
-//         <span>
-//           {narrowDown === false && usersList.length > 3
-//             ? ` take some time to reflect on your values. Which ones
-//           really mean the most to you? Narrow your selection down to your
-//           essential three.`
-//             : ` know what's essential. after you confirm your choices, take some time to reflect on your values and tell us why these are the things that matter to you`}
-//         </span>{" "}
-//       </h2>
-//       <div className="info"></div>
-//     </div>
-//   );
-// };
-// const ConfirmedValuesBannerWrapper = styled(ValuesBanner)`
+// export const StyledConfirmedTopValues = styled(ConfirmedTopValues)`
 //   background: ${setColor.mainLight};
-//   margin: 0 auto;
-//   text-align: center;
-//   justify-content: center;
-//   width: 600px;
+//   margin: ${setRem(32)} auto;
 //   max-width: 90%;
-//   height: 30vh;
-//   min-height: 260px;
-//   max-height: 30vh;
-//   margin-top: -45vh;
-//   color: ${setColor.mainColor};
-//   padding: ${setRem(10)} ${setRem(10)};
-//   ${setLetterSpacing(3)};
+//   width: 500px;
+//   color: ${setColor.offWhite};
+//   text-align: center;
+//   margin-top: 5%;
+//   font-size: 1.8rem;
 //   ${props =>
-//     props.usersList.length > 0 && props.endOfList === true
-//       ? "display: flex"
-//       : "display: none"}
+//     props.index === props.activeIndex ? "display: block" : "display: none"}
 
-//   h2 {
-//     text-transform: uppercase;
-//     font-size: 2.5rem;
-//     span {
+//   p {
+//     font-size: 1.2rem;
+//     border-bottom: 1px solid ${setColor.offWhite};
+//   }
+
+//   strong {
+//     text-transform: capitalize;
+//   }
+
+//   span {
+//     font-size: 1rem;
+//     margin-bottom: 2%;
+//     margin-top: 2%;
+//   }
+
+//   .card-info {
+//     padding: ${setRem()};
+//     h4 {
 //       text-transform: capitalize;
-//       color: ${setColor.offWhite};
-//       ${fadeIn("100%", "-10%", "0")}
-//       ${setTransition("all", "1s", "ease-in-out")}
+//       ${setLetterSpacing()};
+//     }
+//     p {
+//       ${setLetterSpacing()};
 //     }
 //   }
-//   p {
-//     width: 85%;
-//     margin: 0 auto;
+
+//   .toggle {
+//     text-decoration: line-through;
 //   }
-//   ${media.phone` width: 90vw
-//     ${setBorder({ width: "6px", color: setColor.mainColor })};
-//     h2 {
-//       width: 75%;
-//       font-size: 1.2rem;
-//     }`}
-// `;
 
-// export default ConfirmedValuesBannerWrapper;
+//   ${setShadow.light};
+//   ${setTransition()};
+//   &:hover {
+//     ${setShadow.dark};
+//   }
 
-// export const NarrowDownButton = styled(CustomButton)`
-//   border: none;
-//   margin: 5% auto;
-// `;
-
-// export const NarDwnBtnContainer = styled(CustomButtonContainer)`
-//   display: flex;
-//   flex-flow: row nowrap;
-//   justify-content: space-between;
-// `;
+//   .btns p {
+//     margin-top: 5%;
+//     color: ${setColor.mainColor};
+//   }
+// `);
