@@ -13,16 +13,17 @@ import PrivateRoute from "./PrivateRoute";
 import Header from "./components/header/Header.component";
 import SignInAndUpPage from "./pages/sign-in-and-up/SignInAndUpPage";
 import HomePage from "./pages/homepage/HomePage.page";
+import About from "./components/about/About";
 import ValuesSelectionPage from "./pages/values-selection/ValuesSelectionPage.component";
 import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanationForm.component";
 import ProjectForm from "./components/project-form/ProjectForm.component";
+import EditProfile from "./components/edit-forms/EditProfile.component";
+import EditValuesPage from "./pages/edit-values/EditValuesPage";
 
 import { Globals } from "./globals/GlobalStyles";
 import { values } from "./dummy-data";
 
 import "./App.css";
-import EditProfile from "./components/edit-forms/EditProfile.component";
-import EditValuesPage from "./pages/edit-values/EditValuesPage";
 function App() {
   const welcome = useSelector(state => state.login.welcome);
 
@@ -37,9 +38,7 @@ function App() {
     // dispatch(deleteValues(1));
     // dispatch(deleteValues(2));
   }, []);
-  const valueOnboardingComplete = JSON.parse(
-    localStorage.getItem("valueOnboardingComplete")
-  );
+
   return (
     <Router>
       <Globals />
@@ -58,6 +57,7 @@ function App() {
         <PrivateRoute path="/edit-profile" component={EditProfile} />
         <PrivateRoute path="/edit-values" component={EditValuesPage} />
         <PrivateRoute path="/home" component={HomePage} />
+        <PrivateRoute path="/about" component={About} />
       </Switch>
     </Router>
   );
