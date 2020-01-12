@@ -53,12 +53,12 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
   justify-content: center;
   width: 600px;
   max-width: 90%;
-  height: 400px;
+  height: 425px;
   min-height: 260px;
-  max-height: 30vh;
+  height: 32vh;
   margin-top: -10rem;
   color: ${setColor.mainColor};
-  padding: ${setRem(10)} ${setRem(10)};
+  padding: 2%;
   ${setLetterSpacing(3)};
   ${props =>
     props.usersList.length > 0 && props.endOfList === true
@@ -68,6 +68,7 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
   h2 {
     text-transform: uppercase;
     font-size: 2.5rem;
+    font-weight: 100;
     span {
       text-transform: capitalize;
       color: ${setColor.offWhite};
