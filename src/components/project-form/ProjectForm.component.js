@@ -96,7 +96,7 @@ const ProjectForm = ({
                 onClick={goToNextCard}
                 disabled={isSubmitting}
               >
-                do more
+                add more
               </ConfirmExplanationButton>
             </SignUpButtonContainer>
           </FormContainer>
@@ -112,7 +112,7 @@ export default withFormik({
   mapPropsToValues({ project, value, notes }) {
     return {
       value: value,
-      project: project || "",
+      project: project,
       notes: notes
     };
   },

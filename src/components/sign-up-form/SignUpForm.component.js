@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
@@ -11,6 +11,7 @@ import {
 } from "./SignUpForm.styles";
 
 import { postUser } from "../../store/actions/user.actions";
+import { postLogin } from "../../store/actions/login.actions";
 
 import "../../globals/form.styles.css";
 
@@ -23,6 +24,7 @@ const SignUpForm = ({
   postUser
 }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     postUser({
@@ -30,7 +32,13 @@ const SignUpForm = ({
       username: values.username,
       password: values.password,
       email: values.email
-    }).then(() => history.push("/in"));
+    })
+      .then(() =>
+        dispatch(
+          postLogin({ username: values.username, password: values.password })
+        )
+      )
+      .then(() => history.push("/values-selection"));
   };
 
   return (
