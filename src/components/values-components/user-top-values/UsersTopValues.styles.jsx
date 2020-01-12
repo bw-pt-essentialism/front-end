@@ -35,7 +35,7 @@ const ValuesBanner = ({ className, narrowDown, usersList }) => {
   );
 };
 const ValuesBannerWrapper = styled(ValuesBanner)`
-  background: ${setColor.mainLight};
+  /* background: ${setColor.mainLight};
   margin: 0 auto;
   text-align: center;
   justify-content: center;
@@ -46,6 +46,17 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
   max-height: 30vh;
   margin-top: 15%;
   margin-left: 0;
+  color: ${setColor.mainColor}; */
+  background: ${setColor.mainLight};
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  width: 600px;
+  max-width: 90%;
+  height: 30vh;
+  min-height: 260px;
+  max-height: 30vh;
+  margin-top: -10rem;
   color: ${setColor.mainColor};
   padding: ${setRem(10)} ${setRem(10)};
   ${setLetterSpacing(3)};

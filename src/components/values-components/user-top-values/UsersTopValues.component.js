@@ -62,7 +62,7 @@ function UsersTopValues({
   {
     return !valueOnboardingComplete ? (
       <>
-        {usersList.length > 0 && (
+        {usersList && usersList.length > 0 && (
           <section>
             <div className={className} key={Date.now()}>
               <div className="card-info">

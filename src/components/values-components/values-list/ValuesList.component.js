@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 import { useHistory, useLocation } from "react-router";
+import { useSelector } from "react-redux";
 
 import Value from "../value/Value.component";
 import UsersTopValues from "../user-top-values/UsersTopValues.component";
 import ValuesBannerWrapper from "../user-top-values/UsersTopValues.styles";
-import { StyledSection } from "./ValuesList.styles";
 
-function ValuesList({ usersList }) {
+function ValuesList() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [endOfList, setEndOfList] = useState(null);
   const [narrowDown, setNarrowDown] = useState(true);
@@ -16,7 +15,7 @@ function ValuesList({ usersList }) {
   const localValues = JSON.parse(localStorage.getItem("values"));
   const localUsersList = JSON.parse(localStorage.getItem("usersList"));
   const history = useHistory();
-  const location = useLocation();
+  const usersList = useSelector(state => state.values.usersList);
 
   const goToNextCard = () => {
     let index = activeIndex;
@@ -24,7 +23,6 @@ function ValuesList({ usersList }) {
     if (index === slidesLength) {
       usersList.length > 2 && setNarrowDown(false);
       setEndOfList(true);
-      // return <Redirect to="/values-selection/values-confirmation" />;
       history.push(`/values-selection/values-confirmation`);
     }
     ++index;
@@ -34,12 +32,17 @@ function ValuesList({ usersList }) {
   const valueOnboardingComplete = JSON.parse(
     localStorage.getItem("valueOnboardingComplete")
   );
+  console.log("I AM THE USERIST OF LISTS, ", usersList);
 
-  // <Redirect to="/values-selection/values-confirmation" />
-  // //should check to see if projectsOnboarding complete and route there if not
-  // <Redirect to="/home" />
   return (
     <>
+      {usersList && (
+        <ValuesBannerWrapper
+          endOfList={endOfList}
+          narrowDown={narrowDown}
+          usersList={usersList}
+        />
+      )}
       {valueOnboardingComplete === false ? (
         <Route path={`/values-selection/values-confirmation`}>
           <>
@@ -75,11 +78,4 @@ function ValuesList({ usersList }) {
   );
 }
 
-const mapPropsToState = state => {
-  return {
-    isLoading: state.isLoading,
-    usersList: state.values.usersList
-  };
-};
-
-export default connect(mapPropsToState)(ValuesList);
+export default ValuesList;
