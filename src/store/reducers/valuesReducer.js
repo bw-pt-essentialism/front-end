@@ -109,6 +109,7 @@ const valuesReducer = (state = initialState, action) => {
     case ADD_TO_TOP_LIST:
       const values = action.payload;
       localStorage.setItem("userValues", JSON.stringify(values));
+      localStorage.setItem("valueOnboardingComplete", JSON.stringify(true));
       return {
         ...state,
         userValues: [action.payload]

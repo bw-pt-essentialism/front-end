@@ -37,7 +37,9 @@ function App() {
     // dispatch(deleteValues(1));
     // dispatch(deleteValues(2));
   }, []);
-
+  const valueOnboardingComplete = JSON.parse(
+    localStorage.getItem("valueOnboardingComplete")
+  );
   return (
     <Router>
       <Globals />

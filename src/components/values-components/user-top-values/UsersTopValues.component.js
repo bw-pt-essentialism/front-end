@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -31,7 +32,7 @@ function UsersTopValues({
   confirmTopList,
   setEndOfList
 }) {
-  let history = useHistory();
+  const history = useHistory();
   const handleClick = id => {
     toggleValue(id);
   };
@@ -54,59 +55,67 @@ function UsersTopValues({
     return <ValuesList />;
   }
 
-  return (
-    <>
-      {usersList.length > 0 && (
-        <section>
-          <div className={className} key={Date.now()}>
-            <div className="card-info">
-              <h4>
-                {narrowDown === false && usersList.length > 3
-                  ? "What's essential?"
-                  : "my values"}
-              </h4>
-
-              {usersList.map(val => {
-                return (
-                  <div key={val.id} onClick={() => handleClick(val.id)}>
-                    <p className={`${val.remove === true && "toggle"}`}>
-                      {" "}
-                      - {val.name.toLowerCase()}
-                    </p>
-                  </div>
-                );
-              })}
-              {narrowDown === false && usersList.length > 3 ? (
-                <span className="btns">
-                  <p>Cross off all but 3 of these values</p>
-                  <NarrowDownButton onClick={removeToggledValue}>
-                    remove
-                  </NarrowDownButton>
-                </span>
-              ) : (
-                endOfList === true && (
-                  <NarDwnBtnContainer>
-                    <span className="btns">
-                      <NarrowDownButton
-                        onClick={() => handleConfirm(usersList)}
-                      >
-                        confirm
-                      </NarrowDownButton>
-                    </span>
-                    <span className="btns">
-                      <NarrowDownButton onClick={handleEdit}>
-                        edit
-                      </NarrowDownButton>
-                    </span>
-                  </NarDwnBtnContainer>
-                )
-              )}
-            </div>
-          </div>
-        </section>
-      )}
-    </>
+  const valueOnboardingComplete = JSON.parse(
+    localStorage.getItem("valueOnboardingComplete")
   );
+
+  {
+    return !valueOnboardingComplete ? (
+      <>
+        {usersList.length > 0 && (
+          <section>
+            <div className={className} key={Date.now()}>
+              <div className="card-info">
+                <h4>
+                  {narrowDown === false && usersList.length > 3
+                    ? "What's essential?"
+                    : "my values"}
+                </h4>
+
+                {usersList.map(val => {
+                  return (
+                    <div key={val.id} onClick={() => handleClick(val.id)}>
+                      <p className={`${val.remove === true && "toggle"}`}>
+                        {" "}
+                        - {val.name.toLowerCase()}
+                      </p>
+                    </div>
+                  );
+                })}
+                {narrowDown === false && usersList.length > 3 ? (
+                  <span className="btns">
+                    <p>Cross off all but 3 of these values</p>
+                    <NarrowDownButton onClick={removeToggledValue}>
+                      remove
+                    </NarrowDownButton>
+                  </span>
+                ) : (
+                  endOfList === true && (
+                    <NarDwnBtnContainer>
+                      <span className="btns">
+                        <NarrowDownButton
+                          onClick={() => handleConfirm(usersList)}
+                        >
+                          confirm
+                        </NarrowDownButton>
+                      </span>
+                      <span className="btns">
+                        <NarrowDownButton onClick={handleEdit}>
+                          edit
+                        </NarrowDownButton>
+                      </span>
+                    </NarDwnBtnContainer>
+                  )
+                )}
+              </div>
+            </div>
+          </section>
+        )}
+      </>
+    ) : (
+      <Redirect path="/choice-expl" />
+    );
+  }
 }
 
 const mapPropsToState = state => {
@@ -122,7 +131,7 @@ export default connect(mapPropsToState, {
   confirmTopList
 })(styled(UsersTopValues)`
   background: ${setColor.mainLight};
-  /* margin: ${setRem(32)} auto; */
+  margin: 20% auto;
   max-width: 40%;
   width: 500px;
   color: ${setColor.offWhite};
@@ -142,6 +151,7 @@ export default connect(mapPropsToState, {
   }
 
   .card-info {
+    width: 100%;
     padding: ${setRem()};
     h4 {
       text-transform: capitalize;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { useHistory, useLocation } from "react-router";
 
 import Value from "../value/Value.component";
@@ -24,40 +24,53 @@ function ValuesList({ usersList }) {
     if (index === slidesLength) {
       usersList.length > 2 && setNarrowDown(false);
       setEndOfList(true);
-
+      // return <Redirect to="/values-selection/values-confirmation" />;
       history.push(`/values-selection/values-confirmation`);
     }
     ++index;
     setActiveIndex(index);
   };
 
+  const valueOnboardingComplete = JSON.parse(
+    localStorage.getItem("valueOnboardingComplete")
+  );
+
+  // <Redirect to="/values-selection/values-confirmation" />
+  // //should check to see if projectsOnboarding complete and route there if not
+  // <Redirect to="/home" />
   return (
     <>
-      <Route path={`/values-selection/values-confirmation`}>
+      {valueOnboardingComplete === false ? (
+        <Route path={`/values-selection/values-confirmation`}>
+          <>
+            <UsersTopValues
+              endOfList={endOfList}
+              setEndOfList={setEndOfList}
+              narrowDown={narrowDown}
+            />
+          </>
+        </Route>
+      ) : (
+        <Redirect to="/choice-expl" />
+      )}
+      {
         <>
-          <UsersTopValues
-            endOfList={endOfList}
-            setEndOfList={setEndOfList}
-            narrowDown={narrowDown}
-          />
+          {localValues &&
+            localValues.map((val, index) => {
+              return (
+                <Value
+                  key={val.id}
+                  info={val.name.toLowerCase()}
+                  id={val.id}
+                  index={index}
+                  activeIndex={activeIndex}
+                  goToNextCard={goToNextCard}
+                  endOfList={endOfList}
+                />
+              );
+            })}
         </>
-      </Route>
-      <StyledSection>
-        {localValues &&
-          localValues.map((val, index) => {
-            return (
-              <Value
-                key={val.id}
-                info={val.name.toLowerCase()}
-                id={val.id}
-                index={index}
-                activeIndex={activeIndex}
-                goToNextCard={goToNextCard}
-                endOfList={endOfList}
-              />
-            );
-          })}
-      </StyledSection>
+      }
     </>
   );
 }

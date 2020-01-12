@@ -10,6 +10,9 @@ import { store, persistor } from "./store";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
+localStorage.setItem("valueOnboardingComplete", JSON.stringify(false));
+localStorage.setItem("projectOnboardingComplete", JSON.stringify(false));
+
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>
