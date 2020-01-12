@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { Route } from "react-router-dom";
+import { useHistory, useLocation } from "react-router";
 
 import Value from "../value/Value.component";
 import UsersTopValues from "../user-top-values/UsersTopValues.component";
@@ -12,8 +14,9 @@ function ValuesList({ usersList }) {
   const [narrowDown, setNarrowDown] = useState(true);
 
   const localValues = JSON.parse(localStorage.getItem("values"));
-  console.log(`LOCAL VALUES FROM ValuesList.component.js: `, localValues);
   const localUsersList = JSON.parse(localStorage.getItem("usersList"));
+  const history = useHistory();
+  const location = useLocation();
 
   const goToNextCard = () => {
     let index = activeIndex;
@@ -21,38 +24,41 @@ function ValuesList({ usersList }) {
     if (index === slidesLength) {
       usersList.length > 2 && setNarrowDown(false);
       setEndOfList(true);
+
+      history.push(`/values-selection/values-confirmation`);
     }
     ++index;
     setActiveIndex(index);
   };
 
   return (
-    <StyledSection>
-      <UsersTopValues
-        endOfList={endOfList}
-        setEndOfList={setEndOfList}
-        narrowDown={narrowDown}
-      />
-      <ValuesBannerWrapper
-        endOfList={endOfList}
-        narrowDown={narrowDown}
-        usersList={usersList}
-      />
-      {localValues &&
-        localValues.map((val, index) => {
-          return (
-            <Value
-              key={val.id}
-              info={val.name.toLowerCase()}
-              id={val.id}
-              index={index}
-              activeIndex={activeIndex}
-              goToNextCard={goToNextCard}
-              endOfList={endOfList}
-            />
-          );
-        })}
-    </StyledSection>
+    <>
+      <Route path={`/values-selection/values-confirmation`}>
+        <>
+          <UsersTopValues
+            endOfList={endOfList}
+            setEndOfList={setEndOfList}
+            narrowDown={narrowDown}
+          />
+        </>
+      </Route>
+      <StyledSection>
+        {localValues &&
+          localValues.map((val, index) => {
+            return (
+              <Value
+                key={val.id}
+                info={val.name.toLowerCase()}
+                id={val.id}
+                index={index}
+                activeIndex={activeIndex}
+                goToNextCard={goToNextCard}
+                endOfList={endOfList}
+              />
+            );
+          })}
+      </StyledSection>
+    </>
   );
 }
 

@@ -17,7 +17,6 @@ import { ValueButton, ValueButtonContainer } from "./Value.styles";
 
 const Value = ({ className, info, id, goToNextCard }) => {
   const values = JSON.parse(localStorage.getItem("values"));
-  console.log(values, "VAAULUEEESSSSSSSSSSSSS");
 
   const dispatch = useDispatch();
   const handleYes = () => {
