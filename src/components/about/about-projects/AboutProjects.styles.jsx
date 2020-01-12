@@ -86,7 +86,7 @@ const AboutProjectsBannerWrapper = styled(AboutProjectsBanner)`
   ${media.phone` width: 90vw
     ${setBorder({ width: "6px", color: setColor.mainColor })};
     h5 {
-      width: 75%;
+      width: 100%;
       font-size: 1.2rem;
     }`}
 

@@ -9,9 +9,13 @@ export const CardsCenter = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: ${setRem(32)};
   ${media.desktop`
-  width:100vw;
+  width: 90vw;
+  max-width: 90%;
   max-width: 1400px;
   `};
-  ${media.large`
+  ${media.phone`
+  grid-template-columns: repeat(1, 1fr);
+  width: 90vw;
+  max-width: 90%;
   `};
 `;
