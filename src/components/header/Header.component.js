@@ -61,7 +61,12 @@ const Header = () => {
               <NavItem>
                 <StyledNavLink
                   to="/edit-values/"
-                  onClick={() => history.push("/edit-values/")}
+                  onClick={() => {
+                    localStorage.valuesOnboardingComplete &&
+                    localStorage.valuesOnboardingComplete === true
+                      ? history.push("/edit-values/")
+                      : history.push("/values-selection");
+                  }}
                 >
                   Edit Values
                 </StyledNavLink>

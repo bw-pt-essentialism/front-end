@@ -6,9 +6,7 @@ import AboutProjectsBannerWrapper, {
   AboutProjectsHero
 } from "./AboutProjects.styles";
 
-import Hero, { BottomImg } from "../../hero/Hero.component";
 import hero from "../../../images/hero.JPG";
-import stones from "../../../images/stones.jpeg";
 import AboutProjectCard from "../cards/AboutProjectsCard.component";
 
 function AboutProjects() {
@@ -16,13 +14,11 @@ function AboutProjects() {
   return (
     <>
       <AboutProjectsHero img={hero}>
-        {" "}
         <AboutProjectsBannerWrapper />
       </AboutProjectsHero>
-      {/* <BottomImg img={stones} /> */}
       <div>
         <AboutProjectCard />
-        <AboutButton onClick={() => history.push("/values-selection")}>
+        <AboutButton onClick={() => history.push("/project-form")}>
           continue
         </AboutButton>
       </div>

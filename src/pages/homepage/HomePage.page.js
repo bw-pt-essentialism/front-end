@@ -18,7 +18,7 @@ function HomePage() {
           <StyledConfirmedValues /> <StyledProjectList />
         </StyledSection>
       );
-    } else return <Redirect to="/project-form" />;
+    } else return <Redirect to="/about-projects" />;
   } else {
     return <Redirect to="/about-values" />;
   }

@@ -53,7 +53,6 @@ function App() {
           path="/values-selection"
           component={ValuesSelectionPage}
         />
-        <PrivateRoute path="/" component={AboutProjects} />
         <PrivateRoute path="/choice-expl" component={ChoiceExplanation} />
         <PrivateRoute path="/project-form" component={ProjectForm} />
         <PrivateRoute path="/edit-profile" component={EditProfile} />

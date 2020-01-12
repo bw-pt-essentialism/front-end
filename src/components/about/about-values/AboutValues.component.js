@@ -1,19 +1,26 @@
 import React from "react";
+import { useHistory } from "react-router";
 
-import AboutValuesBannerWrapper, { Layout } from "./AboutValues.styles";
+import AboutValuesBannerWrapper, {
+  AboutValuesHero,
+  AboutButton
+} from "./AboutValues.styles";
 
-import Hero, { BottomImg } from "../../hero/Hero.component";
 import hero from "../../../images/hero.JPG";
-import stones from "../../../images/stones.jpeg";
+import AboutValuesCard from "../cards/AboutValuesCard.component";
 
 function About() {
+  const history = useHistory();
   return (
     <>
-      <Hero img={hero}>
+      <AboutValuesHero img={hero}>
         {" "}
         <AboutValuesBannerWrapper />
-      </Hero>
-      <BottomImg img={stones} />
+      </AboutValuesHero>
+      <AboutValuesCard />
+      <AboutButton onClick={() => history.push("/values-selection")}>
+        continue
+      </AboutButton>
     </>
   );
 }

@@ -80,5 +80,8 @@ p {
   height: 0;
   visibility: hidden;
 }
+a {
+  text-decoration: none;
+}
 
 `;
