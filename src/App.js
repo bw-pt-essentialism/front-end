@@ -13,7 +13,8 @@ import PrivateRoute from "./PrivateRoute";
 import Header from "./components/header/Header.component";
 import SignInAndUpPage from "./pages/sign-in-and-up/SignInAndUpPage";
 import HomePage from "./pages/homepage/HomePage.page";
-import About from "./components/about/About.component";
+import AboutValues from "./components/about/about-values/AboutValues.component";
+import AboutProjects from "./components/about/about-projects/AboutProjects.component";
 import ValuesSelectionPage from "./pages/values-selection/ValuesSelectionPage.component";
 import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanationForm.component";
 import ProjectForm from "./components/project-form/ProjectForm.component";
@@ -52,12 +53,14 @@ function App() {
           path="/values-selection"
           component={ValuesSelectionPage}
         />
+        <PrivateRoute path="/" component={AboutProjects} />
         <PrivateRoute path="/choice-expl" component={ChoiceExplanation} />
         <PrivateRoute path="/project-form" component={ProjectForm} />
         <PrivateRoute path="/edit-profile" component={EditProfile} />
         <PrivateRoute path="/edit-values" component={EditValuesPage} />
         <PrivateRoute path="/home" component={HomePage} />
-        <PrivateRoute path="/about" component={About} />
+        <PrivateRoute path="/about-values" component={AboutValues} />
+        <PrivateRoute path="/about-projects" component={AboutProjects} />
       </Switch>
     </Router>
   );

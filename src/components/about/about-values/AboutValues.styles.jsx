@@ -6,7 +6,7 @@ import styled from "styled-components";
 import {
   CustomButton,
   CustomButtonContainer
-} from "../custom-button/CustomButton";
+} from "../../custom-button/CustomButton";
 
 import {
   setColor,
@@ -16,9 +16,9 @@ import {
   media,
   fadeIn,
   setTransition
-} from "../../globals/styles";
+} from "../../../globals/styles";
 
-const AboutBanner = ({ className }) => {
+const AboutValuesBanner = ({ className }) => {
   const history = useHistory();
   return (
     <div className={className}>
@@ -44,7 +44,7 @@ const AboutBanner = ({ className }) => {
     </div>
   );
 };
-const AboutBannerWrapper = styled(AboutBanner)`
+const AboutValuesBannerWrapper = styled(AboutValuesBanner)`
   /* background: ${setColor.mainLight};
   margin: 0 auto;
   text-align: center;
@@ -103,7 +103,7 @@ const AboutBannerWrapper = styled(AboutBanner)`
     } */
 `;
 
-export default AboutBannerWrapper;
+export default AboutValuesBannerWrapper;
 
 export const AboutButton = styled(CustomButton)`
   border: none;

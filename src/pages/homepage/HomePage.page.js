@@ -20,7 +20,7 @@ function HomePage() {
       );
     } else return <Redirect to="/project-form" />;
   } else {
-    return <Redirect to="/about" />;
+    return <Redirect to="/about-values" />;
   }
 }
 
