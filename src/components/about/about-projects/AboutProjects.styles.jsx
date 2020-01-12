@@ -93,14 +93,14 @@ const AboutProjectsBannerWrapper = styled(AboutProjectsBanner)`
       font-size: 1.2rem;
     }`}
 
-    /* ${media.tablet` 
+    ${media.tablet` 
   width: 90%
-  margin-top: 40vh;
+  margin-top: 25vh;
     ${setBorder({ width: "6px", color: setColor.mainColor })};
     h5 {
       width: 100%;
       font-size: 1.2rem;
-    }`} */
+    }`}
 
 `;
 
@@ -127,6 +127,10 @@ export const AboutProjectsHero = styled(Hero)`
   height: 50vh;
   margin-bottom: 40vh;`}
 
+  ${media.tablet` 
   height: 25vh;
-  margin-bottom: 25vh;
+  margin-bottom: 40vh;`}
+
+  height: 25vh;
+  margin-bottom: 5vh;
 `;

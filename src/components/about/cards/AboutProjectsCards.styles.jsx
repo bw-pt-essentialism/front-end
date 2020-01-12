@@ -20,8 +20,8 @@ export const CardsCenter = styled.div`
   `};
   ${media.tablet`
   grid-template-columns: repeat(1, 1fr);
-  margin: 0 auto 0;
-  width: 90vw;
+  margin: -25vh auto 0;
+  width: 80vw;
   max-width: 90%;
   `};
 `;
