@@ -18,7 +18,7 @@ const AboutProjectCard = ({ className }) => {
     <CardsCenter>
       <article className={className}>
         <div className="img-container">
-          <img src={img} alt="single AboutProjectCard" />
+          {/* <img src={img} alt="single AboutProjectCard" /> */}
         </div>
         <div className="card-info">
           <h4>What am I doing?</h4>
@@ -28,7 +28,7 @@ const AboutProjectCard = ({ className }) => {
       </article>
       <article className={className}>
         <div className="img-container">
-          <img src={img} alt="single AboutProjectCard" />
+          {/* <img src={img} alt="single AboutProjectCard" /> */}
         </div>
         <div className="card-info">
           <h4>How does it align with my values?</h4>
@@ -38,7 +38,7 @@ const AboutProjectCard = ({ className }) => {
       </article>
       <article className={className}>
         <div className="img-container">
-          <img src={img} alt="single AboutProjectCard" />
+          {/* <img src={img} alt="single AboutProjectCard" /> */}
         </div>
         <div className="card-info">
           <h4>What will I have to disinvest in?</h4>
@@ -52,6 +52,7 @@ const AboutProjectCard = ({ className }) => {
 
 export default styled(AboutProjectCard)`
   background: ${setColor.mainWhite};
+  color: ${setColor.mainColor};
   margin: ${setRem(32)} 0;
   .img-container {
     background: ${setColor.mainBlack};
@@ -71,7 +72,7 @@ export default styled(AboutProjectCard)`
       transform: translate(-50%, -50%);
       color: ${setColor.mainWhite};
       ${setLetterSpacing(5)};
-      font-size: ${setRem(22)};
+      font-size: ${setRem(21)};
       padding: ${setRem(10)} ${setRem(33)};
       ${setBorder({ color: setColor.mainWhite })};
       opacity: 0;

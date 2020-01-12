@@ -2,7 +2,8 @@ import React from "react";
 import { useHistory } from "react-router";
 
 import AboutProjectsBannerWrapper, {
-  AboutButton
+  AboutButton,
+  AboutProjectsHero
 } from "./AboutProjects.styles";
 
 import Hero, { BottomImg } from "../../hero/Hero.component";
@@ -14,10 +15,10 @@ function AboutProjects() {
   const history = useHistory();
   return (
     <>
-      <Hero img={hero}>
+      <AboutProjectsHero img={hero}>
         {" "}
         <AboutProjectsBannerWrapper />
-      </Hero>
+      </AboutProjectsHero>
       {/* <BottomImg img={stones} /> */}
       <div>
         <AboutProjectCard />

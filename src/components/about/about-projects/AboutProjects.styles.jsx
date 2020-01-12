@@ -54,7 +54,7 @@ const AboutProjectsBannerWrapper = styled(AboutProjectsBanner)`
   margin-left: 0;
   color: ${setColor.mainColor}; */
   background: ${setColor.mainLight};
-  margin: 45vh auto 0;
+  margin: 30vh auto 0;
   text-align: center;
   justify-content: center;
   width: 90%;
@@ -64,13 +64,14 @@ const AboutProjectsBannerWrapper = styled(AboutProjectsBanner)`
   /* max-height: 30vh; */
   color: ${setColor.mainColor};
   ${setLetterSpacing(3)};
-  padding: 5%;
+  padding: 2%;
  
 
   h5 {
     text-transform: uppercase;
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     font-weight: 100;
+    margin: 0 auto;
     span {
       text-transform: capitalize;
       color: ${setColor.offWhite};
@@ -83,20 +84,24 @@ const AboutProjectsBannerWrapper = styled(AboutProjectsBanner)`
     width: 85%;
     margin: 0 auto;
   }
-  ${media.phone` width: 90vw
+  ${media.phone` 
+  width: 90%
+  margin-top: 40vh;
     ${setBorder({ width: "6px", color: setColor.mainColor })};
     h5 {
       width: 100%;
       font-size: 1.2rem;
     }`}
 
-    /* article {
+    /* ${media.tablet` 
+  width: 90%
+  margin-top: 40vh;
+    ${setBorder({ width: "6px", color: setColor.mainColor })};
+    h5 {
+      width: 100%;
+      font-size: 1.2rem;
+    }`} */
 
-  display: flex;
-  flex-flow: column nowrap
-  justify-content: center;
-  align-self: center;
-    } */
 `;
 
 export default AboutProjectsBannerWrapper;
@@ -117,4 +122,11 @@ export const Layout = styled.div`
   flex-flow: column nowrap;
 `;
 
-export const AboutProjectsHero = styled(Hero)``;
+export const AboutProjectsHero = styled(Hero)`
+  ${media.phone` 
+  height: 50vh;
+  margin-bottom: 40vh;`}
+
+  height: 25vh;
+  margin-bottom: 25vh;
+`;
