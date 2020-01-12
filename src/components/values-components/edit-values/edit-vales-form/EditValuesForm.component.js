@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import {
   addValueDescription,
   putValues
-} from "../../../store/actions/values.actions";
+} from "../../../../store/actions/values.actions";
 
 import {
   FormContainer,
@@ -16,7 +16,7 @@ import {
   Hero,
   StyledValueField
 } from "./EditValuesForm.styles";
-import { SignUpButtonContainer } from "../../sign-up-form/SignUpForm.styles";
+import { SignUpButtonContainer } from "../../../sign-up-form/SignUpForm.styles";
 
 const EditValuesForm = ({
   errors,

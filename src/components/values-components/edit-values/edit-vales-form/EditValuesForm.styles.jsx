@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { Form, Field } from "formik";
-import { CustomButton } from "../../custom-button/CustomButton";
-import { CustomLink } from "../../custom-link/CustomLink.styles";
+import { CustomButton } from "../../../custom-button/CustomButton";
+import { CustomLink } from "../../../custom-link/CustomLink.styles";
 
-import { setFlex, setBackground, setColor } from "../../../globals/styles";
+import { setFlex, setBackground, setColor } from "../../../../globals/styles";
 
-import ConfirmedTopValues from "../../confirmed-values/Confirmed-Values.component";
+import ConfirmedTopValues from "../../../confirmed-values/Confirmed-Values.component";
 
 export const Hero = styled.header`
   height: 300px;
