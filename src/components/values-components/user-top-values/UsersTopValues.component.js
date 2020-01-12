@@ -2,15 +2,16 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
+import styled from "styled-components";
+
 import {
   toggleValue,
   removeToggledValue,
   confirmTopList
-} from "../../store/actions/values.actions";
+} from "../../../store/actions/values.actions";
 
 import ValuesList from "../values-list/ValuesList.component";
 
-import styled from "styled-components";
 import { NarrowDownButton, NarDwnBtnContainer } from "./UsersTopValues.styles";
 import {
   setRem,
@@ -18,7 +19,7 @@ import {
   setTransition,
   setColor,
   setShadow
-} from "../../globals/styles";
+} from "../../../globals/styles";
 
 function UsersTopValues({
   usersList,

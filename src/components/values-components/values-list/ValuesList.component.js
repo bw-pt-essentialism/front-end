@@ -12,6 +12,7 @@ function ValuesList({ usersList }) {
   const [narrowDown, setNarrowDown] = useState(true);
 
   const localValues = JSON.parse(localStorage.getItem("values"));
+  console.log(`LOCAL VALUES FROM ValuesList.component.js: `, localValues);
   const localUsersList = JSON.parse(localStorage.getItem("usersList"));
 
   const goToNextCard = () => {

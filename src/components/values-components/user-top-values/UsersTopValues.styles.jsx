@@ -1,11 +1,12 @@
 import React from "react";
 
+import styled from "styled-components";
+
 import {
   CustomButton,
   CustomButtonContainer
-} from "../custom-button/CustomButton";
+} from "../../custom-button/CustomButton";
 
-import styled from "styled-components";
 import {
   setColor,
   setRem,
@@ -14,7 +15,7 @@ import {
   media,
   fadeIn,
   setTransition
-} from "../../globals/styles";
+} from "../../../globals/styles";
 
 const ValuesBanner = ({ className, narrowDown, usersList }) => {
   return (

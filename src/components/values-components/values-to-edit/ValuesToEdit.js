@@ -9,7 +9,7 @@ import {
   setTransition,
   setColor,
   setShadow
-} from "../../globals/styles";
+} from "../../../globals/styles";
 
 function ValuesToEdit({ className }) {
   let history = useHistory();
@@ -25,17 +25,19 @@ function ValuesToEdit({ className }) {
         <div className="card-info">
           <h4>current values</h4>
           <div className="values">
-            {userValues.map(val => {
-              return (
-                <div key={val.id} onClick={() => handleClick(val.id)}>
-                  <p className={`${val.remove === true && "toggle"}`}>
-                    {" "}
-                    <strong>{val.name}</strong> because{" "}
-                    <strong>{val.description}</strong>
-                  </p>
-                </div>
-              );
-            })}
+            {userValues
+              ? userValues.map(val => {
+                  return (
+                    <div key={val.id} onClick={() => handleClick(val.id)}>
+                      <p className={`${val.remove === true && "toggle"}`}>
+                        {" "}
+                        <strong>{val.name}</strong> because{" "}
+                        <strong>{val.description}</strong>
+                      </p>
+                    </div>
+                  );
+                })
+              : history.push("/home")}
           </div>
         </div>
       </div>

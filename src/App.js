@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -18,7 +18,7 @@ import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanation
 import ProjectForm from "./components/project-form/ProjectForm.component";
 
 import { Globals } from "./globals/GlobalStyles";
-// import { values } from "./dummy-data";
+import { values } from "./dummy-data";
 
 import "./App.css";
 import EditProfile from "./components/edit-forms/EditProfile.component";
@@ -29,9 +29,14 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    //local solution to setting values to local state from dummy data
+    localStorage.setItem("values", JSON.stringify(values));
+
+    //server-side solution to setting values to local state
     // values.map(val => dispatch(postValues({ name: val.value })));
-    dispatch(getValues());
-  });
+    // dispatch(deleteValues(1));
+    // dispatch(deleteValues(2));
+  }, []);
 
   return (
     <Router>
@@ -42,7 +47,6 @@ function App() {
         <SignInAndUpPage />
       )}
       <Switch>
-        <PrivateRoute path="/home" component={HomePage} />
         <PrivateRoute
           path="/values-selection"
           component={ValuesSelectionPage}
@@ -51,6 +55,7 @@ function App() {
         <PrivateRoute path="/project-form" component={ProjectForm} />
         <PrivateRoute path="/edit-profile" component={EditProfile} />
         <PrivateRoute path="/edit-values" component={EditValuesPage} />
+        <PrivateRoute path="/home" component={HomePage} />
       </Switch>
     </Router>
   );

@@ -1,7 +1,7 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 
-import { confirmTopTempList } from "../../store/actions/values.actions";
+import { confirmTopTempList } from "../../../store/actions/values.actions";
 
 import styled from "styled-components";
 import {
@@ -11,22 +11,19 @@ import {
   setColor,
   setShadow,
   fadeIn
-} from "../../globals/styles";
+} from "../../../globals/styles";
 
 import { ValueButton, ValueButtonContainer } from "./Value.styles";
 
-const Value = ({
-  className,
-  info,
-  values,
-  id,
-  goToNextCard,
-  confirmTopTempList
-}) => {
+const Value = ({ className, info, id, goToNextCard }) => {
+  const values = JSON.parse(localStorage.getItem("values"));
+  console.log(values, "VAAULUEEESSSSSSSSSSSSS");
+
+  const dispatch = useDispatch();
   const handleYes = () => {
     values.map(val => {
       // console.log(`Val: id: `, val, id);
-      return val.id === id && confirmTopTempList(val);
+      return val.id === id && dispatch(confirmTopTempList(val));
     });
     goToNextCard();
   };
@@ -55,14 +52,7 @@ const Value = ({
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    values: state.values.values,
-    isLoading: state.isLoading
-  };
-};
-
-export default connect(mapStateToProps, { confirmTopTempList })(styled(Value)`
+export default styled(Value)`
   background: ${setColor.mainLight};
   /* margin: ${setRem(32)} auto; */
   max-width: 60%;
@@ -72,14 +62,13 @@ export default connect(mapStateToProps, { confirmTopTempList })(styled(Value)`
   /* max-height: 33vh; */
   font-size: 1.8rem;
   color: ${setColor.offWhite};
-  display: flex;
+  /* display: flex; */
   text-align: center;
   margin: 15% auto 0;
-  /* ${props =>
-    props.index === props.activeIndex ? "display: flex" : "display: none"} */
   ${props =>
-    props.index === props.activeIndex ? "display: flex" : "display: none"}
-  ${props => props.endOfList && "display: none"} p {
+    props.index === props.activeIndex ? "display: block" : "display: none"}
+  ${props => props.endOfList && "display: none"} 
+  p {
     ${fadeIn("100%", "-10%", "0")}
   }
   
@@ -111,4 +100,4 @@ export default connect(mapStateToProps, { confirmTopTempList })(styled(Value)`
     flex-flow: column nowrap;
     justify-content: space-between;
   }
-`);
+`;

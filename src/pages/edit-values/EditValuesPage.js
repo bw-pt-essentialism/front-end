@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import EditValuesForm from "../../components/edit-values/edit-vales-form/EditValuesForm.component";
-import ValuesToEdit from "../../components/values-to-edit/ValuesToEdit";
+import ValuesToEdit from "../../components/values-components/values-to-edit/ValuesToEdit";
 
 import hero from "../../images/hero.JPG";
 

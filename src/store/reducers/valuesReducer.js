@@ -17,9 +17,9 @@ import {
   ADD_TO_TOP_TEMP_LIST,
   ADD_VALUE_DESCRIPTION
 } from "../actions/values.actions";
-
+const localValues = JSON.parse(localStorage.getItem("values"));
 const initialState = {
-  values: JSON.parse(localStorage.getItem("values")) || [
+  values: localValues || [
     {
       id: "",
       name: "",

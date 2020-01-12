@@ -7,57 +7,57 @@ export const userData = {
 
 let valID = Date.now();
 export const values = [
-  { value: "Athletic ability", id: valID + Math.random(), remove: false },
-  { value: "Art and literature", id: valID + Math.random(), remove: false },
-  { value: "Creativity", id: valID + Math.random(), remove: false },
+  { name: "Athletic ability", id: valID + Math.random(), remove: false },
+  { name: "Art and literature", id: valID + Math.random(), remove: false },
+  { name: "Creativity", id: valID + Math.random(), remove: false },
   {
-    value: "discovering, or inventing things to make a difference in the world",
+    name: "discovering, or inventing things to make a difference in the world",
     id: valID + Math.random(),
     remove: false
   },
-  { value: "Independence", id: valID + Math.random(), remove: false },
+  { name: "Independence", id: valID + Math.random(), remove: false },
   {
-    value: "Kindness and generosity",
+    name: "Kindness and generosity",
     id: valID + Math.random(),
     remove: false
   },
-  { value: "Living in the moment", id: valID + Math.random(), remove: false },
+  { name: "Living in the moment", id: valID + Math.random(), remove: false },
   {
-    value:
+    name:
       "Membership in a social group (such as your community, racial group, or school club)",
     id: valID + Math.random(),
     remove: false
   },
-  { value: "Music", id: valID + Math.random(), remove: false },
-  { value: "My community", id: valID + Math.random(), remove: false },
-  { value: "My moral principles", id: valID + Math.random(), remove: false },
+  { name: "Music", id: valID + Math.random(), remove: false },
+  { name: "My community", id: valID + Math.random(), remove: false },
+  { name: "My moral principles", id: valID + Math.random(), remove: false },
   {
-    value: "Nature and the environment",
+    name: "Nature and the environment",
     id: valID + Math.random(),
     remove: false
   },
   {
-    value: "Relationships with friends and family",
+    name: "Relationships with friends and family",
     id: valID + Math.random(),
     remove: false
   },
-  { value: "Sense of humor", id: valID + Math.random(), remove: false },
-  { value: "Success in my career", id: valID + Math.random(), remove: false }
+  { name: "Sense of humor", id: valID + Math.random(), remove: false },
+  { name: "Success in my career", id: valID + Math.random(), remove: false }
 ];
 
 export const valueChoice = {
   value1: {
-    value: "",
+    name: "",
     explanation: "",
     id: ""
   },
   value2: {
-    value: "",
+    name: "",
     explanation: "",
     id: ""
   },
   value3: {
-    value: "",
+    name: "",
     explanation: "",
     id: ""
   }

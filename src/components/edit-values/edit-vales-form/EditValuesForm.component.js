@@ -36,10 +36,10 @@ const EditValuesForm = ({
   const handleClick = id => {
     const updatedValues = userValues.map(val => {
       if (val.id === id) {
-        return dispatch(putValues(id, values));
+        return (val = { ...val, values });
       }
+      localStorage.setItem("userValues", JSON.stringify(updatedValues));
     });
-    localStorage.setItem("userValues", JSON.stringify(updatedValues));
   };
   return (
     <>
@@ -48,6 +48,8 @@ const EditValuesForm = ({
         userValues.map(val => {
           console.log(`This is val.id: `, val.id);
           if (val.id === parseInt(valToEdit)) {
+            localStorage.setItem("update", JSON.stringify(val));
+            console.log(JSON.parse(localStorage.getItem("update")));
             return (
               <div key={val.id}>
                 <FormContainer className="form">
@@ -91,8 +93,8 @@ const EditValuesForm = ({
 export default withFormik({
   mapPropsToValues({ description, val, value }) {
     return {
-      val: value,
-      description: description || ""
+      value: value,
+      description: description
     };
   },
   validationSchema: Yup.object().shape({
