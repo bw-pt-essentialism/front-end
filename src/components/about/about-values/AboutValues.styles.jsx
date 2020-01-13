@@ -133,6 +133,12 @@ export const AboutValuesHero = styled(Hero)`
 export const BottomImg = styled.header`
   margin-top: -5vh;
   height: 71vh;
+
+  /* ${media.tablet`
+ display: none;
+  margin-bottom: 40vh;
+  `} */
+
   display: flex;
   flex-flow: column nowrap;
   ${props =>
