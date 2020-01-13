@@ -89,9 +89,9 @@ const AboutValuesBannerWrapper = styled(AboutValuesBanner)`
       width: 100%;
       font-size: 1.2rem;
     }`}
-    ${media.desktop` 
+    ${media.tablet` 
   width: 90%
-  margin-top: 250px;
+  margin-top: 450px;
     ${setBorder({ width: "6px", color: setColor.mainColor })};
     h5 {
       width: 100%;
