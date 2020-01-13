@@ -120,12 +120,17 @@ export const Layout = styled.div`
 export const AboutValuesHero = styled(Hero)`
   ${media.phone` 
   height: 50vh;
-  margin-bottom: 40vh;`}
+  /* margin-bottom: 40vh; */
+  `}
 
   ${media.tablet` 
   height: 25vh;
-  margin-bottom: 40vh;`}
-
+  /* margin-bottom: 40vh; */
+  `}
+  ${media.desktop` 
+  height: 25vh;
+  /* margin-bottom: 40vh; */
+  `}
   height: 25vh;
   margin-bottom: 5vh;
 `;
@@ -136,7 +141,7 @@ export const BottomImg = styled.header`
 
   /* ${media.tablet`
  display: none;
-  margin-bottom: 40vh;
+  /* margin-bottom: 40vh; */
   `} */
 
   display: flex;
