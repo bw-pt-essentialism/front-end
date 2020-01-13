@@ -74,7 +74,7 @@ const AboutValuesBannerWrapper = styled(AboutValuesBanner)`
   }
   ${media.phone` 
   width: 90%
-  margin-top: 400px;
+  margin-top: 450px;
     ${setBorder({ width: "6px", color: setColor.mainColor })};
     h5 {
       width: 100%;
@@ -118,6 +118,9 @@ export const Layout = styled.div`
 `;
 
 export const AboutValuesHero = styled(Hero)`
+
+height: 25vh;
+  margin-bottom: 5vh;
   ${media.phone` 
   height: 50vh;
   /* margin-bottom: 40vh; */
@@ -129,8 +132,6 @@ export const AboutValuesHero = styled(Hero)`
   ${media.desktop` 
   height: 25vh;
   `}
-  height: 25vh;
-  margin-bottom: 5vh;
 `;
 
 export const BottomImg = styled.header`

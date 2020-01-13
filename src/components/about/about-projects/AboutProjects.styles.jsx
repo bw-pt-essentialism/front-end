@@ -73,7 +73,7 @@ const AboutProjectsBannerWrapper = styled(AboutProjectsBanner)`
   }
   ${media.phone` 
   width: 90%
-  margin-top: 40vh;
+  margin-top: 45vh;
     ${setBorder({ width: "6px", color: setColor.mainColor })};
     h5 {
       width: 100%;
@@ -82,7 +82,7 @@ const AboutProjectsBannerWrapper = styled(AboutProjectsBanner)`
 
   ${media.tablet` 
   width: 90%
-  margin-top: 25vh;
+  margin-top: 65vh;
     ${setBorder({ width: "6px", color: setColor.mainColor })};
     h5 {
       width: 100%;
@@ -111,22 +111,26 @@ export const Layout = styled.div`
 export const AboutProjectsHero = styled(Hero)`
   ${media.phone` 
   height: 50vh;
-  margin-bottom: 40vh;`}
+  `}
 
   ${media.tablet` 
   height: 25vh;
-  margin-bottom: 40vh;`}
+ `}
 
   height: 25vh;
-  margin-bottom: 5vh;
 `;
 
 export const BottomImg = styled.header`
-  margin-top: -5vh;
   height: 71vh;
   display: flex;
   flex-flow: column nowrap;
   ${props =>
     setBackground({ img: props.img, color: "rgba(255, 255, 255, 0.17)" })};
   ${setFlex()};
+  ${media.phone` 
+  /* height: 50vh; */
+  /* */
+  image {
+    display: none;
+  }`}
 `;

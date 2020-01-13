@@ -22,10 +22,9 @@ export const CardsCenter = styled.div`
   `};
   ${media.phone`
   grid-template-columns: repeat(1, 1fr);
-  margin: 180px auto 0;
+  margin-top: 65vh;
   width: 90vw;
   max-width: 90%;
-  background: hotpink;
   `};
   ${media.tablet`
   grid-template-columns: repeat(1, 1fr);

@@ -11,7 +11,7 @@ export const CardsCenter = styled.div`
 
   ${media.phone`
   grid-template-columns: repeat(1, 1fr);
-  margin: -80vh auto 0;
+  margin: 180px auto 0;
   width: 90vw;
   max-width: 90%;
   `};
