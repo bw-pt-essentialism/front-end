@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 
 import styled from "styled-components";
 
-import Hero, { BottomImg } from "../../hero/Hero.component";
+import Hero from "../../hero/Hero.component";
 import {
   CustomButton,
   CustomButtonContainer
@@ -11,7 +11,8 @@ import {
 
 import {
   setColor,
-  setRem,
+  setBackground,
+  setFlex,
   setLetterSpacing,
   setBorder,
   media,
@@ -118,4 +119,14 @@ export const AboutProjectsHero = styled(Hero)`
 
   height: 25vh;
   margin-bottom: 5vh;
+`;
+
+export const BottomImg = styled.header`
+  margin-top: -5vh;
+  height: 71vh;
+  display: flex;
+  flex-flow: column nowrap;
+  ${props =>
+    setBackground({ img: props.img, color: "rgba(255, 255, 255, 0.17)" })};
+  ${setFlex()};
 `;

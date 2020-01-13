@@ -40,7 +40,7 @@ const ChoiceExplanation = ({
     let slidesLength = userValues.length - 1;
     if (index === slidesLength) {
       localStorage.setItem("explanations-confirmed", JSON.stringify(true));
-      history.push("/project-form");
+      history.push("/about-projects");
     }
     ++index;
     setActiveIndex(index);

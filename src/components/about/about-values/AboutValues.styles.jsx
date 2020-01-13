@@ -44,7 +44,7 @@ const AboutValuesBanner = ({ className }) => {
 };
 const AboutValuesBannerWrapper = styled(AboutValuesBanner)`
   background: ${setColor.mainLight};
-  margin: 30vh auto 0;
+  margin: 300px auto 0;
   text-align: center;
   justify-content: center;
   width: 90%;
