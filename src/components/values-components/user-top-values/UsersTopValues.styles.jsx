@@ -53,10 +53,10 @@ const ValuesBannerWrapper = styled(ValuesBanner)`
   justify-content: center;
   width: 600px;
   max-width: 90%;
-  height: 525px;
+  height: 425px;
   min-height: 260px;
-  height: 32vh;
-  margin-top: -10rem;
+  /* height: 32vh; */
+  margin-top: -20rem;
   color: ${setColor.mainColor};
   padding: 2%;
   ${setLetterSpacing(3)};
