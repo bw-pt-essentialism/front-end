@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Route, Redirect } from "react-router-dom";
-import { useHistory, useLocation } from "react-router";
+import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
 
 import Value from "../value/Value.component";
 import UsersTopValues from "../user-top-values/UsersTopValues.component";
 import ValuesBannerWrapper from "../user-top-values/UsersTopValues.styles";
+import { AboutValuesHero } from "../../about/about-values/AboutValues.styles";
+import hero from "../../../images/hero.JPG";
 
 function ValuesList() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -36,6 +38,7 @@ function ValuesList() {
 
   return (
     <>
+      <AboutValuesHero img={hero} />
       {usersList && (
         <ValuesBannerWrapper
           endOfList={endOfList}

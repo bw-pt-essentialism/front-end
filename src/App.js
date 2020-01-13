@@ -20,11 +20,14 @@ import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanation
 import ProjectForm from "./components/project-form/ProjectForm.component";
 import EditProfile from "./components/edit-forms/EditProfile.component";
 import EditValuesPage from "./pages/edit-values/EditValuesPage";
+import EditProjectsForm from "./components/edit-forms/edit-projects/EditProjectsForm.component";
 
 import { Globals } from "./globals/GlobalStyles";
 import { values } from "./dummy-data";
 
 import "./App.css";
+import EditProjectsPage from "./pages/edit-projects/EditProjectsPage.component";
+import ValuesList from "./components/values-components/values-list/ValuesList.component";
 function App() {
   const welcome = useSelector(state => state.login.welcome);
 
@@ -49,14 +52,12 @@ function App() {
         <SignInAndUpPage />
       )}
       <Switch>
-        <PrivateRoute
-          path="/values-selection"
-          component={ValuesSelectionPage}
-        />
         <PrivateRoute path="/choice-expl" component={ChoiceExplanation} />
         <PrivateRoute path="/project-form" component={ProjectForm} />
+        <PrivateRoute path="/values-selection" component={ValuesList} />
         <PrivateRoute path="/edit-profile" component={EditProfile} />
         <PrivateRoute path="/edit-values" component={EditValuesPage} />
+        <PrivateRoute path="/edit-projects" component={EditProjectsPage} />
         <PrivateRoute path="/home" component={HomePage} />
         <PrivateRoute path="/about-values" component={AboutValues} />
         <PrivateRoute path="/about-projects" component={AboutProjects} />

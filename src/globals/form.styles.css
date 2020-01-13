@@ -45,7 +45,8 @@ mainBlack: "#222" */
   font-size: 1.2rem;
 }
 
-.input:active {
+.input:active,
+&:visited {
   background-color: rgb(107, 121, 179, 0.4);
   padding: 0.8rem 0.8rem 0.8rem 0.4rem;
   display: block;
