@@ -41,44 +41,45 @@ function ValuesList() {
   return (
     <>
       <AboutValuesHero img={hero} />
-      {usersList && (
-        <ValuesBannerWrapper
-          endOfList={endOfList}
-          narrowDown={narrowDown}
-          usersList={usersList}
-        />
-      )}
-      {valueOnboardingComplete === false ? (
-        <Route path={`/values-selection/values-confirmation`}>
-          <BottomImg img={stones}>
+      <BottomImg img={stones}>
+        {usersList && (
+          <ValuesBannerWrapper
+            endOfList={endOfList}
+            narrowDown={narrowDown}
+            usersList={usersList}
+          />
+        )}
+        {/* <BottomImg img={stones}> */}
+        {valueOnboardingComplete === false ? (
+          <Route path={`/values-selection/values-confirmation`}>
             <UsersTopValues
               endOfList={endOfList}
               setEndOfList={setEndOfList}
               narrowDown={narrowDown}
             />
-          </BottomImg>
-        </Route>
-      ) : (
-        <Redirect to="/choice-expl" />
-      )}
-      {
-        <BottomImg img={stones}>
-          {localValues &&
-            localValues.map((val, index) => {
-              return (
-                <Value
-                  key={val.id}
-                  info={val.name.toLowerCase()}
-                  id={val.id}
-                  index={index}
-                  activeIndex={activeIndex}
-                  goToNextCard={goToNextCard}
-                  endOfList={endOfList}
-                />
-              );
-            })}
-        </BottomImg>
-      }
+          </Route>
+        ) : (
+          <Redirect to="/choice-expl" />
+        )}
+        {
+          <>
+            {localValues &&
+              localValues.map((val, index) => {
+                return (
+                  <Value
+                    key={val.id}
+                    info={val.name.toLowerCase()}
+                    id={val.id}
+                    index={index}
+                    activeIndex={activeIndex}
+                    goToNextCard={goToNextCard}
+                    endOfList={endOfList}
+                  />
+                );
+              })}
+          </>
+        }
+      </BottomImg>
     </>
   );
 }
