@@ -21,7 +21,7 @@ export const CardsCenter = styled.div`
   `};
   ${media.tablet`
   grid-template-columns: repeat(1, 1fr);
-  margin: -350px auto 0;
+  margin: -375px auto 0;
   width: 80vw;
   max-width: 90%;
   `};
