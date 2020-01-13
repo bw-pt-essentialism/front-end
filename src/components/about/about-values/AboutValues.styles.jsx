@@ -81,6 +81,14 @@ const AboutValuesBannerWrapper = styled(AboutValuesBanner)`
       font-size: 1.2rem;
     }`}
 
+    ${media.desktop` 
+  width: 90%
+  margin-top: 400px;
+    h5 {
+      width: 100%;
+      font-size: 1.2rem;
+    }`}
+
   ${media.tablet` 
   width: 90%
   margin-top: 450px;
