@@ -15,12 +15,10 @@ import SignInAndUpPage from "./pages/sign-in-and-up/SignInAndUpPage";
 import HomePage from "./pages/homepage/HomePage.page";
 import AboutValues from "./components/about/about-values/AboutValues.component";
 import AboutProjects from "./components/about/about-projects/AboutProjects.component";
-import ValuesSelectionPage from "./pages/values-selection/ValuesSelectionPage.component";
 import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanationForm.component";
 import ProjectForm from "./components/project-form/ProjectForm.component";
 import EditProfile from "./components/edit-forms/EditProfile.component";
 import EditValuesPage from "./pages/edit-values/EditValuesPage";
-import EditProjectsForm from "./components/edit-forms/edit-projects/EditProjectsForm.component";
 
 import { Globals } from "./globals/GlobalStyles";
 import { values } from "./dummy-data";
