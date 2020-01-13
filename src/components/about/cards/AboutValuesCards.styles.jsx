@@ -8,11 +8,7 @@ export const CardsCenter = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: ${setRem(32)};
-  ${media.desktop`
-  width: 90vw;
-  max-width: 90%;
-  max-width: 1400px;
-  `};
+
   ${media.phone`
   grid-template-columns: repeat(1, 1fr);
   margin: -80vh auto 0;
