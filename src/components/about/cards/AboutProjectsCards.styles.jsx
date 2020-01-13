@@ -12,13 +12,13 @@ export const CardsCenter = styled.div`
   width: 90vw;
   max-width: 90%;
   max-width: 1400px;
-  margin: 50vh auto 0;
+  margin: 55vh auto 0;
   `};
   ${media.desktop`
   width: 90vw;
   max-width: 90%;
   max-width: 1400px;
-  margin: 50vh auto 0;
+  margin: 55vh auto 0;
   `};
   ${media.phone`
   grid-template-columns: repeat(1, 1fr);
