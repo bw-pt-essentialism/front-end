@@ -8,6 +8,8 @@ import {
   SignUpButtonContainer
 } from "../sign-up-form/SignUpForm.styles";
 
+import { StyledForm, StyledFormContainer } from "./EditProfile.styles";
+
 import { putUser, deleteUser } from "../../store/actions/user.actions";
 
 import "../../globals/form.styles.css";
@@ -45,16 +47,20 @@ const EditProfile = ({
   };
 
   return (
-    <div className="form-container">
-      <Form className="form">
+    <StyledFormContainer>
+      <StyledForm>
+        <label htmlFor="name">Name</label>
         <Field
           className="input"
           component="input"
           type="text"
+          id="name"
           name="name"
           placeholder={user.name}
         />
         {touched.name && errors.name && <p className="errors">{errors.name}</p>}
+
+        <label htmlFor="email">Email</label>
         <Field
           className="input"
           component="input"
@@ -65,6 +71,7 @@ const EditProfile = ({
         {touched.email && errors.email && (
           <p className="errors">{errors.email}</p>
         )}
+        <label htmlFor="username">Username</label>
         <Field
           className="input"
           component="input"
@@ -75,6 +82,7 @@ const EditProfile = ({
         {touched.username && errors.username && (
           <p className="errors">{errors.username}</p>
         )}
+        <label htmlFor="password">Password</label>
         <Field
           className="input"
           component="input"
@@ -85,13 +93,16 @@ const EditProfile = ({
         {touched.password && errors.password && (
           <p className="errors">{errors.password}</p>
         )}
+        <label htmlFor="verifyPassword" hidden>
+          Verify Updated Password
+        </label>
         {touched.password && (
           <Field
             className="input"
             component="input"
             type="password"
             name="verifyPassword"
-            placeholder="Verify Password"
+            placeholder="Verify Updated Password"
           />
         )}
         {touched.verifyPassword && errors.verifyPassword && (
@@ -113,8 +124,8 @@ const EditProfile = ({
             Update
           </SignUpButton>
         </SignUpButtonContainer>
-      </Form>
-    </div>
+      </StyledForm>
+    </StyledFormContainer>
   );
 };
 

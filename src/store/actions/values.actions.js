@@ -59,7 +59,7 @@ export const postValues = value => dispatch => {
     });
 };
 
-export const putValues = (value, id) => dispatch => {
+export const putValues = (id, value) => dispatch => {
   dispatch({ type: VALUES_PUT_START, payload: value });
   return axiosWithAuth()
     .put(`/values/${id}`, value)

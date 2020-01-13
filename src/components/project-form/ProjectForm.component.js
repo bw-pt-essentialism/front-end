@@ -35,6 +35,9 @@ const ProjectForm = ({
   };
   const handleClick = () => {
     dispatch(postProjects(values));
+    if (values.project === undefined) {
+      alert(`You haven't entered a project`);
+    }
     localStorage.setItem("projects-confirmed", JSON.stringify(true));
     localStorage.setItem("projectOnboardingComplete", JSON.stringify(true));
 

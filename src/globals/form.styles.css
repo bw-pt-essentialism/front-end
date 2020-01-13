@@ -55,9 +55,9 @@ mainBlack: "#222" */
   margin: 25px 0;
 }
 
-/* label {
-  margin: 5%;
-} */
+input::placeholder {
+  color: #eaeaea;
+}
 
 .terms {
   font-size: 13px;
@@ -99,4 +99,9 @@ button:hover {
 
 .project-form {
   margin-top: -10%;
+}
+
+label {
+  color: #eaeaea;
+  font-size: 1.2rem;
 }

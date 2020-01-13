@@ -1,5 +1,5 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { withFormik, Field } from "formik";
 import * as Yup from "yup";
@@ -26,6 +26,7 @@ const EditValuesForm = ({
   values
 }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // const userValues = useSelector(state => state.values.userValues)
 
@@ -33,14 +34,35 @@ const EditValuesForm = ({
 
   const userValues = JSON.parse(localStorage.getItem("userValues"));
 
+  useEffect(() => {
+    const userValues = JSON.parse(localStorage.getItem("userValues"));
+  }, [userValues]);
+
   const handleClick = id => {
     const updatedValues = userValues.map(val => {
+      console.log(values);
+      const valToUpdate = JSON.parse(localStorage.getItem("updatingVal"));
       if (val.id === id) {
-        return (val = { ...val, values });
+        dispatch(
+          putValues(id, {
+            id: valToUpdate.id,
+            name: values.value || valToUpdate.name,
+            description: values.description || valToUpdate.description
+          })
+        );
+        return {
+          id: valToUpdate.id,
+          name: values.value || valToUpdate.name,
+          description: values.description || valToUpdate.description
+        };
+      } else {
+        return val;
       }
-      localStorage.setItem("userValues", JSON.stringify(updatedValues));
     });
+    history.push("/home");
+    localStorage.setItem("userValues", JSON.stringify(updatedValues));
   };
+
   return (
     <>
       {/* <Sizer> */}
@@ -48,13 +70,23 @@ const EditValuesForm = ({
         userValues.map(val => {
           console.log(`This is val.id: `, val.id);
           if (val.id === parseInt(valToEdit)) {
-            localStorage.setItem("update", JSON.stringify(val));
-            console.log(JSON.parse(localStorage.getItem("update")));
+            localStorage.setItem("updatingVal", JSON.stringify(val));
+            // console.log(`This is updatingVal: `, val);
             return (
               <div key={val.id}>
                 <FormContainer className="form">
                   <h4>You change, your values change, and that's ok.</h4>
+
+                  <Field
+                    className="input"
+                    component="input"
+                    type="textarea"
+                    name="valueID"
+                    value={val.id}
+                    hidden
+                  />
                   <StyledValueField
+                    id="value"
                     className="input"
                     component="input"
                     type="text"
@@ -91,14 +123,15 @@ const EditValuesForm = ({
 };
 
 export default withFormik({
-  mapPropsToValues({ description, val, value }) {
+  mapPropsToValues({ description, value }) {
+    const val = JSON.parse(localStorage.getItem("updatingVal"));
     return {
       value: value,
       description: description
     };
   },
   validationSchema: Yup.object().shape({
-    description: Yup.string().required("Required")
+    description: Yup.string()
   }),
   handleSubmit(values, { resetForm }) {
     resetForm();

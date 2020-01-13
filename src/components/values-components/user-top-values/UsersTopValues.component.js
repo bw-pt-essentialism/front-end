@@ -43,7 +43,6 @@ function UsersTopValues({
       return <ValuesList />;
     }
     confirmTopList(usersList);
-    localStorage.removeItem("usersList");
     history.push("/choice-expl");
   };
 

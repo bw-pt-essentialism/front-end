@@ -74,7 +74,7 @@ const valuesReducer = (state = initialState, action) => {
     case VALUES_PUT_SUCCESS:
       return {
         ...state,
-        values: [...state.values, action.payload.values]
+        userValues: [...state.userValues, action.payload]
       };
     case VALUES_PUT_FAILURE:
       return {

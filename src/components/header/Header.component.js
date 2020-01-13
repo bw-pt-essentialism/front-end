@@ -40,6 +40,10 @@ const Header = () => {
     window.location.href = "/";
   };
 
+  const valueOnboardingComplete = JSON.parse(
+    localStorage.getItem("valueOnboardingComplete")
+  );
+
   if (localWelcome || welcome !== "") {
     return (
       <div>
@@ -62,8 +66,7 @@ const Header = () => {
                 <StyledNavLink
                   to="/edit-values/"
                   onClick={() => {
-                    localStorage.valuesOnboardingComplete &&
-                    localStorage.valuesOnboardingComplete === true
+                    valueOnboardingComplete && valueOnboardingComplete === true
                       ? history.push("/edit-values/")
                       : history.push("/values-selection");
                   }}
