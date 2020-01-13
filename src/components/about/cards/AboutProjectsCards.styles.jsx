@@ -15,6 +15,7 @@ export const CardsCenter = styled.div`
   `};
   ${media.phone`
   grid-template-columns: repeat(1, 1fr);
+  margin: 50vh auto 0;
   width: 90vw;
   max-width: 90%;
   `};
