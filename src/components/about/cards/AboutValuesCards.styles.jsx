@@ -15,14 +15,14 @@ export const CardsCenter = styled.div`
   `};
   ${media.phone`
   grid-template-columns: repeat(1, 1fr);
-  margin: -60vh auto 0;
+  margin: -80vh auto 0;
   width: 90vw;
   max-width: 90%;
   `};
   ${media.tablet`
  
   grid-template-columns: repeat(1, 1fr);
-  margin: -35vh auto 0;
+  margin: -15vh auto 0;
   width: 80vw;
   max-width: 90%;
   `};

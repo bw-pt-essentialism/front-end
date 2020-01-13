@@ -44,7 +44,7 @@ const AboutValuesBanner = ({ className }) => {
 };
 const AboutValuesBannerWrapper = styled(AboutValuesBanner)`
   background: ${setColor.mainLight};
-  margin: 300px auto 10%;
+  margin: 350px auto 10%;
   text-align: center;
   justify-content: center;
   width: 90%;
@@ -82,14 +82,6 @@ const AboutValuesBannerWrapper = styled(AboutValuesBanner)`
     }`}
 
   ${media.tablet` 
-  width: 90%
-  margin-top: 250px;
-    ${setBorder({ width: "6px", color: setColor.mainColor })};
-    h5 {
-      width: 100%;
-      font-size: 1.2rem;
-    }`}
-    ${media.tablet` 
   width: 90%
   margin-top: 450px;
     ${setBorder({ width: "6px", color: setColor.mainColor })};
