@@ -6,16 +6,18 @@ import * as Yup from "yup";
 
 import { postProjects } from "../../store/actions/projects.actions";
 
-// import Hero from "../hero/Hero.component";
 import hero from "../../images/hero.JPG";
+import stones from "../../images/stones.jpeg";
 
 import {
   FormContainer,
   ConfirmExplanationButton,
+  ButtonContainer,
   Sizer,
-  Hero
-} from "../choice-explanation/ChoiceExplanations.styles";
-import { SignUpButtonContainer } from "../sign-up-form/SignUpForm.styles";
+  Hero,
+  BottomImg
+} from "./ProjectConfirmation.styles";
+// import { SignUpButtonContainer } from "../sign-up-form/SignUpForm.styles";
 
 const ProjectForm = ({
   errors,
@@ -51,14 +53,14 @@ const ProjectForm = ({
   {
     return !projectOnboardingComplete ? (
       <Sizer>
-        <Hero img={hero} />
-        <div>
-          <FormContainer className="form project-form">
-            <h4>What are you working on?</h4>
+        <Hero img={hero}>
+          <FormContainer>
+            <label htmlFor="project">What are you working on?</label>
             <Field
               className="input"
               component="input"
               type="text"
+              id="project"
               name="project"
               placeholder="Tell us what you're working on..."
             />
@@ -86,7 +88,7 @@ const ProjectForm = ({
                   );
                 })}
             </Field>
-            <SignUpButtonContainer>
+            <ButtonContainer>
               <ConfirmExplanationButton
                 type="submit"
                 onClick={handleClick}
@@ -101,9 +103,10 @@ const ProjectForm = ({
               >
                 add more
               </ConfirmExplanationButton>
-            </SignUpButtonContainer>
+            </ButtonContainer>
           </FormContainer>
-        </div>
+        </Hero>
+        <BottomImg img={stones} />
       </Sizer>
     ) : (
       <Redirect path="/home" />

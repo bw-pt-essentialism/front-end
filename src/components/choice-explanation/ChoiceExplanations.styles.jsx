@@ -47,7 +47,9 @@ export const FormContainer = styled(Form)`
     input {
     min-height: 15vh;
   }
-  input::placeholder {
+  input::placeholder,
+  :active,
+  :visited {
     text-align: center;
   }
   label {
