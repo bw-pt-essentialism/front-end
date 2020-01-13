@@ -41,8 +41,11 @@ const BannerWrapper = styled(Banner)`
 
   text-align: center;
   justify-content: center;
-  padding: ${setRem(10)} ${setRem(10)};
+  padding: 2%;
   ${setLetterSpacing(3)}
+  a {
+    text-decoration: none;
+  }
   h3 {
     text-transform: uppercase;
     font-size: ${setRem(48)};
