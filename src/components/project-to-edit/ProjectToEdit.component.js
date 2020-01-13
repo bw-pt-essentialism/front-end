@@ -21,9 +21,9 @@ function ProjectToEdit({ className }) {
   };
   return (
     <section>
-      <div className={className} key={Date.now()}>
+      <div className={className}>
         <div className="card-info">
-          <h4>current values</h4>
+          <h4>current projects</h4>
           <div className="values">
             {userProjects
               ? userProjects.map(val => {

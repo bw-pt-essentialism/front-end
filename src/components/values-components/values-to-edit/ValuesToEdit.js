@@ -21,7 +21,7 @@ function ValuesToEdit({ className }) {
   };
   return (
     <section>
-      <div className={className} key={Date.now()}>
+      <div className={className}>
         <div className="card-info">
           <h4>current values</h4>
           <div className="values">
@@ -47,7 +47,9 @@ function ValuesToEdit({ className }) {
 
 export default styled(ValuesToEdit)`
   background: ${setColor.mainLight};
-  margin: ${setRem(32)} auto;
+  margin: 0 auto;
+  max-height: 20vh;
+  overflow: scroll;
   width: 100%;
   color: ${setColor.offWhite};
   text-align: center;

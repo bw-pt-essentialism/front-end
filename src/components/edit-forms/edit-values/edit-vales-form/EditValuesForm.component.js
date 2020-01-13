@@ -14,9 +14,11 @@ import {
   ConfirmExplanationButton,
   Sizer,
   Hero,
-  StyledValueField
+  StyledValueField,
+  SignUpButtonContainer,
+  StyledDiv
 } from "./EditValuesForm.styles";
-import { SignUpButtonContainer } from "../../../sign-up-form/SignUpForm.styles";
+// import { SignUpButtonContainer } from "../../../sign-up-form/SignUpForm.styles";
 
 const EditValuesForm = ({
   errors,
@@ -55,12 +57,10 @@ const EditValuesForm = ({
           name: values.value || valToUpdate.name,
           description: values.description || valToUpdate.description
         };
-      } else {
-        return val;
       }
     });
     history.push("/home");
-    localStorage.setItem("userValues", JSON.stringify(updatedValues));
+    // localStorage.setItem("userValues", JSON.stringify(updatedValues));
   };
 
   return (
@@ -91,14 +91,14 @@ const EditValuesForm = ({
                     component="input"
                     type="text"
                     name="value"
-                    placeholder={val.name}
+                    placeholder={`You value ${val.name}`}
                   />
                   <Field
                     className="input"
                     component="input"
                     type="textarea"
                     name="description"
-                    placeholder={val.description}
+                    placeholder={`Because ${val.description}`}
                   />
                   {touched.description && errors.description && (
                     <p className="errors">{errors.description}</p>

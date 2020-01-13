@@ -32,7 +32,7 @@ function ConfirmedTopValues({ className }) {
       {!confirmed ? (
         userValues && (
           <section>
-            <div className={className} key={Date.now()}>
+            <div className={className}>
               <div className="card-info">
                 <h4>your values</h4>
 
@@ -55,7 +55,7 @@ function ConfirmedTopValues({ className }) {
         )
       ) : (
         <section>
-          <div className={className} key={Date.now()}>
+          <div className={className}>
             <div className="card-info">
               <h4>I value</h4>
               {userValues.map(val => {

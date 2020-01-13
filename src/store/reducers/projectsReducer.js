@@ -51,7 +51,7 @@ const projectsReducer = (state = initialState, action) => {
         projects: [
           ...state.projects,
           {
-            id: Date.now(),
+            id: state.projects.length++,
             project: action.payload.project,
             value: action.payload.value,
             notes: action.payload.notes
@@ -71,11 +71,12 @@ const projectsReducer = (state = initialState, action) => {
         isLoading: true
       };
     case PROJECTS_PUT_SUCCESS:
-      return {
-        ...state,
-        projects: [...state.projects, action.payload.projects],
-        notes: [action.payload.notes]
-      };
+      return [
+        {
+          projects: action.payload,
+          isLoading: false
+        }
+      ];
     case PROJECTS_PUT_FAILURE:
       return {
         ...state,

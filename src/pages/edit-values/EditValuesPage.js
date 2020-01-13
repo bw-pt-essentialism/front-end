@@ -4,17 +4,20 @@ import EditValuesForm from "../../components/edit-forms/edit-values/edit-vales-f
 import ValuesToEdit from "../../components/values-components/values-to-edit/ValuesToEdit";
 
 import hero from "../../images/hero.JPG";
+import stones from "../../images/stones.jpeg";
 
-import { Hero } from "./EditValuesPage.styles";
+import { Hero, BottomImg } from "./EditValuesPage.styles";
 
 function EditValuesPage() {
   return (
     <>
       <Hero img={hero}></Hero>
       <ValuesToEdit />
-      <Route path="/edit-values/:valToEdit">
-        <EditValuesForm />
-      </Route>
+      <BottomImg img={stones}>
+        <Route path="/edit-values/:valToEdit">
+          <EditValuesForm />
+        </Route>
+      </BottomImg>
     </>
   );
 }

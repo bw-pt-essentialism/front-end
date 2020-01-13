@@ -54,23 +54,23 @@ export const postProjects = values => dispatch => {
   // });
 };
 
-export const putProjects = (value, id) => dispatch => {
-  dispatch({ type: PROJECTS_PUT_START, payload: value });
-  axiosWithAuth()
-    .put(`/projects/${id}`, value)
-    .then(res => {
-      dispatch({
-        type: PROJECTS_PUT_SUCCESS,
-        payload: res.data
-      });
-    })
+export const putProjects = values => dispatch => {
+  dispatch({ type: PROJECTS_PUT_START, payload: values });
+  // axiosWithAuth()
+  //   .put(`/projects/${id}`, value)
+  //   .then(res => {
+  dispatch({
+    type: PROJECTS_PUT_SUCCESS,
+    payload: values
+  });
+  // })
 
-    .catch(err => {
-      dispatch({
-        type: PROJECTS_PUT_FAILURE,
-        payload: "error putting projects data" + err
-      });
-    });
+  // .catch(err => {
+  //   dispatch({
+  //     type: PROJECTS_PUT_FAILURE,
+  //     payload: "error putting projects data" + err
+  //   });
+  // });
 };
 
 export const deleteProjects = id => dispatch => {

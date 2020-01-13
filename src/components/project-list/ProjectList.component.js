@@ -23,7 +23,7 @@ function ProjectList({ className }) {
     <>
       {localUserProjects && (
         <section>
-          <div className={className} key={Date.now()}>
+          <div className={className}>
             <div className="card-info">
               <h4>I do </h4>
               {localUserProjects.map(project => {

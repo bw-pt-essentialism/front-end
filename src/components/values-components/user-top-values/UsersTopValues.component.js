@@ -63,7 +63,7 @@ function UsersTopValues({
       <>
         {usersList && usersList.length > 0 && (
           <section>
-            <div className={className} key={Date.now()}>
+            <div className={className}>
               <div className="card-info">
                 <h4>
                   {narrowDown === false && usersList.length > 3

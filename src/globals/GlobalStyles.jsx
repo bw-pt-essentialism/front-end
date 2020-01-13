@@ -51,7 +51,6 @@ h4{
   font-size: 1.2em;
   line-height: 1.2;
   margin-bottom: 01.25em;
-  font-weight: 200;
 }
 
 h5 {
@@ -83,5 +82,6 @@ p {
 a {
   text-decoration: none;
 }
+
 
 `;

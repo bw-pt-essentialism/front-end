@@ -11,6 +11,6 @@ export const ValuesSelectionHero = styled.header`
 export const BottomImg = styled.header`
   height: 50vh;
   ${props =>
-    setBackground({ img: props.img, color: "rgba(255, 255, 255, 0.15)" })};
+    setBackground({ img: props.img, color: "rgba(255, 255, 255, 0.17)" })};
   ${setFlex()};
 `;

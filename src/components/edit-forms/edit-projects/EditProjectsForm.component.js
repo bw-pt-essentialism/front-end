@@ -27,7 +27,7 @@ const EditProjectsForm = ({
 
   // const userProjects = useSelector(state => state.values.userProjects)
 
-  const { projToUpdate } = useParams();
+  const { projToEdit } = useParams();
 
   const userProjects = JSON.parse(localStorage.getItem("userProjects"));
 
@@ -35,29 +35,25 @@ const EditProjectsForm = ({
     const userProjects = JSON.parse(localStorage.getItem("userProjects"));
   }, [userProjects]);
 
-  const handleClick = id => {
+  const handleClick = () => {
     const updatedValues = userProjects.map(val => {
       console.log(values);
-      const projToUpdate = JSON.parse(localStorage.getItem("updatingProj"));
-      if (val.id === id) {
+      // console.log(id, val.id);
+      const projToEdit = JSON.parse(localStorage.getItem("updatingProj"));
+      if (val.id === projToEdit.id) {
         dispatch(
-          putProjects(id, {
-            id: projToUpdate.id,
-            project: values.value || projToUpdate.name,
-            description: values.description || projToUpdate.description
+          putProjects({
+            id: projToEdit.id,
+            project: values.project || projToEdit.project,
+            value: values.value || projToEdit.value
           })
         );
-        return {
-          id: projToUpdate.id,
-          name: values.value || projToUpdate.name,
-          description: values.description || projToUpdate.description
-        };
       } else {
         return val;
       }
     });
     history.push("/home");
-    localStorage.setItem("userProjects", JSON.stringify(updatedValues));
+    // localStorage.setItem("userProjects", JSON.stringify(updatedValues));
   };
 
   return (
@@ -66,43 +62,46 @@ const EditProjectsForm = ({
       {userProjects &&
         userProjects.map(val => {
           console.log(`This is val.id: `, val.id);
-          if (val.id === parseInt(projToUpdate)) {
+          if (val.id === parseInt(projToEdit)) {
             localStorage.setItem("updatingProj", JSON.stringify(val));
             // console.log(`This is updatingProj: `, val);
             return (
               <div key={val.id}>
                 <FormContainer className="form">
-                  <h4>You change, your values change, and that's ok.</h4>
+                  <h4>
+                    Remember, adding a new project means an existing one gets
+                    less time.
+                  </h4>
 
-                  <Field
+                  <StyledValueField
+                    id="project"
                     className="input"
                     component="input"
-                    type="textarea"
-                    name="valueID"
-                    value={val.id}
-                    hidden
+                    type="text"
+                    name="project"
+                    placeholder={`You are working on ${val.project}`}
                   />
                   <StyledValueField
-                    id="value"
+                    id="project"
                     className="input"
                     component="input"
                     type="text"
                     name="value"
-                    placeholder={val.name}
+                    placeholder={`Which aligns with ${val.value}`}
                   />
                   <Field
                     className="input"
                     component="input"
                     type="textarea"
-                    name="description"
-                    placeholder={val.description}
+                    name="notes"
+                    placeholder={`These are your notes: ${val.notes}`}
                   />
-                  {touched.description && errors.description && (
-                    <p className="errors">{errors.description}</p>
+                  {touched.notes && errors.notes && (
+                    <p className="errors">{errors.notes}</p>
                   )}
                   <SignUpButtonContainer>
                     <ConfirmExplanationButton
-                      onClick={() => handleClick(val.id)}
+                      onClick={() => handleClick()}
                       disabled={isSubmitting}
                     >
                       update
@@ -120,15 +119,16 @@ const EditProjectsForm = ({
 };
 
 export default withFormik({
-  mapPropsToValues({ description, value }) {
+  mapPropsToValues({ notes, project, value }) {
     const val = JSON.parse(localStorage.getItem("updatingProj"));
     return {
-      value: value,
-      description: description
+      project: project,
+      notes: notes,
+      value: value
     };
   },
   validationSchema: Yup.object().shape({
-    description: Yup.string()
+    notes: Yup.string()
   }),
   handleSubmit(values, { resetForm }) {
     resetForm();

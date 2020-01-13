@@ -19,7 +19,7 @@ function About() {
       </AboutValuesHero>
       <AboutValuesCard />
       <AboutButton onClick={() => history.push("/values-selection")}>
-        continue
+        Get Started
       </AboutButton>
     </>
   );
