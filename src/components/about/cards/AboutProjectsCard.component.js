@@ -64,7 +64,6 @@ const AboutProjectCard = ({ className }) => {
 
 export default styled(AboutProjectCard)`
   background: ${setColor.mainWhite};
-  background: #fff;
   color: ${setColor.mainColor};
   margin: ${setRem(32)} 0;
   .img-container {

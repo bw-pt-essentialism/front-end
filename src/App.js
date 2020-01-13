@@ -15,7 +15,7 @@ import SignInAndUpPage from "./pages/sign-in-and-up/SignInAndUpPage";
 import HomePage from "./pages/homepage/HomePage.page";
 import AboutValues from "./components/about/about-values/AboutValues.component";
 import AboutProjects from "./components/about/about-projects/AboutProjects.component";
-import ChoiceExplanation from "./components/choice-explanation/ChoiceExplanationForm.component";
+import ChoiceExplanationForm from "./components/choice-explanation/ChoiceExplanationForm.component";
 import ProjectForm from "./components/project-form/ProjectForm.component";
 import EditProfile from "./components/edit-forms/EditProfile.component";
 import EditValuesPage from "./pages/edit-values/EditValuesPage";
@@ -50,7 +50,7 @@ function App() {
         <SignInAndUpPage />
       )}
       <Switch>
-        <PrivateRoute path="/choice-expl" component={ChoiceExplanation} />
+        <PrivateRoute path="/choice-expl" component={ChoiceExplanationForm} />
         <PrivateRoute path="/project-form" component={ProjectForm} />
         <PrivateRoute path="/values-selection" component={ValuesList} />
         <PrivateRoute path="/edit-profile" component={EditProfile} />

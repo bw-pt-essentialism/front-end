@@ -8,13 +8,15 @@ import { addValueDescription } from "../../store/actions/values.actions";
 
 // import Hero from "../hero/Hero.component";
 import hero from "../../images/hero.JPG";
+import stones from "../../images/stones.jpeg";
 import ConfirmedTopValues from "../confirmed-values/Confirmed-Values.component";
 
 import {
   FormContainer,
   ConfirmExplanationButton,
   Sizer,
-  Hero
+  Hero,
+  BottomImg
 } from "./ChoiceExplanations.styles";
 import { SignUpButtonContainer } from "../sign-up-form/SignUpForm.styles";
 
@@ -60,20 +62,17 @@ const ChoiceExplanation = ({
       <Hero img={hero}>
         <ConfirmedTopValues />
       </Hero>
-
-      {userValues &&
-        userValues.map((val, index) => {
-          return (
-            <div key={val.id}>
-              <FormContainer
-                className="form"
-                index={index}
-                active={activeIndex}
-              >
-                <h4>You selected: {val.name}</h4>
+      <BottomImg img={stones}>
+        {userValues &&
+          userValues.map((val, index) => {
+            return (
+              // <div k>
+              <FormContainer key={val.id} index={index} active={activeIndex}>
+                <label htmlFor="name">You selected: {val.name}</label>
                 <Field
                   component="input"
                   type="text"
+                  id="name"
                   name="val"
                   // value={val.id}
                   hidden={true}
@@ -97,9 +96,10 @@ const ChoiceExplanation = ({
                   </ConfirmExplanationButton>
                 </SignUpButtonContainer>
               </FormContainer>
-            </div>
-          );
-        })}
+              // </div>
+            );
+          })}
+      </BottomImg>
     </Sizer>
   );
 };

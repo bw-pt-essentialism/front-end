@@ -6,15 +6,18 @@ import { CustomLink } from "../custom-link/CustomLink.styles";
 import { setFlex, setBackground, setColor } from "../../globals/styles";
 
 export const Hero = styled.header`
-  height: 300px;
+  height: 33vh;
+  min-height: 400px;
   ${props => setBackground({ img: props.img, color: "rgba(0,0,0,.2)" })};
   ${setFlex()};
   border-bottom: 6px solid ${setColor.mainColor};
-  margin-bottom: 10%;
 `;
 
 export const BottomImg = styled.header`
-  height: 50vh;
+  /* margin-top: -5vh; */
+  height: 71vh;
+  display: flex;
+  flex-flow: column nowrap;
   ${props =>
     setBackground({ img: props.img, color: "rgba(255, 255, 255, 0.17)" })};
   ${setFlex()};
@@ -33,17 +36,22 @@ export const ConfirmExplanationLink = styled(CustomLink)`
 `;
 
 export const FormContainer = styled(Form)`
-  margin: 0 auto;
+  margin: -10% auto 0;
   text-align: center;
-  max-height: 45%;
-  height: 45%;
-  ${props =>
-    props.index === props.active ? "display: block" : "display: none"}
-  input {
+  height: 500px;
+  width: 80%;
+  padding: 5%;
+  background: ${setColor.mainColor}
+    ${props =>
+      props.index === props.active ? "display: block" : "display: none"}
+    input {
     min-height: 15vh;
   }
   input::placeholder {
     text-align: center;
+  }
+  label {
+    font-size: 1.8rem;
   }
 `;
 

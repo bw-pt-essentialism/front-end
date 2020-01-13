@@ -109,7 +109,7 @@ const AboutValuesCard = ({ className }) => {
 };
 
 export default styled(AboutValuesCard)`
-  background: #fff;
+  background: #eaeaea;
   color: ${setColor.mainColor};
   margin: ${setRem(3)} 0;
   .img-container {

@@ -131,7 +131,7 @@ export default connect(mapPropsToState, {
 })(styled(UsersTopValues)`
   background: ${setColor.mainLight};
   margin: 10% auto;
-  max-width: 40%;
+  max-width: 90%;
   width: 500px;
   color: ${setColor.offWhite};
   text-align: center;
