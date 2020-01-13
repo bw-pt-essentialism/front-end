@@ -20,13 +20,13 @@ mainBlack: "#222" */
   background-color: rgb(61, 69, 102, 0.975);
 }
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+/* @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
   .form-container {
     width: 90vw;
     top: 5%;
     right: 5%;
   }
-}
+} */
 
 .form {
   padding: 8%;
@@ -46,7 +46,7 @@ mainBlack: "#222" */
 }
 
 .input:active,
-&:visited {
+:visited {
   background-color: rgb(107, 121, 179, 0.4);
   padding: 0.8rem 0.8rem 0.8rem 0.4rem;
   display: block;
