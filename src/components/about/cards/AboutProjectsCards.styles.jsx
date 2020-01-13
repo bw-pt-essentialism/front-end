@@ -25,4 +25,11 @@ export const CardsCenter = styled.div`
   width: 80vw;
   max-width: 90%;
   `};
+
+  ${media.desktop`
+  grid-template-columns: repeat(1, 1fr);
+  margin: -25vh auto 0;
+  width: 80vw;
+  max-width: 90%;
+  `};
 `;

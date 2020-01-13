@@ -74,7 +74,7 @@ const AboutValuesBannerWrapper = styled(AboutValuesBanner)`
   }
   ${media.phone` 
   width: 90%
-  margin-top: 40vh;
+  margin-top: 400px;
     ${setBorder({ width: "6px", color: setColor.mainColor })};
     h5 {
       width: 100%;
@@ -83,7 +83,15 @@ const AboutValuesBannerWrapper = styled(AboutValuesBanner)`
 
   ${media.tablet` 
   width: 90%
-  margin-top: 25vh;
+  margin-top: 250px;
+    ${setBorder({ width: "6px", color: setColor.mainColor })};
+    h5 {
+      width: 100%;
+      font-size: 1.2rem;
+    }`}
+    ${media.desktop` 
+  width: 90%
+  margin-top: 250px;
     ${setBorder({ width: "6px", color: setColor.mainColor })};
     h5 {
       width: 100%;
