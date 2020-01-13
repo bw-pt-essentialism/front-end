@@ -5,16 +5,20 @@ import ProjectToEdit from "../../components/project-to-edit/ProjectToEdit.compon
 
 import hero from "../../images/hero.JPG";
 
-import { Hero } from "./EditProjectsPage.styles";
+import { Hero, BottomImg } from "./EditProjectsPage.styles";
+
+import stones from "../../images/stones.jpeg";
 
 function EditProjectsPage() {
   return (
     <>
       <Hero img={hero}></Hero>
       <ProjectToEdit />
-      <Route path="/edit-projects/:projToEdit">
-        <EditProjectsForm />
-      </Route>
+      <BottomImg img={stones}>
+        <Route path="/edit-projects/:projToEdit">
+          <EditProjectsForm />
+        </Route>
+      </BottomImg>
     </>
   );
 }

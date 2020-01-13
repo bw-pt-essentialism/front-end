@@ -99,14 +99,12 @@ const EditProjectsForm = ({
                   {touched.notes && errors.notes && (
                     <p className="errors">{errors.notes}</p>
                   )}
-                  <SignUpButtonContainer>
-                    <ConfirmExplanationButton
-                      onClick={() => handleClick()}
-                      disabled={isSubmitting}
-                    >
-                      update
-                    </ConfirmExplanationButton>
-                  </SignUpButtonContainer>
+                  <ConfirmExplanationButton
+                    onClick={() => handleClick()}
+                    disabled={isSubmitting}
+                  >
+                    update
+                  </ConfirmExplanationButton>
                 </FormContainer>
               </div>
             );

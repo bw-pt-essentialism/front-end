@@ -1,20 +1,29 @@
 import styled from "styled-components";
 import { Form, Field } from "formik";
-import { CustomButton } from "../../custom-button/CustomButton";
+import {
+  CustomButton,
+  CustomButtonContainer
+} from "../../custom-button/CustomButton";
+import { CustomLink } from "../../custom-link/CustomLink.styles";
+
+import { setFlex, setBackground, setColor } from "../../../globals/styles";
 
 export const ConfirmExplanationButton = styled(CustomButton)`
-  margin: 10% auto 0;
+  /* background: transparent; */
+  margin: 5% auto 0;
   border: none;
 `;
 
 export const FormContainer = styled(Form)`
-  border: 1px solid pink;
-  min-width: 60vw;
-  margin: 0 auto;
+  background: ${setColor.mainColor};
+  margin: -5% auto 0;
   text-align: center;
-  height: 100%;
+  max-height: 600px;
+  h4 {
+    color: ${setColor.offWhite};
+  }
   input {
-    min-height: 15vh;
+    min-height: 5vh;
   }
   input::placeholder {
     text-align: center;
@@ -36,3 +45,21 @@ export const StyledSection = styled.section`
 export const StyledValueField = styled(Field)`
   max-height: 30px;
 `;
+
+// export const SignUpButton = styled(CustomButton)`
+//   background: transparent;
+//   margin: 10% auto 0;
+//   border: none;
+// `;
+
+// export const SignUpLinkLogin = styled(CustomLink)`
+//   background: transparent;
+//   margin: 10% auto 0;
+//   border: none;
+//   text-decoration: none;
+// `;
+
+// export const SignUpButtonContainer = styled(CustomButtonContainer)`
+//   flex-flow: row nowrap;
+//   margin-bottom: 10%;
+// `;

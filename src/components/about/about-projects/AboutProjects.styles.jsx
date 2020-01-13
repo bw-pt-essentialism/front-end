@@ -41,18 +41,6 @@ const AboutProjectsBanner = ({ className }) => {
   );
 };
 const AboutProjectsBannerWrapper = styled(AboutProjectsBanner)`
-  /* background: ${setColor.mainLight};
-  margin: 0 auto;
-  text-align: center;
-  justify-content: center;
-  max-width: 60%;
-  width: 500px;
-  height: 30vh;
-  min-height: 260px;
-  max-height: 30vh;
-  margin-top: 15%;
-  margin-left: 0;
-  color: ${setColor.mainColor}; */
   background: ${setColor.mainLight};
   margin: 30vh auto 0;
   text-align: center;
@@ -65,7 +53,6 @@ const AboutProjectsBannerWrapper = styled(AboutProjectsBanner)`
   color: ${setColor.mainColor};
   ${setLetterSpacing(3)};
   padding: 2%;
- 
 
   h5 {
     text-transform: uppercase;
@@ -77,7 +64,6 @@ const AboutProjectsBannerWrapper = styled(AboutProjectsBanner)`
       color: ${setColor.offWhite};
       ${fadeIn("100%", "-10%", "0")}
       ${setTransition("all", "1s", "ease-in-out")}
-      
     }
   }
   p {
@@ -93,7 +79,7 @@ const AboutProjectsBannerWrapper = styled(AboutProjectsBanner)`
       font-size: 1.2rem;
     }`}
 
-    ${media.tablet` 
+  ${media.tablet` 
   width: 90%
   margin-top: 25vh;
     ${setBorder({ width: "6px", color: setColor.mainColor })};
@@ -101,7 +87,6 @@ const AboutProjectsBannerWrapper = styled(AboutProjectsBanner)`
       width: 100%;
       font-size: 1.2rem;
     }`}
-
 `;
 
 export default AboutProjectsBannerWrapper;

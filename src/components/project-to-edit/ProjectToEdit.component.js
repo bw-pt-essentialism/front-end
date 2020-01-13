@@ -47,7 +47,9 @@ function ProjectToEdit({ className }) {
 
 export default styled(ProjectToEdit)`
   background: ${setColor.mainLight};
-  margin: ${setRem(32)} auto;
+  margin: 0 auto;
+  max-height: 20vh;
+  overflow: scroll;
   width: 100%;
   color: ${setColor.offWhite};
   text-align: center;
