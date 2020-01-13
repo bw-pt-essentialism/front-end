@@ -132,7 +132,7 @@ export const AboutValuesHero = styled(Hero)`
 
 export const BottomImg = styled.header`
   margin-top: -5vh;
-  height: 100vh;
+  height: 80vh;
 
   /* ${media.tablet`
  display: none;
