@@ -125,11 +125,9 @@ export const AboutValuesHero = styled(Hero)`
 
   ${media.tablet` 
   height: 25vh;
-  /* margin-bottom: 40vh; */
   `}
   ${media.desktop` 
   height: 25vh;
-  /* margin-bottom: 40vh; */
   `}
   height: 25vh;
   margin-bottom: 5vh;
@@ -139,13 +137,19 @@ export const BottomImg = styled.header`
   margin-top: -5vh;
   height: 71vh;
 
-  /* ${media.tablet`
- display: none;
-  /* margin-bottom: 40vh; */
-  `} */
-
   display: flex;
   flex-flow: column nowrap;
+  ${media.phone` 
+  height: 50vh;
+  /* margin-bottom: 40vh; */
+  `}
+
+  ${media.tablet` 
+  height: 71vh;
+  `}
+  ${media.desktop` 
+  height: 71vh;
+  `}
   ${props =>
     setBackground({ img: props.img, color: "rgba(255, 255, 255, 0.17)" })};
   ${setFlex()};
