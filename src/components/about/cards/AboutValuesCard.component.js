@@ -112,6 +112,7 @@ export default styled(AboutValuesCard)`
   background: #eaeaea;
   color: ${setColor.mainColor};
   margin: ${setRem(3)} 0;
+
   .img-container {
     background: ${setColor.mainBlack};
     position: relative;
