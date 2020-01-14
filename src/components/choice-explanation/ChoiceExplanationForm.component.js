@@ -70,14 +70,6 @@ const ChoiceExplanation = ({
               <FormContainer key={val.id} index={index} active={activeIndex}>
                 <label htmlFor="name">You selected: {val.name}</label>
                 <Field
-                  component="input"
-                  type="text"
-                  id="name"
-                  name="val"
-                  // value={val.id}
-                  hidden={true}
-                />
-                <Field
                   className="input"
                   component="input"
                   type="textarea"

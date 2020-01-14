@@ -16,8 +16,6 @@ function ProjectList({ className }) {
   const userProjects = useSelector(state => state.projects.projects);
   localStorage.setItem("userProjects", JSON.stringify(userProjects));
   const localUserProjects = JSON.parse(localStorage.getItem("userProjects"));
-  console.log(`ProjectList: userProjects: `, userProjects);
-  console.log(`ProjectList: localUserProjects: `, localUserProjects);
 
   return (
     <>
@@ -32,7 +30,11 @@ function ProjectList({ className }) {
                     <p>
                       {" "}
                       <strong>{project.project}</strong> which aligns with{" "}
-                      <strong>{project.value}</strong>
+                      {project.value ? (
+                        <strong>{project.value}</strong>
+                      ) : (
+                        <strong>nothing I value</strong>
+                      )}
                     </p>
                   </div>
                 );

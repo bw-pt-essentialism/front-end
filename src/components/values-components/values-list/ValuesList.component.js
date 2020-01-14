@@ -36,7 +36,6 @@ function ValuesList() {
   const valueOnboardingComplete = JSON.parse(
     localStorage.getItem("valueOnboardingComplete")
   );
-  console.log("I AM THE USERIST OF LISTS, ", usersList);
 
   return (
     <>
