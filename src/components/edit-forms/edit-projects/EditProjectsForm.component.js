@@ -58,13 +58,11 @@ const EditProjectsForm = ({
 
   return (
     <>
-      {/* <Sizer> */}
       {userProjects &&
         userProjects.map(val => {
           console.log(`This is val.id: `, val.id);
           if (val.id === parseInt(projToEdit)) {
             localStorage.setItem("updatingProj", JSON.stringify(val));
-            // console.log(`This is updatingProj: `, val);
             return (
               <div key={val.id}>
                 <FormContainer className="form">
@@ -110,8 +108,6 @@ const EditProjectsForm = ({
             );
           }
         })}
-      {/* </StyledSection> */}
-      {/* </Sizer> */}
     </>
   );
 };

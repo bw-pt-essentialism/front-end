@@ -59,16 +59,17 @@ export const postValues = value => dispatch => {
     });
 };
 
-export const putValues = (id, value) => dispatch => {
+export const putValues = value => dispatch => {
   dispatch({ type: VALUES_PUT_START, payload: value });
   return axiosWithAuth()
-    .put(`/values/${id}`, value)
+    .post(`/values`, value)
     .then(res => {
       dispatch({
         type: VALUES_PUT_SUCCESS,
         payload: res.data
       });
     })
+    .then(() => localStorage.setItem("userValues", JSON.stringify(value)))
     .catch(err => {
       dispatch({
         type: VALUES_PUT_FAILURE,

@@ -13,8 +13,6 @@ import {
   PROJECTS_DELETE_FAILURE
 } from "../actions/projects.actions";
 
-import { projects } from "../../dummy-data";
-
 const localUserProjects = JSON.parse(localStorage.getItem("userProjects"));
 
 const initialState = {
@@ -73,7 +71,16 @@ const projectsReducer = (state = initialState, action) => {
     case PROJECTS_PUT_SUCCESS:
       return [
         {
-          projects: action.payload,
+          ...state,
+          projects: [
+            state.projects.map(project => {
+              if (project.id === action.payload.id) {
+                return action.payload;
+              } else {
+                return project;
+              }
+            })
+          ],
           isLoading: false
         }
       ];
@@ -92,7 +99,9 @@ const projectsReducer = (state = initialState, action) => {
     case PROJECTS_DELETE_SUCCESS:
       return {
         ...state,
-        projects: [action.payload]
+        projects: state.projects.filter(project => {
+          return project.id !== action.payload;
+        })
       };
     case PROJECTS_DELETE_FAILURE:
       return {
