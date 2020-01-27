@@ -63,6 +63,8 @@ export const putProjects = values => dispatch => {
     type: PROJECTS_PUT_SUCCESS,
     payload: values
   });
+
+  localStorage.setItem("userProjects", JSON.stringify(values));
   // })
 
   // .catch(err => {

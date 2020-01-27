@@ -38,6 +38,8 @@ const EditValuesForm = ({
   const handleClick = id => {
     const updatedValues = userValues.map(val => {
       if (val.id === id) {
+        console.log(`typeof(val.id)`, typeof val.id);
+        console.log(`typeof(id)`, typeof id);
         return (val = {
           id: val.id,
           name: values.name || val.name,

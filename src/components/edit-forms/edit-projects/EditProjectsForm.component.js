@@ -41,19 +41,19 @@ const EditProjectsForm = ({
       // console.log(id, val.id);
       const projToEdit = JSON.parse(localStorage.getItem("updatingProj"));
       if (val.id === projToEdit.id) {
-        dispatch(
-          putProjects({
-            id: projToEdit.id,
-            project: values.project || projToEdit.project,
-            value: values.value || projToEdit.value
-          })
-        );
+        return (val = {
+          id: val.id,
+          project: values.project || val.project,
+          notes: values.notes || val.notes,
+          value: values.value || val.value
+        });
       } else {
         return val;
       }
     });
+    localStorage.setItem("userProjects", JSON.stringify(updatedValues));
+    dispatch(putProjects(updatedValues));
     history.push("/home");
-    // localStorage.setItem("userProjects", JSON.stringify(updatedValues));
   };
 
   return (
@@ -80,7 +80,7 @@ const EditProjectsForm = ({
                     placeholder={`You are working on ${val.project}`}
                   />
                   <StyledValueField
-                    id="project"
+                    id="value"
                     className="input"
                     component="input"
                     type="text"

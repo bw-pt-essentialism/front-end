@@ -13,8 +13,8 @@ import {
 
 function ProjectList({ className }) {
   //   let history = useHistory();
-  const userProjects = useSelector(state => state.projects.projects);
-  localStorage.setItem("userProjects", JSON.stringify(userProjects));
+  // const userProjects = useSelector(state => state.projects.projects);
+  // localStorage.setItem("userProjects", JSON.stringify(userProjects));
   const localUserProjects = JSON.parse(localStorage.getItem("userProjects"));
 
   return (
